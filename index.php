@@ -12,7 +12,11 @@
          },
          "message":{
             "id":"325708",
-            "type":"image"
+            "type":"location",
+            "title":"my location",
+            "address":"〒150-0002 東京都渋谷区渋谷２丁目２１−１",
+            "latitude":35.65910807942215,
+            "longitude":139.70372892916203
          }
       }
    ]
@@ -29,10 +33,6 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 // Token
 $channel_token = 'lZ+WXE4At+V8NlwkInMHC5wJAvpeeKnCt197Y7l1CVfzSG6uhdee6tVMhG/Esk2GEmFAjl7gvElqWawH4o7AUJxGnKbhpogowCJqIA1cQ57oIF/4qF8CrOx7f0K4RCUjqUy3urKNf4xFaPhCl+faGAdB04t89/1O/w1cDnyilFU=';
 $channel_secret = '85a055cff00c5ca119e5ded3225bfdf3';
-
-// LINEBot
-$httpClient = new CurlHTTPClient($channel_token);
-$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 
 // Get message from Line API
 $content = file_get_contents('php://input');
@@ -51,16 +51,21 @@ if (!is_null($events['events'])) {
             
             switch($event['message']['type']) {
                 
-                case 'sticker': 
-					$messageID = $event['message']['packageId']; 
-					// Reply message 
-					$respMessage = 'Hello, your Sticker Package ID is '. $messageID; 
-					break;
+                case 'location':
+                    $address = $event['message']['address'];
+
+                    // Reply message
+                    $respMessage = 'Hello, your address is '. $address;
+            
+                    break;
                 default:
                     // Reply message
-                    $respMessage = 'Please send image only';
+                    $respMessage = 'Please send location only';
                     break;
             }
+
+            $httpClient = new CurlHTTPClient($channel_token);
+            $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 
             $textMessageBuilder = new TextMessageBuilder($respMessage);
             $response = $bot->replyMessage($replyToken, $textMessageBuilder);
