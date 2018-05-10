@@ -55,7 +55,7 @@ if (!is_null($events['events'])) {
                     $address = $event['message']['address'];
 
                     // Reply message
-                    $respMessage = 'Hello, your address is '. $address;
+                   // $respMessage = 'Hello, your address is '. $address;
 					$respMessage = 'line://nv/camera/';
             
                     break;
