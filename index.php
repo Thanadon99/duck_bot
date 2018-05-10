@@ -1,26 +1,6 @@
 <?php
-/*
-{
-   "events":[
-      {
-         "replyToken":"nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
-         "type":"message",
-         "timestamp":1462629479859,
-         "source":{
-            "type":"user",
-            "userId":"U206d25c2ea6bd87c17655609a1c37cb8"
-         },
-         "message":{
-            "id":"325708",
-            "type":"location",
-            "title":"my location",
-            "address":"〒150-0002 東京都渋谷区渋谷２丁目２１−１",
-            "latitude":35.65910807942215,
-            "longitude":139.70372892916203
-         }
-      }
-   ]
-}
+/**
+ * Use for return easy answer.
  */
 
 require_once('./vendor/autoload.php');
@@ -78,65 +58,67 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
     
         // Line API send a lot of event type, we interested in message only.
-		if ($event['type'] == 'message') {
+		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
             // Get replyToken
             $replyToken = $event['replyToken'];
-            
-            switch($event['message']['type']) {
-                
-                case 'location':
-                    $address = $event['message']['address'];
 
-                    // Reply message
-                   // $respMessage = 'Hello, your address is '. $address;
-					$respMessage = 'line://nv/camera/';
-            
+            switch($event['message']['text']) {
+                
+                case 'tel':
+                    $respMessage = '089-5124512';
+                    break;
+                case 'address':
+                    $respMessage = '99/451 Muang Nonthaburi';
+                    break;
+                case 'boss':
+                    $respMessage = '089-2541545';
+                    break;
+                case 'idcard':
+                    $respMessage = '5845122451245';
                     break;
 				case "t_b":
-    // กำหนด action 4 ปุ่ม 4 ประเภท
-    $actionBuilder = array(
-        new MessageTemplateActionBuilder(
-            'Message Template',// ข้อความแสดงในปุ่ม
-            'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-        ),
-        new UriTemplateActionBuilder(
-            'Uri Template', // ข้อความแสดงในปุ่ม
-            'https://www.ninenik.com'
-        ),
-        new DatetimePickerTemplateActionBuilder(
-            'Datetime Picker', // ข้อความแสดงในปุ่ม
-            http_build_query(array(
-                'action'=>'reservation',
-                'person'=>5
-            )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-            'datetime', // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
-            substr_replace(date("Y-m-d H:i"),'T',10,1), // วันที่ เวลา ค่าเริ่มต้นที่ถูกเลือก
-            substr_replace(date("Y-m-d H:i",strtotime("+5 day")),'T',10,1), //วันที่ เวลา มากสุดที่เลือกได้
-            substr_replace(date("Y-m-d H:i"),'T',10,1) //วันที่ เวลา น้อยสุดที่เลือกได้
-        ),      
-        new PostbackTemplateActionBuilder(
-            'Postback', // ข้อความแสดงในปุ่ม
-            http_build_query(array(
-                'action'=>'buy',
-                'item'=>100
-            )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-            'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-        ),      
-    );
-    $imageUrl = 'https://www.mywebsite.com/imgsrc/photos/w/simpleflower';
-    $replyData = new TemplateMessageBuilder('Button Template',
-        new ButtonTemplateBuilder(
-                'button template builder', // กำหนดหัวเรื่อง
-                'Please select', // กำหนดรายละเอียด
-                $imageUrl, // กำหนด url รุปภาพ
-                $actionBuilder  // กำหนด action object
-        )
-    );              
-    break; 
+					// กำหนด action 4 ปุ่ม 4 ประเภท
+					$actionBuilder = array(
+						new MessageTemplateActionBuilder(
+							'Message Template',// ข้อความแสดงในปุ่ม
+							'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+						),
+						new UriTemplateActionBuilder(
+							'Uri Template', // ข้อความแสดงในปุ่ม
+							'https://www.ninenik.com'
+						),
+						new DatetimePickerTemplateActionBuilder(
+							'Datetime Picker', // ข้อความแสดงในปุ่ม
+							http_build_query(array(
+								'action'=>'reservation',
+								'person'=>5
+							)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+							'datetime', // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							substr_replace(date("Y-m-d H:i"),'T',10,1), // วันที่ เวลา ค่าเริ่มต้นที่ถูกเลือก
+							substr_replace(date("Y-m-d H:i",strtotime("+5 day")),'T',10,1), //วันที่ เวลา มากสุดที่เลือกได้
+							substr_replace(date("Y-m-d H:i"),'T',10,1) //วันที่ เวลา น้อยสุดที่เลือกได้
+						),      
+						new PostbackTemplateActionBuilder(
+							'Postback', // ข้อความแสดงในปุ่ม
+							http_build_query(array(
+								'action'=>'buy',
+								'item'=>100
+							)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+							'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+						),      
+					);
+					$imageUrl = 'https://www.mywebsite.com/imgsrc/photos/w/simpleflower';
+					$replyData = new TemplateMessageBuilder('Button Template',
+						new ButtonTemplateBuilder(
+								'button template builder', // กำหนดหัวเรื่อง
+								'Please select', // กำหนดรายละเอียด
+								$imageUrl, // กำหนด url รุปภาพ
+								$actionBuilder  // กำหนด action object
+						)
+					);              
+					break;  
                 default:
-                    // Reply message
-                    $respMessage = 'Please send location only';
                     break;
             }
 
@@ -145,6 +127,7 @@ if (!is_null($events['events'])) {
 
             $textMessageBuilder = new TextMessageBuilder($respMessage);
             $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+
 		}
 	}
 }
