@@ -182,7 +182,7 @@ if(!is_null($events)){
                             )
                         );
                         break;          
-                    case "ทดสอบ":
+                    case "t_b":
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
                             new MessageTemplateActionBuilder(
