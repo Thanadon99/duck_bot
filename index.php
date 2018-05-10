@@ -4,8 +4,6 @@
 // include composer autoload
 require_once './vendor/autoload.php';
  
-// การตั้งเกี่ยวกับ bot
-require_once 'bot_settings.php';
  
 // กรณีมีการเชื่อมต่อกับฐานข้อมูล
 //require_once("dbconnect.php");
@@ -45,24 +43,24 @@ use \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
 use \LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselTemplateBuilder;
 use \LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuilder;
  
-// เชื่อมต่อกับ LINE Messaging API
-$httpClient = new CurlHTTPClient(LINE_MESSAGE_ACCESS_TOKEN);
-$bot = new LINEBot($httpClient, array('channelSecret' => LINE_MESSAGE_CHANNEL_SECRET));
+$channel_token = 'lZ+WXE4At+V8NlwkInMHC5wJAvpeeKnCt197Y7l1CVfzSG6uhdee6tVMhG/Esk2GEmFAjl7gvElqWawH4o7AUJxGnKbhpogowCJqIA1cQ57oIF/4qF8CrOx7f0K4RCUjqUy3urKNf4xFaPhCl+faGAdB04t89/1O/w1cDnyilFU=';
+$channel_secret = '85a055cff00c5ca119e5ded3225bfdf3';
  
-// คำสั่งรอรับการส่งค่ามาของ LINE Messaging API
+ 
 $content = file_get_contents('php://input');
- 
-// แปลงข้อความรูปแบบ JSON  ให้อยู่ในโครงสร้างตัวแปร array
 $events = json_decode($content, true);
+// เชื่อมต่อกับ LINE Messaging API
+$httpClient = new CurlHTTPClient($channel_token);
+$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+ 
+ 
 if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
 }
-// ส่วนของคำสั่งจัดเตียมรูปแบบข้อความสำหรับส่ง
-$textMessageBuilder = new TextMessageBuilder(json_encode($events));
- 
-//l ส่วนของคำสั่งตอบกลับข้อความ
-$response = $bot->replyMessage($replyToken,$textMessageBuilder);
+
+$textMessageBuilder = new TextMessageBuilder($respMessage);
+$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
     return;
