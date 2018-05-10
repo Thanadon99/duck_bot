@@ -50,7 +50,30 @@ $channel_secret = '85a055cff00c5ca119e5ded3225bfdf3';
 $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 // เชื่อมต่อกับ LINE Messaging API
-$httpClient = new CurlHTTPClient($channel_token);
+if (!is_null($events['events'])) {
+
+	// Loop through each event
+	foreach ($events['events'] as $event) {
+    
+        // Get replyToken
+        $replyToken = $event['replyToken'];
+
+        // Image
+        $originalContentUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+        $previewImageUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+
+        $httpClient = new CurlHTTPClient($channel_token);
+        $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+
+        $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
+        $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+        
+	}
+}
+
+echo "OK";
+
+/*$httpClient = new CurlHTTPClient($channel_token);
 $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
  
  
