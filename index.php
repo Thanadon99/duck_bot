@@ -68,6 +68,20 @@ if(!is_null($events)){
                 case "B":
                     $textReplyMessage = "คุณพิมพ์ B";
                     break;
+				case "t":
+                    $textReplyMessage = "Bot ตอบกลับคุณเป็นข้อความ";
+                    $replyData = new TextMessageBuilder($textReplyMessage);
+                    break;
+                case "i":
+                    $picFullSize = 'https://www.mywebsite.com/imgsrc/photos/f/simpleflower';
+                    $picThumbnail = 'https://www.mywebsite.com/imgsrc/photos/f/simpleflower/240';
+                    $replyData = new ImageMessageBuilder($picFullSize,$picThumbnail);
+                    break;
+                case "v":
+                    $picThumbnail = 'https://www.mywebsite.com/imgsrc/photos/f/sampleimage/240';
+                    $videoUrl = "https://www.ninenik.com/line/simplevideo.mp4";             
+                    $replyData = new VideoMessageBuilder($videoUrl,$picThumbnail);
+                    break;
                 default:
                     $textReplyMessage = " คุณไม่ได้พิมพ์ A และ B";
                     break;                                      
