@@ -73,12 +73,12 @@ if(!is_null($events)){
                     $replyData = new TextMessageBuilder($textReplyMessage);
                     break;
                 case "i":
-                    $picFullSize = 'https://www.mywebsite.com/imgsrc/photos/f/simpleflower';
-                    $picThumbnail = 'https://www.mywebsite.com/imgsrc/photos/f/simpleflower/240';
+                    $picFullSize = 'http://www.e-sort.net/blog/wp-content/uploads/2016/10/PHP.png';
+                    $picThumbnail = 'http://www.e-sort.net/blog/wp-content/uploads/2016/10/PHP.png';
                     $replyData = new ImageMessageBuilder($picFullSize,$picThumbnail);
                     break;
                 case "v":
-                    $picThumbnail = 'https://www.mywebsite.com/imgsrc/photos/f/sampleimage/240';
+                    $picThumbnail = 'http://www.e-sort.net/blog/wp-content/uploads/2016/10/PHP.png';
                     $videoUrl = "https://www.ninenik.com/line/simplevideo.mp4";             
                     $replyData = new VideoMessageBuilder($videoUrl,$picThumbnail);
                     break;
