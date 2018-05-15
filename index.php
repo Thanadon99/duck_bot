@@ -398,7 +398,11 @@ if(!is_null($events)){
                         $replyData = new TextMessageBuilder($failMessage);
                         break; 
                     default:
-                        $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
+                        //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
+						$data=file('abc.txt');
+						for($i=0;$i<count($data);$i++){
+							$textReplyMessage = $data[$i];
+						}
                         $replyData = new TextMessageBuilder($textReplyMessage);         
                         break;                                      
                 }
@@ -411,11 +415,6 @@ if(!is_null($events)){
     }
 }
 $response = $bot->replyMessage($replyToken,$replyData);
-$data=file("abc.txt");
-for($i=0;$i<count($data);$i++){
-	$replyData = $data[$i];
-	$response = $bot->replyMessage($replyToken,$replyData);
-}
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
     return;
