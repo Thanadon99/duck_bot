@@ -75,13 +75,14 @@ $Repairable = NULL;
 $Item = NULL;
 $Serial = NULL;
 $CT = NULL;
-//$X = 0;
+$X = 0;
 
 
 
 
 
-for($X = 0; $X < 3; $X++){ 
+//for($X = 0; $X < 3; $X++){ 
+while($X <= 1){
 if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -344,6 +345,7 @@ if(!is_null($events)){
                         break;
 					case "รายงานบิน":
                         // กำหนด action 4 ปุ่ม 4 ประเภท
+						$X++;
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
                                 'Datetime Picker', // ข้อความแสดงในปุ่ม
@@ -361,7 +363,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select2', // กำหนดรายละเอียด
+                                    'Please select3', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
