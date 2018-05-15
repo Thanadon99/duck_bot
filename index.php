@@ -351,6 +351,12 @@ if(!is_null($events)){
 								date("Y-m-d") //วันที่ เวลา น้อยสุดที่เลือกได้
 							),
                         );
+						
+						$DateUAV = $paramPostback;
+						$textReplyMessage = "Bot ตอบกลับคุณเป็นข้อความ".$DateUAV;
+						$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
+                        $replyData = new TextMessageBuilder($textReplyMessage);	
+						
                         $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/images.jpg';
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
@@ -359,11 +365,7 @@ if(!is_null($events)){
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
-                        );
-						$DateUAV = $paramPostback;
-						$textReplyMessage = "Bot ตอบกลับคุณเป็นข้อความ".$DateUAV;
-						$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
-                        $replyData = new TextMessageBuilder($textReplyMessage);						
+                        );									
                         break; 
                     default:
                         $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
