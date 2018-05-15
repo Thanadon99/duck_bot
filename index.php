@@ -118,6 +118,9 @@ if(!is_null($events)){
         }
         if(!is_null($paramPostback)){
             $textReplyMessage.= " \r\nParams = ".$paramPostback;
+			$DateUAV = $paramPostback;
+			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$DateUAV;
+			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
         }
         $replyData = new TextMessageBuilder($textReplyMessage);     
     }
@@ -351,12 +354,6 @@ if(!is_null($events)){
 								date("Y-m-d") //วันที่ เวลา น้อยสุดที่เลือกได้
 							),
                         );
-						
-						$DateUAV = $paramPostback;
-						$textReplyMessage = "Bot ตอบกลับคุณเป็นข้อความ".$DateUAV;
-						$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
-                        $replyData = new TextMessageBuilder($textReplyMessage);	
-						
                         $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/images.jpg';
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
