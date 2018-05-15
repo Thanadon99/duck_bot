@@ -306,7 +306,30 @@ if(!is_null($events)){
                                 )
                             )
                         );
-                        break;                                                                                                                                                                                                  
+                        break;
+					 case "p":
+                            if(!is_null($groupId) || !is_null($roomId)){
+                                if($eventObj->isGroupEvent()){
+                                    $response = $bot->getGroupMemberProfile($groupId, $userId);
+                                }
+                                if($eventObj->isRoomEvent()){
+                                    $response = $bot->getRoomMemberProfile($roomId, $userId);    
+                                }
+                            }else{
+                                $response = $bot->getProfile($userId);
+                            }
+                            if ($response->isSucceeded()) {
+                                $userData = $response->getJSONDecodedBody(); // return array     
+                                // $userData['userId']
+                                // $userData['displayName']
+                                // $userData['pictureUrl']
+                                // $userData['statusMessage']
+                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];     
+                            }else{
+                                $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
+                            }
+                            $replyData = new TextMessageBuilder($textReplyMessage);                                                 
+                        break; 
                     default:
                         $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
                         $replyData = new TextMessageBuilder($textReplyMessage);         
