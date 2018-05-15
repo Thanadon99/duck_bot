@@ -75,12 +75,13 @@ $Repairable = NULL;
 $Item = NULL;
 $Serial = NULL;
 $CT = NULL;
+//$X = 0;
 
 
 
 
 
-
+for($X = 0; $X < 2; $X++){ 
 if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -98,16 +99,16 @@ if(!is_null($events)){
         $is_postback = true;
         $dataPostback = NULL;
         parse_str($events['events'][0]['postback']['data'],$dataPostback);;
-        $paramPostback = NULL;
+        $paramPostback[$X] = NULL;
         if(array_key_exists('params',$events['events'][0]['postback'])){
             if(array_key_exists('date',$events['events'][0]['postback']['params'])){
-                $paramPostback = $events['events'][0]['postback']['params']['date'];
+                $paramPostback[$X] = $events['events'][0]['postback']['params']['date'];
             }
             if(array_key_exists('time',$events['events'][0]['postback']['params'])){
-                $paramPostback = $events['events'][0]['postback']['params']['time'];
+                $paramPostback[$X] = $events['events'][0]['postback']['params']['time'];
             }
             if(array_key_exists('datetime',$events['events'][0]['postback']['params'])){
-                $paramPostback = $events['events'][0]['postback']['params']['datetime'];
+                $paramPostback[$X] = $events['events'][0]['postback']['params']['datetime'];
             }                       
         }
     }   
@@ -116,9 +117,10 @@ if(!is_null($events)){
         if(is_array($dataPostback)){
             $textReplyMessage.= json_encode($dataPostback);
         }
-        if(!is_null($paramPostback)){
-            $textReplyMessage.= " \r\nParams = ".$paramPostback;
-			$DateUAV = $paramPostback;
+        if(!is_null($paramPostback[$X])){
+            $textReplyMessage.= " \r\nParams = ".$paramPostback[$X];
+			$DateUAV = $paramPostback[0];
+			$MissionUAV = $paramPostback[1];
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$DateUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
         }
@@ -377,7 +379,8 @@ if(!is_null($events)){
         }
     }
 }
-//$response = $bot->replyMessage($replyToken,$replyData);
+}
+$response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
     return;
