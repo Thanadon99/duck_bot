@@ -399,25 +399,16 @@ if(!is_null($events)){
                         break; 
                     default:
                         //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
-						$strFileName = "thaicreate.txt";
-						$objFopen = fopen($strFileName, 'w');
+						$strFileName = 'abc.txt';
+						$objFopen = fopen($strFileName, 'a+');
 						$strText1 = "I Love ThaiCreate.Com Line1\r\n";
 						fwrite($objFopen, $strText1);
 						$strText2 = "I Love ThaiCreate.Com Line2\r\n";
 						fwrite($objFopen, $strText2);
 						$strText3 = "I Love ThaiCreate.Com Line3\r\n";
 						fwrite($objFopen, $strText3);
-
-						if($objFopen)
-						{
-							echo "File writed.";
-						}
-						else
-						{
-							echo "File can not write";
-						}
-
 						fclose($objFopen);
+						
 						$data=file('abc.txt');
 						for($i=0;$i<count($data);$i++){
 							$textReplyMessage = $data[0];
