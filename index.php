@@ -54,7 +54,7 @@ $httpClient = new CurlHTTPClient($channel_token);
 $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 //สร้างตัวแปร
 $DateUAV = "12356";
-$Mission = "7890";
+$MissionUAV = "7890";
 $UAV = NULL;
 $Engine = NULL;
 $GCS = NULL;
@@ -128,7 +128,7 @@ if(!is_null($events)){
                 switch ($userMessage) {
                     case "t":
                         $textReplyMessage = "Bot ตอบกลับคุณเป็นข้อความ".$DateUAV;
-						//$textReplyMessage. = "\r\nข้อความ".$Mission;
+						$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
                     case "i":
