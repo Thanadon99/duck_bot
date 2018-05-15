@@ -360,7 +360,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select9', // กำหนดรายละเอียด
+                                    'Please select90', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -399,6 +399,25 @@ if(!is_null($events)){
                         break; 
                     default:
                         //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
+						$strFileName = "thaicreate.txt";
+						$objFopen = fopen($strFileName, 'w');
+						$strText1 = "I Love ThaiCreate.Com Line1\r\n";
+						fwrite($objFopen, $strText1);
+						$strText2 = "I Love ThaiCreate.Com Line2\r\n";
+						fwrite($objFopen, $strText2);
+						$strText3 = "I Love ThaiCreate.Com Line3\r\n";
+						fwrite($objFopen, $strText3);
+
+						if($objFopen)
+						{
+							echo "File writed.";
+						}
+						else
+						{
+							echo "File can not write";
+						}
+
+						fclose($objFopen);
 						$data=file('abc.txt');
 						for($i=0;$i<count($data);$i++){
 							$textReplyMessage = $data[0];
