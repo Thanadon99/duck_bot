@@ -400,7 +400,7 @@ if(!is_null($events)){
                     default:
                         //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
 						$data=file('abc.txt');
-						textReplyMessage = $data;
+						$textReplyMessage = $data;
 						/*for($i=0;$i<count($data);$i++){
 							$textReplyMessage = $data[0];
 							$textReplyMessage.= $data[1];
