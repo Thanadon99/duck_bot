@@ -401,10 +401,10 @@ if(!is_null($events)){
                         //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
 						$data=file('abc.txt');
 						for($i=0;$i<count($data);$i++){
-							$textReplyMessage = "\r\n".$data[0];
-							$textReplyMessage.= "\r\n".$data[1];
-							$textReplyMessage.= "\r\n".$data[2];
-							$textReplyMessage.= "\r\n".$data[3];
+							$textReplyMessage = $data[0];
+							$textReplyMessage.= $data[1];
+							$textReplyMessage.= $data[2];
+							$textReplyMessage.= $data[3];
 						}
 						$replyData = new TextMessageBuilder($textReplyMessage);
                         //$replyData = new TextMessageBuilder($textReplyMessage);         
