@@ -359,7 +359,11 @@ if(!is_null($events)){
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
-                        );              
+                        );
+						$DateUAV = $paramPostback;
+						$textReplyMessage = "Bot ตอบกลับคุณเป็นข้อความ".$DateUAV;
+						$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
+                        $replyData = new TextMessageBuilder($textReplyMessage);						
                         break; 
                     default:
                         $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
