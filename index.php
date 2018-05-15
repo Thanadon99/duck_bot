@@ -128,7 +128,7 @@ if(!is_null($events)){
                 switch ($userMessage) {
                     case "t":
                         $textReplyMessage = "Bot ตอบกลับคุณเป็นข้อความ".$DateUAV;
-						$textReplyMessage. = "\r\nข้อความ".$Mission;
+						//$textReplyMessage. = "\r\nข้อความ".$Mission;
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
                     case "i":
