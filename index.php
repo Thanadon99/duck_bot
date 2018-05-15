@@ -52,6 +52,34 @@ $events = json_decode($content, true);
 // เชื่อมต่อกับ LINE Messaging API
 $httpClient = new CurlHTTPClient($channel_token);
 $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+//สร้างตัวแปร
+$DateUAV = "12356";
+$Mission = "7890";
+$UAV = NULL;
+$Engine = NULL;
+$GCS = NULL;
+$Payload = NULL;
+$Fuel_Qty = NULL;
+$Fuel_Remain = NULL;
+$Start = NULL;
+$Takeoff = NULL;
+$Shutdown = NULL;
+$Total = NULL;
+$UAV_hr = NULL;
+$Engine_hr = NULL;
+$Fuel_Cart17 = NULL;
+$Fuel_Cart32 = NULL;
+$Abort = NULL;
+$Trouble = NULL;
+$Repairable = NULL;
+$Item = NULL;
+$Serial = NULL;
+$CT = NULL;
+
+
+
+
+
 
 if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
@@ -99,7 +127,8 @@ if(!is_null($events)){
                 $userMessage = strtolower($userMessage); // แปลงเป็นตัวเล็ก สำหรับทดสอบ
                 switch ($userMessage) {
                     case "t":
-                        $textReplyMessage = "Bot ตอบกลับคุณเป็น\r\nข้อความ";
+                        $textReplyMessage = "Bot ตอบกลับคุณเป็นข้อความ".$DateUAV;
+						$textReplyMessage. = "\r\nข้อความ".$Mission;
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
                     case "i":
