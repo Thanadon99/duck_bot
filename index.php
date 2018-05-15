@@ -81,7 +81,7 @@ $CT = NULL;
 
 
 
-for($X = 0; $X < 2; $X++){ 
+for($X = 0; $X < 3; $X++){ 
 if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -119,10 +119,11 @@ if(!is_null($events)){
         }
         if(!is_null($paramPostback[$X])){
             $textReplyMessage.= " \r\nParams = ".$paramPostback[$X];
-			$DateUAV = $paramPostback[0];
-			$MissionUAV = $paramPostback[1];
+			$DateUAV = $paramPostback[1];
+			$MissionUAV = $paramPostback[2];
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$DateUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
+			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$X;
         }
         $replyData = new TextMessageBuilder($textReplyMessage);     
     }
