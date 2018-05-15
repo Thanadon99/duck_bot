@@ -75,7 +75,7 @@ $Repairable = NULL;
 $Item = NULL;
 $Serial = NULL;
 $CT = NULL;
-$X = 0;
+$X = 1;
 
 
 
@@ -98,16 +98,16 @@ if(!is_null($events)){
         $is_postback = true;
         $dataPostback = NULL;
         parse_str($events['events'][0]['postback']['data'],$dataPostback);;
-        $paramPostback[$X] = NULL;
+        $paramPostback = NULL;
         if(array_key_exists('params',$events['events'][0]['postback'])){
             if(array_key_exists('date',$events['events'][0]['postback']['params'])){
-                $paramPostback[$X] = $events['events'][0]['postback']['params']['date'];
+                $paramPostback = $events['events'][0]['postback']['params']['date'];
             }
             if(array_key_exists('time',$events['events'][0]['postback']['params'])){
-                $paramPostback[$X] = $events['events'][0]['postback']['params']['time'];
+                $paramPostback = $events['events'][0]['postback']['params']['time'];
             }
             if(array_key_exists('datetime',$events['events'][0]['postback']['params'])){
-                $paramPostback[$X] = $events['events'][0]['postback']['params']['datetime'];
+                $paramPostback = $events['events'][0]['postback']['params']['datetime'];
             }                       
         }
     }   
@@ -116,10 +116,10 @@ if(!is_null($events)){
         if(is_array($dataPostback)){
             $textReplyMessage.= json_encode($dataPostback);
         }
-        if(!is_null($paramPostback[$X])){
-            $textReplyMessage.= " \r\nParams = ".$paramPostback[$X];
-			$DateUAV = $paramPostback[0];
-			$MissionUAV = $paramPostback[1];
+        if(!is_null($paramPostback)){
+            $textReplyMessage.= " \r\nParams = ".$paramPostback;
+			$DateUAV = $paramPostback;
+			$MissionUAV = $paramPostback;
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$DateUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$X;
@@ -343,7 +343,6 @@ if(!is_null($events)){
                         break;
 					case "รายงานบิน":
                         // กำหนด action 4 ปุ่ม 4 ประเภท
-						$X++;
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
                                 'Datetime Picker', // ข้อความแสดงในปุ่ม
@@ -361,11 +360,42 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select2', // กำหนดรายละเอียด
+                                    'Please select5', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
                         );									
+                        break; 
+					case "p":
+                        // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
+                        $response = $bot->getProfile($userID);
+                        if ($response->isSucceeded()) {
+                            // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
+                            $textReplyMessage = $response->getRawBody(); // return string            
+                            $replyData = new TextMessageBuilder($textReplyMessage);         
+                            break;              
+                        }
+                        // กรณีไม่สามารถดึงข้อมูลได้ ให้แสดงสถานะ และข้อมูลแจ้ง ถ้าไม่ต้องการแจ้งก็ปิดส่วนนี้ไปก็ได้
+                        $failMessage = json_encode($response->getHTTPStatus() . ' ' . $response->getRawBody());
+                        $replyData = new TextMessageBuilder($failMessage);
+                        break;              
+                    case "สวัสดี":
+                        // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
+                        $response = $bot->getProfile($userID);
+                        if ($response->isSucceeded()) {
+                            // ดึงค่าโดยแปลจาก JSON String .ให้อยู่ใรูปแบบโครงสร้าง ตัวแปร array 
+                            $userData = $response->getJSONDecodedBody(); // return array     
+                            // $userData['userId']
+                            // $userData['displayName']
+                            // $userData['pictureUrl']
+                            // $userData['statusMessage']
+                            $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];             
+                            $replyData = new TextMessageBuilder($textReplyMessage);         
+                            break;              
+                        }
+                        // กรณีไม่สามารถดึงข้อมูลได้ ให้แสดงสถานะ และข้อมูลแจ้ง ถ้าไม่ต้องการแจ้งก็ปิดส่วนนี้ไปก็ได้
+                        $failMessage = json_encode($response->getHTTPStatus() . ' ' . $response->getRawBody());
+                        $replyData = new TextMessageBuilder($failMessage);
                         break; 
                     default:
                         $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
