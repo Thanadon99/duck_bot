@@ -360,7 +360,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select7', // กำหนดรายละเอียด
+                                    'Please select8', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -402,8 +402,10 @@ if(!is_null($events)){
 						$data=file('abc.txt');
 						for($i=0;$i<count($data);$i++){
 							$textReplyMessage = $data[$i];
+							$replyData = new TextMessageBuilder($textReplyMessage);
+							$response = $bot->replyMessage($replyToken,$replyData);
 						}
-                        $replyData = new TextMessageBuilder($textReplyMessage);         
+                        //$replyData = new TextMessageBuilder($textReplyMessage);         
                         break;                                      
                 }
                 break;
