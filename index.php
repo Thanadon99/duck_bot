@@ -81,8 +81,6 @@ $X = 0;
 
 
 
-//for($X = 0; $X < 3; $X++){ 
-while($X <= 1){
 if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -120,8 +118,8 @@ if(!is_null($events)){
         }
         if(!is_null($paramPostback[$X])){
             $textReplyMessage.= " \r\nParams = ".$paramPostback[$X];
-			$DateUAV = $paramPostback[1];
-			$MissionUAV = $paramPostback[2];
+			$DateUAV = $paramPostback[0];
+			$MissionUAV = $paramPostback[1];
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$DateUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$X;
@@ -363,7 +361,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select3', // กำหนดรายละเอียด
+                                    'Please select1', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
