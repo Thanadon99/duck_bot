@@ -350,15 +350,15 @@ if(!is_null($events)){
 								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
 								'date', // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
 								date("Y-m-d"), // วันที่ เวลา ค่าเริ่มต้นที่ถูกเลือก
-								date("Y-m-d",strtotime("+5 day")), //วันที่ เวลา มากสุดที่เลือกได้
-								date("Y-m-d",strtotime("-15 day")) //วันที่ เวลา น้อยสุดที่เลือกได้
+								date("Y-m-d",strtotime("+1 day")), //วันที่ เวลา มากสุดที่เลือกได้
+								date("Y-m-d",strtotime("-30 day")) //วันที่ เวลา น้อยสุดที่เลือกได้
 							),
                         );
                         $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/images.jpg';
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select1', // กำหนดรายละเอียด
+                                    'Please select2', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -377,7 +377,7 @@ if(!is_null($events)){
         }
     }
 }
-$response = $bot->replyMessage($replyToken,$replyData);
+//$response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
     return;
