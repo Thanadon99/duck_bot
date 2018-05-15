@@ -360,7 +360,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select6', // กำหนดรายละเอียด
+                                    'Please select7', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -413,7 +413,7 @@ if(!is_null($events)){
 $response = $bot->replyMessage($replyToken,$replyData);
 $data=file("abc.txt");
 for($i=0;$i<count($data);$i++){
-	$replyData = $data;
+	$replyData = $data[$i];
 	$response = $bot->replyMessage($replyToken,$replyData);
 }
 if ($response->isSucceeded()) {
