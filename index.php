@@ -399,8 +399,7 @@ if(!is_null($events)){
                         break; 
                     default:
                         //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
-						$strFileName = 'abc.txt';
-						$objFopen = fopen($strFileName, 'a+');
+						$objFopen = fopen('abc.txt', 'a+');
 						$strText1 = "I Love ThaiCreate.Com Line1\r\n";
 						fwrite($objFopen, $strText1);
 						$strText2 = "I Love ThaiCreate.Com Line2\r\n";
