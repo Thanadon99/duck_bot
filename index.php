@@ -360,7 +360,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select3', // กำหนดรายละเอียด
+                                    'Please select4', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -418,7 +418,7 @@ if(!is_null($events)){
 						}
 						fclose($myfile);
 						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
-						fwrite($myfile, $xr+1);
+						fwrite($myfile, "asdfasdf".$i++);
 						fclose($myfile);
 						
 						/*$data=file('abc.txt');
