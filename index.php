@@ -368,7 +368,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select10', // กำหนดรายละเอียด
+                                    'Please select11', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -407,14 +407,7 @@ if(!is_null($events)){
                         break; 
                     default:
                         //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
-						$objFopen = fopen('abc.txt', 'a+');
-						$strText1 = "I Love ThaiCreate.Com Line1\r\n";
-						fwrite($objFopen, $strText1);
-						$strText2 = "I Love ThaiCreate.Com Line2\r\n";
-						fwrite($objFopen, $strText2);
-						$strText3 = "I Love ThaiCreate.Com Line3\r\n";
-						fwrite($objFopen, $strText3);
-						fclose($objFopen);
+						
 						
 						/*$myfile = fopen("abc.txt", "r+") or die("Unable to open file!");
 						$xr=(fgets($myfile));
@@ -434,10 +427,19 @@ if(!is_null($events)){
 							$textReplyMessage.= $data[2];
 							$textReplyMessage.= $data[3];
 						}
-						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
+						/*$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
 						$strText1 = "I Love ThaiCreate.Com Line1\r\n";
 						fwrite($myfile, $strText1);
 						fclose($myfile);
+						*/
+						$objFopen = fopen('abc.txt', 'a+');
+						$strText1 = "\r\nI Love ThaiCreate.Com Line4\r\n";
+						fwrite($objFopen, $strText1);
+						$strText2 = "I Love ThaiCreate.Com Line5\r\n";
+						fwrite($objFopen, $strText2);
+						$strText3 = "I Love ThaiCreate.Com Line6\r\n";
+						fwrite($objFopen, $strText3);
+						fclose($objFopen);
 						
 						$replyData = new TextMessageBuilder($textReplyMessage);
                         //$replyData = new TextMessageBuilder($textReplyMessage);         
