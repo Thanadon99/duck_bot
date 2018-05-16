@@ -360,7 +360,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select80', // กำหนดรายละเอียด
+                                    'Please select1', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -408,13 +408,18 @@ if(!is_null($events)){
 						fwrite($objFopen, $strText3);
 						fclose($objFopen);
 						
-						$data=file('abc.txt');
+						$myfile = fopen("abc.txt", "r+") or die("Unable to open file!");
+						$xr=(fgets($myfile));
+						$textReplyMessage = $xr;
+						fclose($myfile);
+						
+						/*$data=file('abc.txt');
 						for($i=0;$i<count($data);$i++){
 							$textReplyMessage = $data[0];
 							$textReplyMessage.= $data[1];
 							$textReplyMessage.= $data[2];
 							$textReplyMessage.= $data[3];
-						}
+						}*/
 						$replyData = new TextMessageBuilder($textReplyMessage);
                         //$replyData = new TextMessageBuilder($textReplyMessage);         
                         break;                                      
@@ -437,54 +442,5 @@ if ($response->isSucceeded()) {
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 ?>
 
-/* 
-if(!is_null($events)){
-    // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
-    $replyToken = $events['events'][0]['replyToken'];
-    $typeMessage = $events['events'][0]['message']['type'];
-    $userMessage = $events['events'][0]['message']['text'];
-    switch ($typeMessage){
-        case 'text':
-            switch ($userMessage) {
-                case "A":
-                    $textReplyMessage = "คุณพิมพ์ A";
-                    break;
-                case "B":
-                    $textReplyMessage = "คุณพิมพ์ B";
-                    break;
-				case "t":
-                    $textReplyMessage = "Bot ตอบกลับคุณเป็นข้อความ";
-                    $replyData = new TextMessageBuilder($textReplyMessage);
-                    break;
-                case "i":
-                    $picFullSize = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
-                    $picThumbnail = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
-                    $replyData = new ImageMessageBuilder($picFullSize,$picThumbnail);
-                    break;
-                case "v":
-                    $picThumbnail = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
-                    $videoUrl = "https://www.ninenik.com/line/simplevideo.mp4";             
-                    $replyData = new VideoMessageBuilder($videoUrl,$picThumbnail);
-                    break;
-                default:
-                    $textReplyMessage = " คุณไม่ได้พิมพ์ A และ B";
-                    break;                                      
-            }
-            break;
-        default:
-            $textReplyMessage = json_encode($events);
-            break;  
-    }
-}
 
-$textMessageBuilder = new TextMessageBuilder($textReplyMessage);
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);
-if ($response->isSucceeded()) {
-    echo 'Succeeded!';
-    return;
-}
- 
-// Failed
-echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-?>
 
