@@ -123,7 +123,11 @@ if(!is_null($events)){
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$DateUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$X;
+			$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
+			fwrite($myfile, $paramPostback);
+			fclose($myfile);
         }
+		
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
     if(!is_null($is_message)){
@@ -342,6 +346,10 @@ if(!is_null($events)){
                         );
                         break;
 					case "รายงานบิน":
+						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
+						$strText1 = "I Love ThaiCreate.Com Line1\r\n";
+						fwrite($myfile, $strText1);
+						fclose($myfile);
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
@@ -360,7 +368,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select9', // กำหนดรายละเอียด
+                                    'Please select10', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
