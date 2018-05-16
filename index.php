@@ -130,6 +130,9 @@ if(!is_null($events)){
 			$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 			fwrite($myfile, $paramPostback);
 			fclose($myfile);
+			$is_message = 1;
+			$typeMessage = 'text';
+			$userMessage = "ทดสอบ";
         }
 		
         $replyData = new TextMessageBuilder($textReplyMessage); 		
