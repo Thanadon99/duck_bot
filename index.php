@@ -360,7 +360,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select6', // กำหนดรายละเอียด
+                                    'Please select7', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -408,7 +408,7 @@ if(!is_null($events)){
 						fwrite($objFopen, $strText3);
 						fclose($objFopen);
 						
-						$myfile = fopen("abc.txt", "r+") or die("Unable to open file!");
+						/*$myfile = fopen("abc.txt", "r+") or die("Unable to open file!");
 						$xr=(fgets($myfile));
 						for($i=0;$i<count($xr);$i++){
 							$textReplyMessage = $xr[0];
@@ -417,18 +417,20 @@ if(!is_null($events)){
 							$textReplyMessage.= $xr[3];
 						}
 						fclose($myfile);
-						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
-						$strText1 = "I Love ThaiCreate.Com Line1\r\n";
-						fwrite($myfile, $strText1);
-						fclose($myfile);
+						*/
 						
-						/*$data=file('abc.txt');
+						$data=file('abc.txt');
 						for($i=0;$i<count($data);$i++){
 							$textReplyMessage = $data[0];
 							$textReplyMessage.= $data[1];
 							$textReplyMessage.= $data[2];
 							$textReplyMessage.= $data[3];
-						}*/
+						}
+						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
+						$strText1 = "I Love ThaiCreate.Com Line1\r\n";
+						fwrite($myfile, $strText1);
+						fclose($myfile);
+						
 						$replyData = new TextMessageBuilder($textReplyMessage);
                         //$replyData = new TextMessageBuilder($textReplyMessage);         
                         break;                                      
