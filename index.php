@@ -360,7 +360,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select1', // กำหนดรายละเอียด
+                                    'Please select2', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -410,8 +410,13 @@ if(!is_null($events)){
 						
 						$myfile = fopen("abc.txt", "r+") or die("Unable to open file!");
 						$xr=(fgets($myfile));
-						$textReplyMessage = $xr;
 						fclose($myfile);
+						for($i=0;$i<count($xr);$i++){
+							$textReplyMessage = $xr[0];
+							$textReplyMessage.= $xr[1];
+							$textReplyMessage.= $xr[2];
+							$textReplyMessage.= $xr[3];
+						}
 						
 						/*$data=file('abc.txt');
 						for($i=0;$i<count($data);$i++){
