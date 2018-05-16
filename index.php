@@ -123,6 +123,10 @@ if(!is_null($events)){
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$DateUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$X;
+			$textReplyMessage.= "\r\nis_messageข้อความ".$is_message;
+			$textReplyMessage.= "\r\ntypeMessageข้อความ".$typeMessage;
+			$textReplyMessage.= "\r\nuserMessageข้อความ".$userMessage;
+			$textReplyMessage.= "\r\nis_postbackข้อความ".$is_postback;
 			$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 			fwrite($myfile, $paramPostback);
 			fclose($myfile);
@@ -368,7 +372,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select11', // กำหนดรายละเอียด
+                                    'Please select12', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
