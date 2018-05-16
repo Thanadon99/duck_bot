@@ -124,7 +124,6 @@ if(!is_null($events)){
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$X;
         }
-		fc();
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
     if(!is_null($is_message)){
@@ -361,7 +360,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select8', // กำหนดรายละเอียด
+                                    'Please select9', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -448,11 +447,6 @@ $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
     return;
-}
-function fc() {
-		$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
-		$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
-		$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;	
 }
  
 // Failed
