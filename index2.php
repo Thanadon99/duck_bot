@@ -1,5 +1,4 @@
 <?php
-
  
 // include composer autoload
 require_once './vendor/autoload.php';
@@ -52,8 +51,8 @@ $events = json_decode($content, true);
 $httpClient = new CurlHTTPClient($channel_token);
 $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 //สร้างตัวแปร
-$DateUAV = NULL;
-$MissionUAV = NULL;
+$DateUAV = "12356";
+$MissionUAV = "7890";
 $UAV = NULL;
 $Engine = NULL;
 $GCS = NULL;
@@ -74,11 +73,6 @@ $Repairable = NULL;
 $Item = NULL;
 $Serial = NULL;
 $CT = NULL;
-
-
-
-
-
 if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -128,82 +122,27 @@ if(!is_null($events)){
 				fwrite($myfile, $x-8);
 			}
 			fclose($myfile);
+			if ($x<"8")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+			}
 			
-			if ($x<"1")  //date
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				//$pushdata = "Date = ".$paramPostback;
-			}
-			/*elseif ($x<"2")  //Mission 
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "Mission = ".$paramPostback;
-			}
-			elseif ($x<"3")  //UAV No.
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "UAV No. = ".$paramPostback;
-			}
-			elseif ($x<"4")  //Engine No.
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "Engine No. = ".$paramPostback;
-			}
-			elseif ($x<"5")  //GCS No.
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "GCS No. = ".$paramPostback;
-			}
-			elseif ($x<"6")  //Payload
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "Payload = ".$paramPostback;
-			}
-			elseif ($x<"7")  //Fuel Qty
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "Fuel Qty = ".$paramPostback;
-			}
-			elseif ($x<"8")  //Fuel Remain
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "Fuel Remain = ".$paramPostback;
-			}
-			elseif ($x<"9")  //Start
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "Start = ".$paramPostback;
-			}
-			else
-			{
-			}*/
-			
-            //$textReplyMessage.= " \r\nParams = ".$paramPostback;
-			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
-			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$userMessage;
-			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
+            $textReplyMessage.= " \r\nParams = ".$paramPostback;
+			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
+			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$userMessage;
+			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
 			
 			$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 			fwrite($myfile, $paramPostback);
 			fclose($myfile);
+			
+			
+			
+			//$is_message = 1;
+			//$typeMessage = 'text';
+			//$userMessage = "ทดสอบ";
         }
 		
         $replyData = new TextMessageBuilder($textReplyMessage); 		
@@ -326,7 +265,7 @@ if(!is_null($events)){
                                     'action'=>'buy',
                                     'item'=>100
                                 )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+    //                          'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),      
                         );
                         $imageUrl = 'https://www.mywebsite.com/imgsrc/photos/w/simpleflower';
@@ -425,12 +364,9 @@ if(!is_null($events)){
                         break;
 					case "รายงานบิน":
 						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
-						$strText1 = "=";
+						$strText1 = "Date = ";
 						fwrite($myfile, $strText1);
 						fclose($myfile);
-						//$myfile = fopen("x.txt", "w") or die("Unable to open file!");
-						//fwrite($myfile, $x=0);
-						//fclose($myfile);
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
@@ -449,7 +385,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select14', // กำหนดรายละเอียด
+                                    'Please select13', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -570,6 +506,3 @@ if ($response->isSucceeded()) {
 // Failed
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 ?>
-
-
-
