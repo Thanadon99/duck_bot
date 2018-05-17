@@ -120,18 +120,17 @@ if(!is_null($events)){
 			$x=(fgets($myfile));
 			fclose($myfile);
 			$myfile = fopen("x.txt", "w") or die("Unable to open file!");
-			/*if ("$x"<"22")
+			if ("$x"<"22")
 			{
 				fwrite($myfile, $x+1);
 			}
 			else
 			{
 				fwrite($myfile, $x-22);
-			}*/
-			$Flight_next = Flight($x);
+			}
 			fclose($myfile);
 			
-			$x = &Flight_next[3];
+			$Flight_next = Flight(1);
 			$is_message = &Flight_next[0];
 			$typeMessage = &Flight_next[1];
 			$userMessage = &Flight_next[2];
