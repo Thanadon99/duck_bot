@@ -134,49 +134,49 @@ if(!is_null($events)){
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "Mission = ".$paramPostback;
+				$pushdata = "\r\nMission = ".$paramPostback;
 			}
 			elseif ($x<"3") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "UAV No. = ".$paramPostback;
+				$pushdata = "\r\nUAV No. = ".$paramPostback;
 			}
 			elseif ($x<"4") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "Engine No. = ".$paramPostback;
+				$pushdata = "\r\nEngine No. = ".$paramPostback;
 			}
 			elseif ($x<"5")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "GCS No. = ".$paramPostback;
+				$pushdata = "\r\nGCS No. = ".$paramPostback;
 			}
 			elseif ($x<"6")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "Payload = ".$paramPostback;
+				$pushdata = "\r\nPayload = ".$paramPostback;
 			}
 			elseif ($x<"7")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "Fuel Qty = ".$paramPostback;
+				$pushdata = "\r\nFuel Qty = ".$paramPostback;
 			}
 			elseif ($x<"8")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "Fuel Remain = ".$paramPostback;
+				$pushdata = "\r\nFuel Remain = ".$paramPostback;
 			}
 			
             $textReplyMessage.= " \r\nParams = ".$paramPostback;
@@ -185,7 +185,7 @@ if(!is_null($events)){
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
 			
 			$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-			fwrite($myfile, $paramPostback);
+			fwrite($myfile, $pushdata);
 			fclose($myfile);
 			
 			
@@ -414,7 +414,7 @@ if(!is_null($events)){
                         break;
 					case "รายงานบิน":
 						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
-						$strText1 = "Date = ";
+						$strText1 = "";
 						fwrite($myfile, $strText1);
 						fclose($myfile);
                         // กำหนด action 4 ปุ่ม 4 ประเภท
