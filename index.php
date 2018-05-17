@@ -89,6 +89,7 @@ if(!is_null($events)){
     if(isset($events['events'][0]) && array_key_exists('postback',$events['events'][0])){
         $is_postback = true;
         $dataPostback = NULL;
+		$userMessage = $events['events'][0]['message']['text']; 
         parse_str($events['events'][0]['postback']['data'],$dataPostback);;
         $paramPostback = NULL;
         if(array_key_exists('params',$events['events'][0]['postback'])){
@@ -142,7 +143,6 @@ if(!is_null($events)){
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = $events['events'][0]['message']['text']; 
 				$pushdata = "\r\nMission = ".$userMessage;
 				$userMessage = "ทดสอบ";
 			}
