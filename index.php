@@ -142,8 +142,8 @@ if(!is_null($events)){
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
 				$pushdata = "\r\nMission = ".$userMessage;
+				$userMessage = "ทดสอบ";
 			}
 			elseif ($x<"3") 
 			{
