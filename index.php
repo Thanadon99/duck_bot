@@ -142,6 +142,7 @@ if(!is_null($events)){
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
+				$userMessage = $events['events'][0]['message']['text']; 
 				$pushdata = "\r\nMission = ".$userMessage;
 				$userMessage = "ทดสอบ";
 			}
@@ -431,7 +432,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select3', // กำหนดรายละเอียด
+                                    'Please select4', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
