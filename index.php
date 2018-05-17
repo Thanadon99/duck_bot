@@ -121,7 +121,7 @@ if(!is_null($events)){
 			$MissionUAV = $paramPostback;
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$DateUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
-			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
+			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
 			
 			$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 			fwrite($myfile, $paramPostback);
@@ -267,7 +267,7 @@ if(!is_null($events)){
                                     'action'=>'buy',
                                     'item'=>100
                                 )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                              'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+    //                          'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),      
                         );
                         $imageUrl = 'https://www.mywebsite.com/imgsrc/photos/w/simpleflower';
@@ -341,37 +341,29 @@ if(!is_null($events)){
                                 )
                             )
                         );
-                        break;   
-
-
-					/*case "รายงานค่า":
-						$data=file('abc.txt');
-						for($i=0;$i<count($data);$i++){
-							$textReplyMessage = $data[0];
-							$textReplyMessage.= $data[1];
-							$textReplyMessage.= $data[2];
-							$textReplyMessage.= $data[3];
-							$textReplyMessage.= $data[4];
-							$textReplyMessage.= $data[5];
-							$textReplyMessage.= $data[6];
-							$textReplyMessage.= $data[7];
-							$textReplyMessage.= $data[8];
-							$textReplyMessage.= $data[9];
-							$textReplyMessage.= $data[10];
-							$textReplyMessage.= $data[11];
-							$textReplyMessage.= $data[12];
-							$textReplyMessage.= $data[13];
-							$textReplyMessage.= $data[14];
-							$textReplyMessage.= $data[15];
-							$textReplyMessage.= $data[16];
-							$textReplyMessage.= $data[17];
-							$textReplyMessage.= $data[18];
-							$textReplyMessage.= $data[19];
-							$textReplyMessage.= $data[20];
-							$textReplyMessage.= $data[21];
-						}
-						Break;
-					*/
+                        break;      
+                    case "t_ic":
+                        $replyData = new TemplateMessageBuilder('Image Carousel',
+                            new ImageCarouselTemplateBuilder(
+                                array(
+                                    new ImageCarouselColumnTemplateBuilder(
+                                        'https://www.mywebsite.com/imgsrc/photos/f/sampleimage/700',
+                                        new UriTemplateActionBuilder(
+                                            'Uri Template', // ข้อความแสดงในปุ่ม
+                                            'https://www.ninenik.com'
+                                        )
+                                    ),
+                                    new ImageCarouselColumnTemplateBuilder(
+                                        'https://www.mywebsite.com/imgsrc/photos/f/sampleimage/700',
+                                        new UriTemplateActionBuilder(
+                                            'Uri Template', // ข้อความแสดงในปุ่ม
+                                            'https://www.ninenik.com'
+                                        )
+                                    )                                       
+                                )
+                            )
+                        );
+                        break;
 					case "รายงานบิน":
 						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
 						$strText1 = "Date = ";
@@ -429,7 +421,7 @@ if(!is_null($events)){
                             // $userData['pictureUrl']
                             // $userData['statusMessage']
                             $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];
-							$textReplyMessage.= "\r\nคุณสามารถพิมพ์คำสั่งบอทได้ตามนี้ครับ";
+							$textReplyMessage.= " พิมพ์คำสั่งบอทได้ตามนี้ครับ";
    							$textReplyMessage.= "\r\nรายงานบิน";
 							$textReplyMessage.= "\r\nรายงานซ่อม";
                             $replyData = new TextMessageBuilder($textReplyMessage);         
