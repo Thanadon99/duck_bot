@@ -353,10 +353,10 @@ if(!is_null($events)){
                         );
                         break;
 					case "รายงานบิน":
-						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
-						$strText1 = "I Love ThaiCreate.Com Line1\r\n";
-						fwrite($myfile, $strText1);
-						fclose($myfile);
+						//$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
+						//$strText1 = "I Love ThaiCreate.Com Line1\r\n";
+						//fwrite($myfile, $strText1);
+						//fclose($myfile);
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
