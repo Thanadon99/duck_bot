@@ -51,8 +51,8 @@ $events = json_decode($content, true);
 $httpClient = new CurlHTTPClient($channel_token);
 $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 //สร้างตัวแปร
-$DateUAV = "12356";
-$MissionUAV = "7890";
+$DateUAV = NULL;
+$MissionUAV = NULL;
 $UAV = NULL;
 $Engine = NULL;
 $GCS = NULL;
@@ -435,7 +435,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select16', // กำหนดรายละเอียด
+                                    'Please select17', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
