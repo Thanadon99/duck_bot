@@ -128,7 +128,7 @@ if(!is_null($events)){
 				fwrite($myfile, $x-22);
 			}
 			fclose($myfile);
-			if ("$x">"4")
+			if ($x>"4")
 			{
 				$paramPostback = "ttttttttttt";
 			}
@@ -389,7 +389,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select12', // กำหนดรายละเอียด
+                                    'Please select13', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
