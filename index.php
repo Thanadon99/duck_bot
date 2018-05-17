@@ -425,12 +425,12 @@ if(!is_null($events)){
                         break;
 					case "รายงานบิน":
 						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
-						$strText1 = "";
+						$strText1 = "=";
 						fwrite($myfile, $strText1);
 						fclose($myfile);
-						$myfile = fopen("x.txt", "w") or die("Unable to open file!");
-						fwrite($myfile, $x=0);
-						fclose($myfile);
+						//$myfile = fopen("x.txt", "w") or die("Unable to open file!");
+						//fwrite($myfile, $x=0);
+						//fclose($myfile);
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
@@ -449,7 +449,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select13', // กำหนดรายละเอียด
+                                    'Please select14', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
