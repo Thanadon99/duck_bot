@@ -435,7 +435,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select1', // กำหนดรายละเอียด
+                                    'Please select2', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -467,21 +467,27 @@ if(!is_null($events)){
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/report.jpg',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
                                         $actionBuilder
                                     ),
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/report.jpg',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
                                         $actionBuilder
                                     ),
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/report.jpg',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
                                         $actionBuilder
-                                    ),                                          
+                                    ),    
+									new CarouselColumnTemplateBuilder(
+                                        'Mission',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
+                                        $actionBuilder
+                                    ), 
                                 )
                             )
                         );
