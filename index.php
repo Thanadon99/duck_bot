@@ -267,7 +267,7 @@ if(!is_null($events)){
                                     'action'=>'buy',
                                     'item'=>100
                                 )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-    //                          'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                              'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),      
                         );
                         $imageUrl = 'https://www.mywebsite.com/imgsrc/photos/w/simpleflower';
@@ -344,7 +344,7 @@ if(!is_null($events)){
                         break;   
 
 
-					case "รายงานค่า"
+					/*case "รายงานค่า"
 						$data=file('abc.txt');
 						for($i=0;$i<count($data);$i++){
 							$textReplyMessage = $data[0];
@@ -371,7 +371,7 @@ if(!is_null($events)){
 							$textReplyMessage.= $data[21];
 						}
 						Break;
-					
+					*/
 					case "รายงานบิน":
 						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
 						$strText1 = "Date = ";
