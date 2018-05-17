@@ -353,14 +353,14 @@ if(!is_null($events)){
                         );
                         break;
 					case "รายงานบิน":
-						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
-						$strText1 = "Date = ";
-						fwrite($myfile, $strText1);
-						fclose($myfile);
+						//$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
+						//$strText1 = "I Love ThaiCreate.Com Line1\r\n";
+						//fwrite($myfile, $strText1);
+						//fclose($myfile);
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
-                                'Date', // ข้อความแสดงในปุ่ม
+                                'Datetime Picker', // ข้อความแสดงในปุ่ม
 								http_build_query(array(
 									'action'=>'reservation',
 									'person'=>5
@@ -375,16 +375,12 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    //'Please select12', // กำหนดรายละเอียด
+                                    'Please select12', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
                         );									
                         break; 
-						
-						
-						
-					// ส่วนการเรียกชื่อบอท	
 					case "p":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
                         $response = $bot->getProfile($userID);
@@ -398,7 +394,7 @@ if(!is_null($events)){
                         $failMessage = json_encode($response->getHTTPStatus() . ' ' . $response->getRawBody());
                         $replyData = new TextMessageBuilder($failMessage);
                         break;              
-                    case "บอท":
+                    case "สวัสดี":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
                         $response = $bot->getProfile($userID);
                         if ($response->isSucceeded()) {
@@ -408,10 +404,7 @@ if(!is_null($events)){
                             // $userData['displayName']
                             // $userData['pictureUrl']
                             // $userData['statusMessage']
-                            $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];
-							$textReplyMessage.= ' พิมพ์คำสั่งบอทได้ตามนี้ครับ\r\n';
-   							$textReplyMessage.= 'รายงานบิน\r\n';
-							$textReplyMessage.= 'รายงานซ่อม';
+                            $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];             
                             $replyData = new TextMessageBuilder($textReplyMessage);         
                             break;              
                         }
@@ -419,8 +412,6 @@ if(!is_null($events)){
                         $failMessage = json_encode($response->getHTTPStatus() . ' ' . $response->getRawBody());
                         $replyData = new TextMessageBuilder($failMessage);
                         break; 
-						
-						
                     default:
                         //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
 						
@@ -442,24 +433,6 @@ if(!is_null($events)){
 							$textReplyMessage.= $data[1];
 							$textReplyMessage.= $data[2];
 							$textReplyMessage.= $data[3];
-							$textReplyMessage.= $data[4];
-							$textReplyMessage.= $data[5];
-							$textReplyMessage.= $data[6];
-							$textReplyMessage.= $data[7];
-							$textReplyMessage.= $data[8];
-							$textReplyMessage.= $data[9];
-							$textReplyMessage.= $data[10];
-							$textReplyMessage.= $data[11];
-							$textReplyMessage.= $data[12];
-							$textReplyMessage.= $data[13];
-							$textReplyMessage.= $data[14];
-							$textReplyMessage.= $data[15];
-							$textReplyMessage.= $data[16];
-							$textReplyMessage.= $data[17];
-							$textReplyMessage.= $data[18];
-							$textReplyMessage.= $data[19];
-							$textReplyMessage.= $data[20];
-							$textReplyMessage.= $data[21];
 						}
 						/*$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
 						$strText1 = "I Love ThaiCreate.Com Line1\r\n";
