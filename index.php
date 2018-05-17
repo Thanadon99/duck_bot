@@ -89,7 +89,6 @@ if(!is_null($events)){
     if(isset($events['events'][0]) && array_key_exists('postback',$events['events'][0])){
         $is_postback = true;
         $dataPostback = NULL;
-		$userMessage = $events['events'][0]['message']['text']; 
         parse_str($events['events'][0]['postback']['data'],$dataPostback);;
         $paramPostback = NULL;
         if(array_key_exists('params',$events['events'][0]['postback'])){
@@ -117,80 +116,8 @@ if(!is_null($events)){
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$userMessage;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
 			
-		
         }
-		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
-		$x=(fgets($myfile));
-		fclose($myfile);
-		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
-			if ("$x"<"8")
-			{
-				fwrite($myfile, $x+1);
-			}
-			else
-			{
-				fwrite($myfile, $x-8);
-			}
-			fclose($myfile);
-			if ($x<"1")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "mission";
-				$pushdata = "Date = ".$paramPostback;
-			}
-			elseif ($x<"2")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$pushdata = "\r\nMission = ".$userMessage;
-				$userMessage = "ทดสอบ";
-			}
-			elseif ($x<"3") 
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nUAV No. = ".$paramPostback;
-			}
-			elseif ($x<"4") 
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nEngine No. = ".$paramPostback;
-			}
-			elseif ($x<"5")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nGCS No. = ".$paramPostback;
-			}
-			elseif ($x<"6")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nPayload = ".$paramPostback;
-			}
-			elseif ($x<"7")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nFuel Qty = ".$paramPostback;
-			}
-			elseif ($x<"8")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nFuel Remain = ".$paramPostback;
-			}
-		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-		fwrite($myfile, $pushdata);
-		fclose($myfile);
+		calculate();
 		
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
@@ -432,7 +359,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select4', // กำหนดรายละเอียด
+                                    'Please select5', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -633,4 +560,80 @@ if ($response->isSucceeded()) {
  
 // Failed
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+Function calculate()
+{
+	$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
+		$x=(fgets($myfile));
+		fclose($myfile);
+		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
+			if ("$x"<"8")
+			{
+				fwrite($myfile, $x+1);
+			}
+			else
+			{
+				fwrite($myfile, $x-8);
+			}
+			fclose($myfile);
+			if ($x<"1")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "mission";
+				$pushdata = "Date = ".$paramPostback;
+			}
+			elseif ($x<"2")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$pushdata = "\r\nMission = ".$userMessage;
+				$userMessage = "ทดสอบ";
+			}
+			elseif ($x<"3") 
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "\r\nUAV No. = ".$paramPostback;
+			}
+			elseif ($x<"4") 
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "\r\nEngine No. = ".$paramPostback;
+			}
+			elseif ($x<"5")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "\r\nGCS No. = ".$paramPostback;
+			}
+			elseif ($x<"6")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "\r\nPayload = ".$paramPostback;
+			}
+			elseif ($x<"7")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "\r\nFuel Qty = ".$paramPostback;
+			}
+			elseif ($x<"8")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "\r\nFuel Remain = ".$paramPostback;
+			}
+		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
+		fwrite($myfile, $pushdata);
+		fclose($myfile);
+			
+}
 ?>
