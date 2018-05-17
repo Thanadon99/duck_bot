@@ -75,7 +75,6 @@ $Repairable = NULL;
 $Item = NULL;
 $Serial = NULL;
 $CT = NULL;
-$X = 1;
 
 
 
@@ -122,17 +121,30 @@ if(!is_null($events)){
 			$MissionUAV = $paramPostback;
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$DateUAV;
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
-			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$X;
-			$textReplyMessage.= "\r\nis_messageข้อความ".$is_message;
-			$textReplyMessage.= "\r\ntypeMessageข้อความ".$typeMessage;
-			$textReplyMessage.= "\r\nuserMessageข้อความ".$userMessage;
-			$textReplyMessage.= "\r\nis_postbackข้อความ".$is_postback;
+			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
+			
 			$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 			fwrite($myfile, $paramPostback);
 			fclose($myfile);
-			$is_message = 1;
-			$typeMessage = 'text';
-			$userMessage = "ทดสอบ";
+			
+			
+			$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
+			$x=(fgets($myfile));
+			fclose($myfile);
+			$myfile = fopen("x.txt", "w") or die("Unable to open file!");
+			if ("$x"<"22")
+			{
+				fwrite($myfile, $x+1);
+			}
+			else
+			{
+				fwrite($myfile, $x-22);
+			}
+			fclose($myfile);
+			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวล่าง ".$x;
+			//$is_message = 1;
+			//$typeMessage = 'text';
+			//$userMessage = "ทดสอบ";
         }
 		
         $replyData = new TextMessageBuilder($textReplyMessage); 		
