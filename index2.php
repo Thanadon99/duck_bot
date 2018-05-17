@@ -122,7 +122,13 @@ if(!is_null($events)){
 				fwrite($myfile, $x-8);
 			}
 			fclose($myfile);
-			if ($x<"8")
+			if ($x<"1")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+			}
+			elseif ($x<"2")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
@@ -385,7 +391,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select13', // กำหนดรายละเอียด
+                                    'Please select14', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )

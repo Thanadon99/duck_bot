@@ -136,7 +136,7 @@ if(!is_null($events)){
 				$userMessage = "ทดสอบ";
 				//$pushdata = "Date = ".$paramPostback;
 			}
-			/*elseif ($x<"2")  //Mission 
+			elseif ($x<"2")  //Mission 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
@@ -192,9 +192,6 @@ if(!is_null($events)){
 				$userMessage = "ทดสอบ";
 				$pushdata = "Start = ".$paramPostback;
 			}
-			else
-			{
-			}*/
 			
             //$textReplyMessage.= " \r\nParams = ".$paramPostback;
 			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
