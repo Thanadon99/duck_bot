@@ -129,63 +129,63 @@ if(!is_null($events)){
 			}
 			fclose($myfile);
 			
-			if ($x<"1")  //date
+			if ($x<"1")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
 				//$pushdata = "Date = ".$paramPostback;
 			}
-			elseif ($x<"2")  //Mission 
+			elseif ($x<"2") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
 				$pushdata = "Mission = ".$paramPostback;
 			}
-			elseif ($x<"3")  //UAV No.
+			elseif ($x<"3") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
 				$pushdata = "UAV No. = ".$paramPostback;
 			}
-			elseif ($x<"4")  //Engine No.
+			elseif ($x<"4") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
 				$pushdata = "Engine No. = ".$paramPostback;
 			}
-			elseif ($x<"5")  //GCS No.
+			elseif ($x<"5")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
 				$pushdata = "GCS No. = ".$paramPostback;
 			}
-			elseif ($x<"6")  //Payload
+			elseif ($x<"6")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
 				$pushdata = "Payload = ".$paramPostback;
 			}
-			elseif ($x<"7")  //Fuel Qty
+			elseif ($x<"7")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
 				$pushdata = "Fuel Qty = ".$paramPostback;
 			}
-			elseif ($x<"8")  //Fuel Remain
+			elseif ($x<"8")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
 				$pushdata = "Fuel Remain = ".$paramPostback;
 			}
-			elseif ($x<"9")  //Start
+			elseif ($x<"9")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
