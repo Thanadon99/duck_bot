@@ -117,7 +117,7 @@ if(!is_null($events)){
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
 			
         }
-		calculate();
+		calculate($paramPostback);
 		
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
@@ -359,7 +359,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select5', // กำหนดรายละเอียด
+                                    'Please select6', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -560,7 +560,7 @@ if ($response->isSucceeded()) {
  
 // Failed
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-Function calculate()
+Function calculate($paramPostback)
 {
 	$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
