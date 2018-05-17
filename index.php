@@ -4,7 +4,6 @@
 // include composer autoload
 require_once './vendor/autoload.php';
  
-require_once 'FuncFlight.php';
 // กรณีมีการเชื่อมต่อกับฐานข้อมูล
 //require_once("dbconnect.php");
  
