@@ -342,8 +342,8 @@ if(!is_null($events)){
 						fwrite($myfile, $strText1);
 						fclose($myfile);
 						$myfile = fopen("x.txt", "w") or die("Unable to open file!");
-						$strText1 = "1";
-						fwrite($myfile, strText1);
+						$strText2 = "1";
+						fwrite($myfile, strText2);
 						fclose($myfile);
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
