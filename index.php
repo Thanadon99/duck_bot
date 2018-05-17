@@ -126,7 +126,7 @@ if(!is_null($events)){
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
+				$userMessage = "mission";
 				$pushdata = "Date = ".$paramPostback;
 			}
 			elseif ($x<"2")
@@ -431,7 +431,7 @@ if(!is_null($events)){
 								date("Y-m-d",strtotime("-30 day")) //วันที่ เวลา น้อยสุดที่เลือกได้
 							),
                         );
-                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/images.jpg';
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/report.jpg';
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
@@ -440,6 +440,47 @@ if(!is_null($events)){
                                     $actionBuilder  // กำหนด action object
                             )
                         );									
+                        break;
+					case "mission":
+                        // กำหนด action 4 ปุ่ม 4 ประเภท
+                        $actionBuilder = array(
+                            new MessageTemplateActionBuilder(
+                                'Message Template',// ข้อความแสดงในปุ่ม
+                                'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
+                            new UriTemplateActionBuilder(
+                                'Uri Template', // ข้อความแสดงในปุ่ม
+                                'https://www.ninenik.com'
+                            ),
+                            new DatetimePickerTemplateActionBuilder(
+                                'Datetime Picker', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    'action'=>'reservation',
+                                    'person'=>5
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                'datetime', // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+                                substr_replace(date("Y-m-d H:i"),'T',10,1), // วันที่ เวลา ค่าเริ่มต้นที่ถูกเลือก
+                                substr_replace(date("Y-m-d H:i",strtotime("+5 day")),'T',10,1), //วันที่ เวลา มากสุดที่เลือกได้
+                                substr_replace(date("Y-m-d H:i"),'T',10,1) //วันที่ เวลา น้อยสุดที่เลือกได้
+                            ),      
+                            new PostbackTemplateActionBuilder(
+                                'Postback', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    'action'=>'buy',
+                                    'item'=>100
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+         //                     'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),      
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    'button template builder', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );              
                         break; 
 						
 						
