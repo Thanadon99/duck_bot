@@ -128,12 +128,7 @@ if(!is_null($events)){
 				fwrite($myfile, $x-22);
 			}
 			fclose($myfile);
-			if (&x>3)
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-			}
+			
 			
             $textReplyMessage.= " \r\nParams = ".$paramPostback;
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
