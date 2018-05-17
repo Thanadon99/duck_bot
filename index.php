@@ -185,13 +185,6 @@ if(!is_null($events)){
 				$userMessage = "ทดสอบ";
 				$pushdata = "Fuel Remain = ".$paramPostback;
 			}
-			elseif ($x<"9")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "Start = ".$paramPostback;
-			}
 			
             //$textReplyMessage.= " \r\nParams = ".$paramPostback;
 			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;

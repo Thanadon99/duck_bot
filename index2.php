@@ -141,6 +141,41 @@ if(!is_null($events)){
 				$userMessage = "ทดสอบ";
 				$pushdata = "UAV No. = ".$paramPostback;
 			}
+			elseif ($x<"4") 
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "Engine No. = ".$paramPostback;
+			}
+			elseif ($x<"5")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "GCS No. = ".$paramPostback;
+			}
+			elseif ($x<"6")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "Payload = ".$paramPostback;
+			}
+			elseif ($x<"7")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "Fuel Qty = ".$paramPostback;
+			}
+			elseif ($x<"8")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "Fuel Remain = ".$paramPostback;
+			}
 			
             $textReplyMessage.= " \r\nParams = ".$paramPostback;
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
@@ -398,7 +433,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select15', // กำหนดรายละเอียด
+                                    'Please select16', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
