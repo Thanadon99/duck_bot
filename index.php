@@ -435,7 +435,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select19', // กำหนดรายละเอียด
+                                    'Please select', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -452,18 +452,7 @@ if(!is_null($events)){
                                 'Uri Template', // ข้อความแสดงในปุ่ม
                                 'https://www.ninenik.com'
                             ),
-                            new DatetimePickerTemplateActionBuilder(
-                                'Datetime Picker', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-                                    'action'=>'reservation',
-                                    'person'=>5
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'datetime', // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
-                                substr_replace(date("Y-m-d H:i"),'T',10,1), // วันที่ เวลา ค่าเริ่มต้นที่ถูกเลือก
-                                substr_replace(date("Y-m-d H:i",strtotime("+5 day")),'T',10,1), //วันที่ เวลา มากสุดที่เลือกได้
-                                substr_replace(date("Y-m-d H:i"),'T',10,1) //วันที่ เวลา น้อยสุดที่เลือกได้
-                            ),      
-							new PostbackTemplateActionBuilder(
+                            new PostbackTemplateActionBuilder(
                                 'Postback', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
                                     'action'=>'buy',
@@ -472,32 +461,39 @@ if(!is_null($events)){
                                 'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),
 							new PostbackTemplateActionBuilder(
-                                'Postback', // ข้อความแสดงในปุ่ม
+                                'Postback1', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
                                     'action'=>'buy',
                                     'item'=>100
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),
-							new PostbackTemplateActionBuilder(
-                                'Postback', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-                                    'action'=>'buy',
-                                    'item'=>100
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),
+                            ),   							
                         );
-                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg';
-                        $replyData = new TemplateMessageBuilder('Button Template',
-                            new ButtonTemplateBuilder(
-                                    'button template builder', // กำหนดหัวเรื่อง
-                                    'Please select', // กำหนดรายละเอียด
-                                    $imageUrl, // กำหนด url รุปภาพ
-                                    $actionBuilder  // กำหนด action object
+                        $replyData = new TemplateMessageBuilder('Carousel',
+                            new CarouselTemplateBuilder(
+                                array(
+                                    new CarouselColumnTemplateBuilder(
+                                        'Mission',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/report.jpg',
+                                        $actionBuilder
+                                    ),
+                                    new CarouselColumnTemplateBuilder(
+                                        'Mission',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/report.jpg',
+                                        $actionBuilder
+                                    ),
+                                    new CarouselColumnTemplateBuilder(
+                                        'Mission',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/report.jpg',
+                                        $actionBuilder
+                                    ),                                          
+                                )
                             )
-                        );              
-                        break; 
+                        );
+                        break;  
 						
 						
 						
