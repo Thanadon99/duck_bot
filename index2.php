@@ -134,6 +134,13 @@ if(!is_null($events)){
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
 			}
+			elseif ($x<"3") 
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "UAV No. = ".$paramPostback;
+			}
 			
             $textReplyMessage.= " \r\nParams = ".$paramPostback;
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
@@ -391,7 +398,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select14', // กำหนดรายละเอียด
+                                    'Please select15', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
