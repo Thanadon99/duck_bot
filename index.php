@@ -109,10 +109,19 @@ if(!is_null($events)){
             $textReplyMessage.= json_encode($dataPostback);
         }*/
         if(!is_null($paramPostback)){
-			$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
-			$x=(fgets($myfile));
-			fclose($myfile);
-			$myfile = fopen("x.txt", "w") or die("Unable to open file!");
+			
+			
+            $textReplyMessage.= " \r\nParams = ".$paramPostback;
+			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
+			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$userMessage;
+			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
+			
+		
+        }
+		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
+		$x=(fgets($myfile));
+		fclose($myfile);
+		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
 			if ("$x"<"8")
 			{
 				fwrite($myfile, $x+1);
@@ -178,22 +187,9 @@ if(!is_null($events)){
 				$userMessage = "ทดสอบ";
 				$pushdata = "\r\nFuel Remain = ".$paramPostback;
 			}
-			
-            $textReplyMessage.= " \r\nParams = ".$paramPostback;
-			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
-			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$userMessage;
-			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
-			
-			$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-			fwrite($myfile, $pushdata);
-			fclose($myfile);
-			
-			
-			
-			//$is_message = 1;
-			//$typeMessage = 'text';
-			//$userMessage = "ทดสอบ";
-        }
+		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
+		fwrite($myfile, $pushdata);
+		fclose($myfile);
 		
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
@@ -491,10 +487,6 @@ if(!is_null($events)){
                                 )
                             )
                         );
-						$pushdata = "\r\nMission = ".$userMessage;
-						$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-						fwrite($myfile, $pushdata);
-						fclose($myfile);
                         break;  
 						
 						
