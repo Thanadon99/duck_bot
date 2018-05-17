@@ -134,9 +134,9 @@ if(!is_null($events)){
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "Date = ".$paramPostback;
+				//$pushdata = "Date = ".$paramPostback;
 			}
-			elseif ($x<"2")  //Mission 
+			/*elseif ($x<"2")  //Mission 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
@@ -194,7 +194,7 @@ if(!is_null($events)){
 			}
 			else
 			{
-			}
+			}*/
 			
             //$textReplyMessage.= " \r\nParams = ".$paramPostback;
 			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
@@ -202,7 +202,7 @@ if(!is_null($events)){
 			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
 			
 			$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-			fwrite($myfile, $pushdata);
+			fwrite($myfile, $paramPostback);
 			fclose($myfile);
         }
 		
