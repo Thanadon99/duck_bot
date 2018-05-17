@@ -344,7 +344,7 @@ if(!is_null($events)){
                         break;   
 
 
-					/*case "รายงานค่า"
+					/*case "รายงานค่า":
 						$data=file('abc.txt');
 						for($i=0;$i<count($data);$i++){
 							$textReplyMessage = $data[0];
