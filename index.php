@@ -375,7 +375,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    //'Please select12', // กำหนดรายละเอียด
+                                    'Please select12', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -409,9 +409,9 @@ if(!is_null($events)){
                             // $userData['pictureUrl']
                             // $userData['statusMessage']
                             $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];
-							$textReplyMessage.= ' พิมพ์คำสั่งบอทได้ตามนี้ครับ\r\n';
-   							$textReplyMessage.= 'รายงานบิน\r\n';
-							$textReplyMessage.= 'รายงานซ่อม';
+							$textReplyMessage.= " พิมพ์คำสั่งบอทได้ตามนี้ครับ";
+   							$textReplyMessage.= "\r\nรายงานบิน";
+							$textReplyMessage.= "\r\nรายงานซ่อม";
                             $replyData = new TextMessageBuilder($textReplyMessage);         
                             break;              
                         }
