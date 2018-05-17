@@ -143,7 +143,7 @@ if(!is_null($events)){
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nMission = ".$paramPostback;
+				$pushdata = "\r\nMission = ".$userMessage;
 			}
 			elseif ($x<"3") 
 			{
@@ -457,6 +457,42 @@ if(!is_null($events)){
                                 'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),							
                         );
+						$actionBuilder1 = array(
+                            new MessageTemplateActionBuilder(
+                                'Message Template1',// ข้อความแสดงในปุ่ม
+                                'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
+                            new UriTemplateActionBuilder(
+                                'Uri Template', // ข้อความแสดงในปุ่ม
+                                'https://www.ninenik.com'
+                            ),
+                            new PostbackTemplateActionBuilder(
+                                'Postback', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    'action'=>'buy',
+                                    'item'=>100
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),							
+                        );
+						$actionBuilder2 = array(
+                            new MessageTemplateActionBuilder(
+                                'Message Template2',// ข้อความแสดงในปุ่ม
+                                'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
+                            new UriTemplateActionBuilder(
+                                'Uri Template', // ข้อความแสดงในปุ่ม
+                                'https://www.ninenik.com'
+                            ),
+                            new PostbackTemplateActionBuilder(
+                                'Postback', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    'action'=>'buy',
+                                    'item'=>100
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),							
+                        );
                         $replyData = new TemplateMessageBuilder('Carousel',
                             new CarouselTemplateBuilder(
                                 array(
@@ -470,20 +506,14 @@ if(!is_null($events)){
                                         'Mission',
                                         'Please select',
                                         'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
-                                        $actionBuilder
+                                        $actionBuilder1
                                     ),
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
                                         'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
-                                        $actionBuilder
+                                        $actionBuilder2
                                     ),    
-									new CarouselColumnTemplateBuilder(
-                                        'Mission',
-                                        'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
-                                        $actionBuilder
-                                    ), 
                                 )
                             )
                         );
