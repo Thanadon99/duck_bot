@@ -128,7 +128,10 @@ if(!is_null($events)){
 				fwrite($myfile, $x-22);
 			}
 			fclose($myfile);
-			
+			if ("$x">"4")
+			{
+				$paramPostback = "ttttttttttt";
+			}
 			
             $textReplyMessage.= " \r\nParams = ".$paramPostback;
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
