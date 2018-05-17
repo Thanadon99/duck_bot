@@ -4,7 +4,7 @@
 // include composer autoload
 require_once './vendor/autoload.php';
  
-//include(FuncFlight.php);
+require_once 'FuncFlight.php';
 // กรณีมีการเชื่อมต่อกับฐานข้อมูล
 //require_once("dbconnect.php");
  
@@ -129,11 +129,12 @@ if(!is_null($events)){
 				fwrite($myfile, $x-22);
 			}
 			fclose($myfile);
-			
-			//$Flight_next = Flight(1);
-			//$is_message = &Flight_next[0];
-			//$typeMessage = &Flight_next[1];
-			//$userMessage = &Flight_next[2];
+			if (&x>3)
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+			}
 			
             $textReplyMessage.= " \r\nParams = ".$paramPostback;
 			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
