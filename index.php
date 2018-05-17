@@ -119,18 +119,20 @@ if(!is_null($events)){
 			$x=(fgets($myfile));
 			fclose($myfile);
 			$myfile = fopen("x.txt", "w") or die("Unable to open file!");
-			if ("$x"<"22")
+			if ("$x"<"8")
 			{
 				fwrite($myfile, $x+1);
 			}
 			else
 			{
-				fwrite($myfile, $x-22);
+				fwrite($myfile, $x-8);
 			}
 			fclose($myfile);
-			if ($x>"4")
+			if ($x<"8")
 			{
-				$paramPostback = "ttttttttttt";
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
 			}
 			
             $textReplyMessage.= " \r\nParams = ".$paramPostback;
