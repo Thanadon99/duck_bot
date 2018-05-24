@@ -412,144 +412,112 @@ if(!is_null($events)){
                                 'CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'EP CKT', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-									'EP_CKT'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'EP CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 
-                            new PostbackTemplateActionBuilder(
                                 'ISR', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
 									'ISR'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'ISR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'ISR+Laser', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'ISR+Laser'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                'ISR+Laser'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 					
                         );
 						$actionBuilder1 = array(
                             new PostbackTemplateActionBuilder(
-                                'CKT', // ข้อความแสดงในปุ่ม
+                                'ISR&DT&TST', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
                                     //'action'=>'buy',
                                     //'item'=>100
-									'CKT'
+									'ISR&DT&TST'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'ISR&DT&TST'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'EP CKT', // ข้อความแสดงในปุ่ม
+                                'SR', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'EP_CKT'
+									'SR'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'EP CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'SR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'ISR', // ข้อความแสดงในปุ่ม
+                                'CB', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'ISR'
+									'CB'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'ISR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'CB'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 					
                         );
 						$actionBuilder2 = array(
                             new PostbackTemplateActionBuilder(
-                                'CKT', // ข้อความแสดงในปุ่ม
+                                'HOC', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
                                     //'action'=>'buy',
                                     //'item'=>100
-									'CKT'
+									'HOC'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'HOC'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'EP CKT', // ข้อความแสดงในปุ่ม
+                                'CAS', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'EP_CKT'
+									'CAS'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'EP CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'CAS'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'ISR', // ข้อความแสดงในปุ่ม
+                                'ABGD', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'ISR'
+									'ABGD'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'ISR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'ABGD'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 					
                         );
 						$actionBuilder3 = array(
                             new PostbackTemplateActionBuilder(
-                                'CKT', // ข้อความแสดงในปุ่ม
+                                'Laser', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
                                     //'action'=>'buy',
                                     //'item'=>100
-									'CKT'
+									'Laser'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'Laser'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'EP CKT', // ข้อความแสดงในปุ่ม
+                                'CDF', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'EP_CKT'
+									'CDF'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'EP CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'CDF'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'ISR', // ข้อความแสดงในปุ่ม
+                                'ATF', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'ISR'
+									'ATF'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'ISR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'ATF'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 					
                         );
 						$actionBuilder4 = array(
                             new PostbackTemplateActionBuilder(
-                                'CKT', // ข้อความแสดงในปุ่ม
+                                'CAS_DT_CSAR', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
                                     //'action'=>'buy',
                                     //'item'=>100
-									'CKT'
+									'CAS_DT_CSAR'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'CAS_DT_CSAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'EP CKT', // ข้อความแสดงในปุ่ม
+                                'CAS&CSAR', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'EP_CKT'
+									'CAS&CSAR'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'EP CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 
-                            new PostbackTemplateActionBuilder(
-                                'ISR', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-									'ISR'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'ISR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 					
-                        );
-						$actionBuilder5 = array(
-                            new PostbackTemplateActionBuilder(
-                                'CKT', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-                                    //'action'=>'buy',
-                                    //'item'=>100
-									'CKT'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 
-                            new PostbackTemplateActionBuilder(
-                                'EP CKT', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-									'EP_CKT'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'EP CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 
-                            new PostbackTemplateActionBuilder(
-                                'ISR', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-									'ISR'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'ISR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 					
+                                'CAS&CSAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 				
                         );
                         $replyData = new TemplateMessageBuilder('Carousel',
                             new CarouselTemplateBuilder(
@@ -557,39 +525,33 @@ if(!is_null($events)){
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission1.jpg',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
                                         $actionBuilder
                                     ),
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
                                         $actionBuilder1
                                     ),
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
                                         $actionBuilder2
                                     ),
 									new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
                                         $actionBuilder3
                                     ),   
 									new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
                                         $actionBuilder4
-                                    ),   
-									new CarouselColumnTemplateBuilder(
-                                        'Mission',
-                                        'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
-                                        $actionBuilder5
-                                    ),   
+                                    ),     
                                 )
                             )
                         );
