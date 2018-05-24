@@ -110,7 +110,7 @@ if(!is_null($events)){
             $textReplyMessage.= json_encode($dataPostback);
 			$textReplyMessage.=" \r\nParams = ".$dataPostback;
 			$textReplyMessage.=" \r\nParams1 = ";
-			$textReplyMessage.= json_encode($dataPostback);
+			$textReplyMessage.= json_encode($paramPostback);
 			$textReplyMessage.=" \r\nParams2 = ".$paramPostback;
         }
         if(!is_null($paramPostback)){
