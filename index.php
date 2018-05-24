@@ -106,26 +106,31 @@ if(!is_null($events)){
         }
     }   
     if(!is_null($is_postback)){
-        /*$textReplyMessage = "ข้อความจาก Postback Event Data = ";
+        $textReplyMessage = "ข้อความจาก Postback Event Data = ";
         if(is_array($dataPostback)){
             $textReplyMessage.= json_encode($dataPostback);
 			$textReplyMessage.=" \r\nParams = ".$dataPostback;
 			$textReplyMessage.=" \r\nParams1 = ";
 			$textReplyMessage.= json_encode($paramPostback);
 			$textReplyMessage.=" \r\nParams2 = ".substr($paramPostback,2,20);
-        }*/
+
+        }
         if(!is_null($paramPostback)){
 			
-		$get_result = calculate($paramPostback);
-		$is_message = $get_result[0];
-		$typeMessage = $get_result[1];
-		$userMessage = $get_result[2];
+
+		
+		//$get_result = calculate($paramPostback);
+		//$is_message = $get_result[0];
+		//$typeMessage = $get_result[1];
+		//$userMessage = $get_result[2];
 		
            //$textReplyMessage.= " \r\nParams = ".$paramPostback;
 			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
 			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$typeMessage;
 			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$userMessage;
+			
         }
+
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
 	
@@ -138,7 +143,7 @@ if(!is_null($events)){
 		fclose($myfile);
 		if ($userMessage != "รายงานบิน"){
 			if ($userMessage != "รายงานซ่อม"){
-			if ($x > '20'){
+			if ($x > '4'){
 			$get_result = calculate($userMessage);
 			//$is_message = $get_result[0];
 			//$typeMessage = $get_result[1];
@@ -388,7 +393,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select32', // กำหนดรายละเอียด
+                                    'Please select31', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -398,28 +403,23 @@ if(!is_null($events)){
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
                             new PostbackTemplateActionBuilder(
-                                'CKT', // ข้อความแสดงในปุ่ม
+                                'Postback', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
                                     //'action'=>'buy',
                                     //'item'=>100
 									'CKT'
+									//'CKT2'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
-                            new PostbackTemplateActionBuilder(
-                                'EP CKT', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-									'EP CKT'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'EP CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 
-                            new PostbackTemplateActionBuilder(
-                                'ISR', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-									'ISR'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                              //  'ISR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 					
+                            new MessageTemplateActionBuilder(
+                                'EP CKT',// ข้อความแสดงในปุ่ม
+                                'EP CKT' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
+                            new MessageTemplateActionBuilder(
+                                'ISR',// ข้อความแสดงในปุ่ม
+                                'ISR' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),						
                         );
 						$actionBuilder1 = array(
                             new MessageTemplateActionBuilder(
@@ -600,36 +600,36 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "mission";
-				$pushdata = "\r\nMission = ".substr($postdata,2,20);
+				$userMessage = "ทดสอบ";
+				$pushdata = "\r\nMission = ".$postdata;
 			}
 			elseif ($x<"3") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "mission";
-				$pushdata = "\r\nUAV No. = ".substr($postdata,2,20);
+				$userMessage = "ทดสอบ";
+				$pushdata = "\r\nUAV No. = ".$postdata;
 			}
 			elseif ($x<"4") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nEngine No. = ".substr($postdata,2,20);
+				$pushdata = "\r\nEngine No. = ".$postdata;
 			}
 			elseif ($x<"5")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nGCS No. = ".substr($postdata,2,20);
+				$pushdata = "\r\nGCS No. = ".$postdata;
 			}
 			elseif ($x<"6")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nPayload = ".substr($postdata,2,20);
+				$pushdata = "\r\nPayload = ".$postdata;
 			}
 			elseif ($x<"7")
 			{
