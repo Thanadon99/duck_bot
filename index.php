@@ -134,9 +134,9 @@ if(!is_null($events)){
 		}
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
-		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-		fwrite($myfile, $userMessage);
-		fclose($myfile);
+		//$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
+		//fwrite($myfile, $userMessage);
+		//fclose($myfile);
 
 
     if(!is_null($is_message)){
