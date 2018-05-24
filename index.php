@@ -392,8 +392,8 @@ if(!is_null($events)){
                         $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/report.jpg';
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
-                                    'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select31', // กำหนดรายละเอียด
+                                    'Date = ', // กำหนดหัวเรื่อง
+                                    'Please select32', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -519,42 +519,42 @@ if(!is_null($events)){
                                 'CAS_CSAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 	
 							new PostbackTemplateActionBuilder(
-                                'CAS_CSAR', // ข้อความแสดงในปุ่ม
+                                '-', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'CAS_CSAR'
+									'-'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'CAS_CSAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                //'CAS_CSAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 	
                         );
                         $replyData = new TemplateMessageBuilder('Carousel',
                             new CarouselTemplateBuilder(
                                 array(
                                     new CarouselColumnTemplateBuilder(
-                                        'Mission',
+                                        'Mission = ',
                                         'Please select',
                                         'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
                                         $actionBuilder
                                     ),
                                     new CarouselColumnTemplateBuilder(
-                                        'Mission',
+                                        'Mission = ',
                                         'Please select',
                                         'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
                                         $actionBuilder1
                                     ),
                                     new CarouselColumnTemplateBuilder(
-                                        'Mission',
+                                        'Mission = ',
                                         'Please select',
                                         'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
                                         $actionBuilder2
                                     ),
 									new CarouselColumnTemplateBuilder(
-                                        'Mission',
+                                        'Mission = ',
                                         'Please select',
                                         'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
                                         $actionBuilder3
                                     ),   
 									new CarouselColumnTemplateBuilder(
-                                        'Mission',
+                                        'Mission = ',
                                         'Please select',
                                         'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
                                         $actionBuilder4
