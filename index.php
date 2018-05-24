@@ -121,7 +121,6 @@ if(!is_null($events)){
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$userMessage;
 			
         }
-		else {
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
@@ -130,7 +129,6 @@ if(!is_null($events)){
 			$is_message = $get_result[0];
 			$typeMessage = $get_result[1];
 			$userMessage = $get_result[2];
-		}
 		}
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
@@ -380,7 +378,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select24', // กำหนดรายละเอียด
+                                    'Please select25', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
