@@ -132,6 +132,9 @@ if(!is_null($events)){
 		$typeMessage = $get_result[1];
 		$userMessage = $get_result[2];
 	}*/
+		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
+		fwrite($myfile, $userMessage);
+		fclose($myfile);
 
 
     if(!is_null($is_message)){
