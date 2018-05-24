@@ -143,7 +143,7 @@ if(!is_null($events)){
 		fclose($myfile);
 		if ($userMessage != "รายงานบิน"){
 			if ($userMessage != "รายงานซ่อม"){
-			if ($x > '4'){
+			if ($x > '20'){
 			$get_result = calculate($userMessage);
 			//$is_message = $get_result[0];
 			//$typeMessage = $get_result[1];
@@ -459,19 +459,19 @@ if(!is_null($events)){
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
+                                        //'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
                                         $actionBuilder
                                     ),
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
+                                        //'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
                                         $actionBuilder1
                                     ),
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
+                                        //'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
                                         $actionBuilder2
                                     ),    
                                 )
