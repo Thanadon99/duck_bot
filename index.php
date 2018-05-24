@@ -392,8 +392,8 @@ if(!is_null($events)){
                         $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/report.jpg';
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
-                                    '1)Date', // กำหนดหัวเรื่อง
-                                    'Please select31', // กำหนดรายละเอียด
+                                    '1) Date', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -530,7 +530,7 @@ if(!is_null($events)){
                             new CarouselTemplateBuilder(
                                 array(
                                     new CarouselColumnTemplateBuilder(
-                                        '2)Mission',
+                                        '2) Mission',
                                         'Please select',
                                         'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
                                         $actionBuilder
@@ -644,7 +644,7 @@ if(!is_null($events)){
                             new CarouselTemplateBuilder(
                                 array(
                                     new CarouselColumnTemplateBuilder(
-                                        '3)UAV No.',
+                                        '3) UAV No.',
                                         'Please select',
                                         'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
                                         $actionBuilder
@@ -665,7 +665,200 @@ if(!is_null($events)){
                             )
                         );
                         break;
-						
+					case "engineno":
+                        // กำหนด action 4 ปุ่ม 4 ประเภท
+                        $actionBuilder = array(
+                            new PostbackTemplateActionBuilder(
+                                '08-335', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'08-335'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '08-335'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '08-357', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'08-357'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '08-357'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '10-417', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'10-417'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '10-417'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder1 = array(
+                            new PostbackTemplateActionBuilder(
+                                '12-452', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'12-452'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '12-452'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '12-455', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'12-455'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '12-455'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '12-466', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'12-466'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '12-466'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder2 = array(
+                            new PostbackTemplateActionBuilder(
+                                '12-467', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'12-467'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '12-467'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '12-469', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'12-469'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '12-469'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '12-473', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'12-473'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '12-473'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder3 = array(
+                            new PostbackTemplateActionBuilder(
+                                '13-480', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'13480'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '13-480'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '13-481', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'13-481'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '13-481'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '13-482', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'13-482'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '13-482'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder4 = array(
+                            new PostbackTemplateActionBuilder(
+                                '13-483', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'13-483'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '13-483'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '13-484', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'13-484'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '13-484'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+                        $replyData = new TemplateMessageBuilder('Carousel',
+                            new CarouselTemplateBuilder(
+                                array(
+                                    new CarouselColumnTemplateBuilder(
+                                        '4) Engine No.',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
+                                        $actionBuilder
+                                    ),
+                                    new CarouselColumnTemplateBuilder(
+                                        'Engine No.',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
+                                        $actionBuilder1
+                                    ),
+                                    new CarouselColumnTemplateBuilder(
+                                        'Engine No.',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
+                                        $actionBuilder2
+                                    ),
+									new CarouselColumnTemplateBuilder(
+                                        'Engine No.',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
+                                        $actionBuilder3
+                                    ), 
+									new CarouselColumnTemplateBuilder(
+                                        'Engine No.',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
+                                        $actionBuilder4
+                                    ), 
+                                )
+                            )
+                        );
+                        break;
+					case "gcsno":
+                        // กำหนด action 4 ปุ่ม 4 ประเภท
+                        $actionBuilder = array(
+                            new PostbackTemplateActionBuilder(
+                                '26', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    //'action'=>'buy',
+                                    //'item'=>100
+									'26'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '26'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '27', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'27'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '27'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+                        $replyData = new TemplateMessageBuilder('Carousel',
+                            new CarouselTemplateBuilder(
+                                array(
+                                    new CarouselColumnTemplateBuilder(
+                                        '5) GCS No.',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
+                                        $actionBuilder
+                                    ),                             
+                                )
+                            )
+                        );
+                        break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
@@ -797,22 +990,22 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
+				$userMessage = "engineno";
 				$pushdata = "\r\nUAV No. = ".substr($postdata,2,20);
 			}
 			elseif ($x<"4") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nEngine No. = ".$postdata;
+				$userMessage = "gcsno";
+				$pushdata = "\r\nEngine No. = ".substr($postdata,2,20);
 			}
 			elseif ($x<"5")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nGCS No. = ".$postdata;
+				$pushdata = "\r\nGCS No. = ".substr($postdata,2,20);
 			}
 			elseif ($x<"6")
 			{
