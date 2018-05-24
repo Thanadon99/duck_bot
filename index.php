@@ -408,14 +408,18 @@ if(!is_null($events)){
                                     //'action'=>'buy',
                                     //'item'=>100
 									'CKT'
-									//'CKT2'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
-                            new MessageTemplateActionBuilder(
-                                'EP CKT',// ข้อความแสดงในปุ่ม
-                                'EP CKT' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),
+                            new PostbackTemplateActionBuilder(
+                                'Postback', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    //'action'=>'buy',
+                                    //'item'=>100
+									'EP CKT'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                'EP CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
                             new MessageTemplateActionBuilder(
                                 'ISR',// ข้อความแสดงในปุ่ม
                                 'ISR' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
@@ -601,7 +605,7 @@ Function calculate($postdata)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nMission = ".$postdata;
+				$pushdata = "\r\nMission = ".substr($postdata,2,20);
 			}
 			elseif ($x<"3") 
 			{
