@@ -363,7 +363,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select10', // กำหนดรายละเอียด
+                                    'Please select11', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -637,6 +637,7 @@ Function calculate($paramPostback)
 			}
 		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 		fwrite($myfile, $pushdata);
+		fwrite($myfile, $x);
 		fclose($myfile);
 			
 }
