@@ -126,14 +126,15 @@ if(!is_null($events)){
 	$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 	$x=(fgets($myfile));
 	fclose($myfile);
-	/*if ("$x">"0"){
+
+
+    if(!is_null($is_message)){
+		if ($x>"0"){
 		$get_reslt = calculate($userMessage);
 		$is_message = $get_result[0];
 		$typeMessage = $get_result[1];
 		$userMessage = $get_result[2];
-	}*/
-
-    if(!is_null($is_message)){
+		}
         switch ($typeMessage){
             case 'text':
                 $userMessage = strtolower($userMessage); // แปลงเป็นตัวเล็ก สำหรับทดสอบ
@@ -374,7 +375,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select21', // กำหนดรายละเอียด
+                                    'Please select22', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
