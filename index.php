@@ -92,6 +92,7 @@ if(!is_null($events)){
         parse_str($events['events'][0]['postback']['data'],$dataPostback);;
         $paramPostback = NULL;
         if(array_key_exists('params',$events['events'][0]['postback'])){
+			$paramPostback = $events['events'][0]['postback']['params'];
             if(array_key_exists('date',$events['events'][0]['postback']['params'])){
                 $paramPostback = $events['events'][0]['postback']['params']['date'];
             }
@@ -101,9 +102,6 @@ if(!is_null($events)){
             if(array_key_exists('datetime',$events['events'][0]['postback']['params'])){
                 $paramPostback = $events['events'][0]['postback']['params']['datetime'];
             }
-			else{
-				$paramPostback = $events['events'][0]['postback']['params'];
-			}
         }
     }   
     if(!is_null($is_postback)){
@@ -383,7 +381,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select26', // กำหนดรายละเอียด
+                                    'Please select27', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
