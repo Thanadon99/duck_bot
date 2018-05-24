@@ -127,20 +127,22 @@ if(!is_null($events)){
 
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
-		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-		fwrite($myfile, $userMessage);
-		fclose($myfile);
 	
-		/*$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
+		//$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
+		/fwrite($myfile, $userMessage);
+		//fclose($myfile);
+	
+		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
-		if ($x > '1'){
+		if ($x > '0'){
 			$get_result = calculate($userMessage);
 			//$is_message = $get_result[0];
 			//$typeMessage = $get_result[1];
+			sleep(2);
 			$userMessage = $get_result[2];
+			sleep(2);
 		}
-	*/
 	
     if(!is_null($is_message)){
         switch ($typeMessage){
@@ -383,7 +385,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select30', // กำหนดรายละเอียด
+                                    'Please select31', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
