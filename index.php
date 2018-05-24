@@ -90,7 +90,7 @@ if(!is_null($events)){
         $is_postback = true;
         $dataPostback = NULL;
         parse_str($events['events'][0]['postback']['data'],$dataPostback);;
-        $paramPostback = NULL;
+        //$paramPostback = NULL;
         if(array_key_exists('params',$events['events'][0]['postback'])){
             if(array_key_exists('date',$events['events'][0]['postback']['params'])){
                 $paramPostback = $events['events'][0]['postback']['params']['date'];
@@ -110,7 +110,7 @@ if(!is_null($events)){
         }*/
         if(!is_null($paramPostback)){
 			
-		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
+		/*$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
 		if ($x > '0'){
@@ -118,13 +118,13 @@ if(!is_null($events)){
 			$is_message = $get_result[0];
 			$typeMessage = $get_result[1];
 			$userMessage = $get_result[2];
-		}
-		else {
+		}*/
+		
 		$get_result = calculate($paramPostback);
 		$is_message = $get_result[0];
 		$typeMessage = $get_result[1];
 		$userMessage = $get_result[2];
-		}
+		
            // $textReplyMessage.= " \r\nParams = ".$paramPostback;
 			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
 			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$typeMessage;
