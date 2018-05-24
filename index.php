@@ -135,13 +135,15 @@ if(!is_null($events)){
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
-		if ($x > '0'){
+		if ($userMessage == "รายงานบิน"){
+		if ($x > '1'){
 			$get_result = calculate($userMessage);
 			//$is_message = $get_result[0];
 			//$typeMessage = $get_result[1];
 			sleep(2);
 			$userMessage = $get_result[2];
 			sleep(2);
+		}
 		}
 	
     if(!is_null($is_message)){
