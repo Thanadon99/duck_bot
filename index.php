@@ -127,7 +127,7 @@ if(!is_null($events)){
 	$x=(fgets($myfile));
 	fclose($myfile);
 	if ($x>"0"){
-		$get_reslt = calculate($userMessage);
+		$get_result = calculate($userMessage);
 		$is_message = $get_result[0];
 		$typeMessage = $get_result[1];
 		$userMessage = $get_result[2];
@@ -375,7 +375,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select22', // กำหนดรายละเอียด
+                                    'Please select23', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
