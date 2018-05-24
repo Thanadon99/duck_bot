@@ -121,6 +121,7 @@ if(!is_null($events)){
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$userMessage;
 			
         }
+		else {
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
@@ -129,6 +130,7 @@ if(!is_null($events)){
 			$is_message = $get_result[0];
 			$typeMessage = $get_result[1];
 			$userMessage = $get_result[2];
+		}
 		}
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
