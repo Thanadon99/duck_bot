@@ -374,7 +374,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select18', // กำหนดรายละเอียด
+                                    'Please select19', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -515,6 +515,15 @@ if(!is_null($events)){
 						}
 						$replyData = new TextMessageBuilder($textReplyMessage);
 						break;
+					case "X = ?":
+						$data=file('x.txt');
+						for($i=0;$i<count($data);$i++){
+							$textReplyMessage = $data[0];
+							$textReplyMessage.= $data[1];
+							$textReplyMessage.= $data[2];
+						}
+						break;
+					
                     default:
                         //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
 						
