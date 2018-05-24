@@ -392,7 +392,7 @@ if(!is_null($events)){
                         $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/report.jpg';
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
-                                    'Date', // กำหนดหัวเรื่อง
+                                    '1)Date', // กำหนดหัวเรื่อง
                                     'Please select31', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
@@ -530,7 +530,7 @@ if(!is_null($events)){
                             new CarouselTemplateBuilder(
                                 array(
                                     new CarouselColumnTemplateBuilder(
-                                        'Mission',
+                                        '2)Mission',
                                         'Please select',
                                         'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
                                         $actionBuilder
@@ -563,7 +563,108 @@ if(!is_null($events)){
                             )
                         );
                         break;
-
+					case "uavno":
+                        // กำหนด action 4 ปุ่ม 4 ประเภท
+                        $actionBuilder = array(
+                            new PostbackTemplateActionBuilder(
+                                '678', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    //'action'=>'buy',
+                                    //'item'=>100
+									'678'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '678'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '679', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'679'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '679'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '704', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'704'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '704'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder1 = array(
+                            new PostbackTemplateActionBuilder(
+                                '705', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    //'action'=>'buy',
+                                    //'item'=>100
+									'705'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '705'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '706', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'706'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '706'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '707', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'707'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '707'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder2 = array(
+                            new PostbackTemplateActionBuilder(
+                                '708', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    //'action'=>'buy',
+                                    //'item'=>100
+									'708'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '708'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+                        $replyData = new TemplateMessageBuilder('Carousel',
+                            new CarouselTemplateBuilder(
+                                array(
+                                    new CarouselColumnTemplateBuilder(
+                                        '3)UAV No.',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
+                                        $actionBuilder
+                                    ),
+                                    new CarouselColumnTemplateBuilder(
+                                        'UAV No.',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
+                                        $actionBuilder1
+                                    ),
+                                    new CarouselColumnTemplateBuilder(
+                                        'UAV No.',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
+                                        $actionBuilder2
+                                    ),    
+                                )
+                            )
+                        );
+                        break;
 						
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
@@ -689,7 +790,7 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
+				$userMessage = "uavno";
 				$pushdata = "\r\nMission = ".substr($postdata,2,20);
 			}
 			elseif ($x<"3") 
@@ -697,7 +798,7 @@ Function calculate($postdata)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nUAV No. = ".$postdata;
+				$pushdata = "\r\nUAV No. = ".substr($postdata,2,20);
 			}
 			elseif ($x<"4") 
 			{
