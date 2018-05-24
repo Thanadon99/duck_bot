@@ -127,9 +127,9 @@ if(!is_null($events)){
 
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
-		//$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-		//fwrite($myfile, $userMessage);
-		//fclose($myfile);
+		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
+		fwrite($myfile, $userMessage);
+		fclose($myfile);
 	
 		/*$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
@@ -462,14 +462,7 @@ if(!is_null($events)){
                             )
                         );
                         break;
-					case "CKT":
-						$pushdata = "\r\nMission = ".$userMessage;
-						$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-						fwrite($myfile, $pushdata);
-						fclose($myfile);
-						break;
-						
-						
+
 						
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
