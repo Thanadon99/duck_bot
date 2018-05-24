@@ -126,7 +126,7 @@ if(!is_null($events)){
 	$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 	$x=(fgets($myfile));
 	fclose($myfile);
-	if ($x>"0"){
+	if ($userMessage = "CKT"){
 		$get_result = calculate($userMessage);
 		$is_message = $get_result[0];
 		$typeMessage = $get_result[1];
