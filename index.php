@@ -134,9 +134,9 @@ if(!is_null($events)){
 		}
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
-		//$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-		//fwrite($myfile, $userMessage);
-		//fclose($myfile);
+		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
+		fwrite($myfile, $userMessage);
+		fclose($myfile);
 
 
     if(!is_null($is_message)){
@@ -570,7 +570,7 @@ if ($response->isSucceeded()) {
  
 // Failed
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-Function calculate($paramPostback)
+Function calculate($postdata)
 {
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
@@ -590,13 +590,13 @@ Function calculate($paramPostback)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "mission";
-				$pushdata = "Date = ".$paramPostback;
+				$pushdata = "Date = ".$postdata;
 			}
 			elseif ($x<"2")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$pushdata = "\r\nMission = ".$userMessage;
+				$pushdata = "\r\nMission = ".$postdata;
 				$userMessage = "ทดสอบ";
 			}
 			elseif ($x<"3") 
@@ -604,42 +604,42 @@ Function calculate($paramPostback)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nUAV No. = ".$paramPostback;
+				$pushdata = "\r\nUAV No. = ".$postdata;
 			}
 			elseif ($x<"4") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nEngine No. = ".$paramPostback;
+				$pushdata = "\r\nEngine No. = ".$postdata;
 			}
 			elseif ($x<"5")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nGCS No. = ".$paramPostback;
+				$pushdata = "\r\nGCS No. = ".$postdata;
 			}
 			elseif ($x<"6")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nPayload = ".$paramPostback;
+				$pushdata = "\r\nPayload = ".$postdata;
 			}
 			elseif ($x<"7")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nFuel Qty = ".$paramPostback;
+				$pushdata = "\r\nFuel Qty = ".$postdata;
 			}
 			elseif ($x<"8")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nFuel Remain = ".$paramPostback;
+				$pushdata = "\r\nFuel Remain = ".$postdata;
 			}
 		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 		fwrite($myfile, $pushdata);
