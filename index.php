@@ -110,30 +110,28 @@ if(!is_null($events)){
         }*/
         if(!is_null($paramPostback)){
 			
-			
-            $textReplyMessage.= " \r\nParams = ".$paramPostback;
-			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
-			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$userMessage;
-			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
-			
-        }
 		$get_result = calculate($paramPostback);
 		$is_message = $get_result[0];
 		$typeMessage = $get_result[1];
 		$userMessage = $get_result[2];
 		
-		
+            $textReplyMessage.= " \r\nParams = ".$paramPostback;
+			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
+			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$typeMessage;
+			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$userMessage;
+			
+        }
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
 	$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 	$x=(fgets($myfile));
 	fclose($myfile);
-	if ("$x">"0"){
+	/*if ("$x">"0"){
 		$get_reslt = calculate($userMessage);
 		$is_message = $get_result[0];
 		$typeMessage = $get_result[1];
 		$userMessage = $get_result[2];
-	}
+	}*/
 
     if(!is_null($is_message)){
         switch ($typeMessage){
@@ -376,7 +374,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select16', // กำหนดรายละเอียด
+                                    'Please select17', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -648,11 +646,11 @@ Function calculate($paramPostback)
 				$userMessage = "ทดสอบ";
 				$pushdata = "\r\nFuel Remain = ".$paramPostback;
 			}
-		$result = array($is_message,$typeMessage,$userMessage);
-		return $result;
 		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 		fwrite($myfile, $pushdata);
 		fclose($myfile);
-			
+		
+		$result = array($is_message,$typeMessage,$userMessage);
+		return $result;		
 }
 ?>
