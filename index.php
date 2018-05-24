@@ -108,6 +108,15 @@ if(!is_null($events)){
         if(is_array($dataPostback)){
             $textReplyMessage.= json_encode($dataPostback);
         }*/
+		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
+		$x=(fgets($myfile));
+		fclose($myfile);
+		if ($x > '0'){
+			$get_result = calculate($userMessage);
+			$is_message = $get_result[0];
+			$typeMessage = $get_result[1];
+			$userMessage = $get_result[2];
+		}
         if(!is_null($paramPostback)){
 			
 		$get_result = calculate($paramPostback);
@@ -123,15 +132,6 @@ if(!is_null($events)){
         }
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
-	$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
-	$x=(fgets($myfile));
-	fclose($myfile);
-	//if ($userMessage = 'CKT'){
-		//$get_result = calculate($userMessage);
-		//$is_message = $get_result[0];
-		//$typeMessage = $get_result[1];
-		//$userMessage = $get_result[2];
-	//}
 		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 		fwrite($myfile, $userMessage);
 		fclose($myfile);
