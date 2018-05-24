@@ -130,7 +130,7 @@ if(!is_null($events)){
 		$get_result = calculate($userMessage);
 		//$is_message = $get_result[0];
 		//$typeMessage = $get_result[1];
-		$userMessage = $get_result[2];
+		//$userMessage = $get_result[2];
 	}
 		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 		fwrite($myfile, $userMessage);
