@@ -374,7 +374,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select20', // กำหนดรายละเอียด
+                                    'Please select21', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -515,7 +515,7 @@ if(!is_null($events)){
 						}
 						$replyData = new TextMessageBuilder($textReplyMessage);
 						break;
-					case "X = ?":
+					case "x=?":
 						$data=file('x.txt');
 						for($i=0;$i<count($data);$i++){
 							$textReplyMessage = $data[0];
