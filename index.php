@@ -137,7 +137,7 @@ if(!is_null($events)){
 		fclose($myfile);
 		if ($userMessage != "รายงานบิน"){
 			if ($userMessage != "รายงานซ่อม"){
-			if ($x > '1'){
+			if ($x > '0'){
 			$get_result = calculate($userMessage);
 			//$is_message = $get_result[0];
 			//$typeMessage = $get_result[1];
@@ -581,16 +581,6 @@ Function calculate($postdata)
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
-		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
-			if ("$x"<"8")
-			{
-				fwrite($myfile, $x+1);
-			}
-			else
-			{
-				fwrite($myfile, $x-8);
-			}
-			fclose($myfile);
 			if ($x<"1")
 			{
 				$is_message = 1;
@@ -647,6 +637,16 @@ Function calculate($postdata)
 				$userMessage = "ทดสอบ";
 				$pushdata = "\r\nFuel Remain = ".$postdata;
 			}
+		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
+			if ("$x"<"8")
+			{
+				fwrite($myfile, $x+1);
+			}
+			else
+			{
+				fwrite($myfile, $x-8);
+			}
+		fclose($myfile);
 		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 		fwrite($myfile, $pushdata);
 		fclose($myfile);
