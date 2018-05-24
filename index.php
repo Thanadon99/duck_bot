@@ -130,8 +130,8 @@ if(!is_null($events)){
 		//$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 		//fwrite($myfile, $userMessage);
 		//fclose($myfile);
-	if(!is_null($is_message)){
-		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
+	
+		/*$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
 		if ($x > '1'){
@@ -140,7 +140,7 @@ if(!is_null($events)){
 			//$typeMessage = $get_result[1];
 			$userMessage = $get_result[2];
 		}
-	}
+	*/
 	
     if(!is_null($is_message)){
         switch ($typeMessage){
@@ -383,7 +383,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select29', // กำหนดรายละเอียด
+                                    'Please select30', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -461,7 +461,13 @@ if(!is_null($events)){
                                 )
                             )
                         );
-                        break;  
+                        break;
+					case "CKT" || "ISR" || "IL":
+						$pushdata = "\r\nMission = ".$userMessage;
+						$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
+						fwrite($myfile, $pushdata);
+						fclose($myfile);
+						break;
 						
 						
 						
