@@ -419,22 +419,22 @@ if(!is_null($events)){
                                 'ISR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'ISR+Laser', // ข้อความแสดงในปุ่ม
+                                'ISR_Laser', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'ISR+Laser'
+									'ISR_Laser'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'ISR+Laser'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'ISR_Laser'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 					
                         );
 						$actionBuilder1 = array(
                             new PostbackTemplateActionBuilder(
-                                'ISR&DT&TST', // ข้อความแสดงในปุ่ม
+                                'ISR_DT_TST', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
                                     //'action'=>'buy',
                                     //'item'=>100
-									'ISR&DT&TST'
+									'ISR_DT_TST'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'ISR&DT&TST'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'ISR_DT_TST'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
                                 'SR', // ข้อความแสดงในปุ่ม
@@ -512,11 +512,11 @@ if(!is_null($events)){
                                 'CAS_DT_CSAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'CAS&CSAR', // ข้อความแสดงในปุ่ม
+                                'CAS_CSAR', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'CAS&CSAR'
+									'CAS_CSAR'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'CAS&CSAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'CAS_CSAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 				
                         );
                         $replyData = new TemplateMessageBuilder('Carousel',
