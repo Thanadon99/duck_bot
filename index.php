@@ -405,8 +405,8 @@ if(!is_null($events)){
                                 http_build_query(array(
                                     //'action'=>'buy',
                                     //'item'=>100
-									'CKT',
-									'CKT2'
+									'CKT'
+									//'CKT2'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
