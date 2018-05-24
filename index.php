@@ -117,8 +117,10 @@ if(!is_null($events)){
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$x;
 			
         }
-		calculate($paramPostback);
-		
+		$get_result = calculate($paramPostback);
+		$is_message = $get_result[0];
+		$typeMessage = $get_result[1];
+		$userMessage = $get_result[2];
 		
 		
         $replyData = new TextMessageBuilder($textReplyMessage); 		
@@ -127,7 +129,10 @@ if(!is_null($events)){
 	$x=(fgets($myfile));
 	fclose($myfile);
 	if ("$x">"0"){
-		calculate($userMessage);
+		$get_reslt = calculate($userMessage);
+		$is_message = $get_result[0];
+		$typeMessage = $get_result[1];
+		$userMessage = $get_result[2];
 	}
 
     if(!is_null($is_message)){
@@ -371,7 +376,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select15', // กำหนดรายละเอียด
+                                    'Please select16', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -643,6 +648,8 @@ Function calculate($paramPostback)
 				$userMessage = "ทดสอบ";
 				$pushdata = "\r\nFuel Remain = ".$paramPostback;
 			}
+		$result = array($is_message,$typeMessage,$userMessage);
+		return $result;
 		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 		fwrite($myfile, $pushdata);
 		fclose($myfile);
