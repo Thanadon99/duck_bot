@@ -517,7 +517,14 @@ if(!is_null($events)){
 									'CAS_CSAR'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'CAS_CSAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 				
+                            ), 	
+							new PostbackTemplateActionBuilder(
+                                'CAS_CSAR', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'CAS_CSAR'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                'CAS_CSAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 	
                         );
                         $replyData = new TemplateMessageBuilder('Carousel',
                             new CarouselTemplateBuilder(
