@@ -92,7 +92,9 @@ if(!is_null($events)){
         parse_str($events['events'][0]['postback']['data'],$dataPostback);;
         $paramPostback = NULL;
 		//parse_str($events['events'][0]['postback']['data'],$paramPostback);;
-		$paramPostback = $events['events'][0]['postback']['data'];
+		$paramPostback = $events['events']['postback']['data'];
+		$paramPostback1 = $events['events']['data'];
+		$paramPostback2 = $events['events'][0]['postback']['data'];
         if(array_key_exists('params',$events['events'][0]['postback'])){
             if(array_key_exists('date',$events['events'][0]['postback']['params'])){
                 $paramPostback = $events['events'][0]['postback']['params']['date'];
@@ -113,6 +115,8 @@ if(!is_null($events)){
 			$textReplyMessage.=" \r\nParams1 = ";
 			$textReplyMessage.= json_encode($paramPostback);
 			$textReplyMessage.=" \r\nParams2 = ".$paramPostback;
+			$textReplyMessage.=" \r\nParams3 = ".$paramPostback1;
+			$textReplyMessage.=" \r\nParams4 = ".$paramPostback2;
         }
         if(!is_null($paramPostback)){
 			
