@@ -374,7 +374,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select19', // กำหนดรายละเอียด
+                                    'Please select20', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -522,6 +522,7 @@ if(!is_null($events)){
 							$textReplyMessage.= $data[1];
 							$textReplyMessage.= $data[2];
 						}
+						$replyData = new TextMessageBuilder($textReplyMessage);
 						break;
 					
                     default:
