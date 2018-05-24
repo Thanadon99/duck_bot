@@ -119,8 +119,17 @@ if(!is_null($events)){
         }
 		calculate($paramPostback);
 		
+		
+		
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
+	$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
+	$x=(fgets($myfile));
+	fclose($myfile);
+	if ("$x">"0"){
+		calculate($userMessage);
+	}
+
     if(!is_null($is_message)){
         switch ($typeMessage){
             case 'text':
@@ -342,7 +351,6 @@ if(!is_null($events)){
 						fwrite($myfile, $strText1);
 						fclose($myfile);
 						$myfile = fopen("x.txt", "w+") or die("Unable to open file!");
-						//$strText2 = "1";
 						fwrite($myfile, 0);
 						fclose($myfile);
                         // กำหนด action 4 ปุ่ม 4 ประเภท
@@ -363,7 +371,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select14', // กำหนดรายละเอียด
+                                    'Please select15', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -568,9 +576,6 @@ Function calculate($paramPostback)
 {
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
-		fclose($myfile);
-		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-		fwrite($myfile, $x);
 		fclose($myfile);
 		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
 			if ("$x"<"8")
