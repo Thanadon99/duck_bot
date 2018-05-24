@@ -106,7 +106,7 @@ if(!is_null($events)){
         }
     }   
     if(!is_null($is_postback)){
-        $textReplyMessage = "ข้อความจาก Postback Event Data = ";
+        /*$textReplyMessage = "ข้อความจาก Postback Event Data = ";
         if(is_array($dataPostback)){
             $textReplyMessage.= json_encode($dataPostback);
 			$textReplyMessage.=" \r\nParams = ".$dataPostback;
@@ -114,15 +114,15 @@ if(!is_null($events)){
 			$textReplyMessage.= json_encode($paramPostback);
 			$textReplyMessage.=" \r\nParams2 = ".substr($paramPostback,2,20);
 
-        }
+        }*/
         if(!is_null($paramPostback)){
 			
 
 		
-		//$get_result = calculate($paramPostback);
-		//$is_message = $get_result[0];
-		//$typeMessage = $get_result[1];
-		//$userMessage = $get_result[2];
+		$get_result = calculate($paramPostback);
+		$is_message = $get_result[0];
+		$typeMessage = $get_result[1];
+		$userMessage = $get_result[2];
 		
            //$textReplyMessage.= " \r\nParams = ".$paramPostback;
 			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
