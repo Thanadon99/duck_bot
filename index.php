@@ -105,20 +105,24 @@ if(!is_null($events)){
         }
     }   
     if(!is_null($is_postback)){
-        /*$textReplyMessage = "ข้อความจาก Postback Event Data = ";
+        $textReplyMessage = "ข้อความจาก Postback Event Data = ";
         if(is_array($dataPostback)){
             $textReplyMessage.= json_encode($dataPostback);
-        }*/
+			$textReplyMessage.=" \r\nParams = ".$dataPostback;
+			$textReplyMessage.=" \r\nParams1 = ";
+			$textReplyMessage.= json_encode($dataPostback);
+			$textReplyMessage.=" \r\nParams2 = ".$paramPostback;
+        }
         if(!is_null($paramPostback)){
 			
 
 		
-		$get_result = calculate($paramPostback);
-		$is_message = $get_result[0];
-		$typeMessage = $get_result[1];
-		$userMessage = $get_result[2];
+		//$get_result = calculate($paramPostback);
+		//$is_message = $get_result[0];
+		//$typeMessage = $get_result[1];
+		//$userMessage = $get_result[2];
 		
-           // $textReplyMessage.= " \r\nParams = ".$paramPostback;
+           //$textReplyMessage.= " \r\nParams = ".$paramPostback;
 			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
 			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$typeMessage;
 			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$userMessage;
@@ -137,7 +141,7 @@ if(!is_null($events)){
 		fclose($myfile);
 		if ($userMessage != "รายงานบิน"){
 			if ($userMessage != "รายงานซ่อม"){
-			if ($x > '0'){
+			if ($x > '4'){
 			$get_result = calculate($userMessage);
 			//$is_message = $get_result[0];
 			//$typeMessage = $get_result[1];
