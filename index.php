@@ -90,8 +90,8 @@ if(!is_null($events)){
         $is_postback = true;
         $dataPostback = NULL;
         parse_str($events['events'][0]['postback']['data'],$dataPostback);;
-        //$paramPostback = NULL;
-		$paramPostback = $events['events'][0]['postback']['params']['data'];
+        $paramPostback = NULL;
+		parse_str($events['events'][0]['postback']['data'],$paramPostback);;
         if(array_key_exists('params',$events['events'][0]['postback'])){
             if(array_key_exists('date',$events['events'][0]['postback']['params'])){
                 $paramPostback = $events['events'][0]['postback']['params']['date'];
