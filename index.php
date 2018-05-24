@@ -108,15 +108,6 @@ if(!is_null($events)){
         if(is_array($dataPostback)){
             $textReplyMessage.= json_encode($dataPostback);
         }*/
-		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
-		$x=(fgets($myfile));
-		fclose($myfile);
-		if ($x > '0'){
-			$get_result = calculate($userMessage);
-			$is_message = $get_result[0];
-			$typeMessage = $get_result[1];
-			$userMessage = $get_result[2];
-		}
         if(!is_null($paramPostback)){
 			
 		$get_result = calculate($paramPostback);
@@ -130,11 +121,22 @@ if(!is_null($events)){
 			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$userMessage;
 			
         }
+		else{
+		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
+		$x=(fgets($myfile));
+		fclose($myfile);
+		if ($x > '0'){
+			$get_result = calculate($userMessage);
+			$is_message = $get_result[0];
+			$typeMessage = $get_result[1];
+			$userMessage = $get_result[2];
+		}
+		}
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
-		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-		fwrite($myfile, $userMessage);
-		fclose($myfile);
+		//$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
+		//fwrite($myfile, $userMessage);
+		//fclose($myfile);
 
 
     if(!is_null($is_message)){
@@ -387,10 +389,14 @@ if(!is_null($events)){
 					case "mission":
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
-                            new MessageTemplateActionBuilder(
-                                'CKT',// ข้อความแสดงในปุ่ม
-                                'CKT' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),
+                            new PostbackTemplateActionBuilder(
+                                'Postback', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    'action'=>'buy',
+                                    'item'=>100
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                'CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
                             new MessageTemplateActionBuilder(
                                 'EP CKT',// ข้อความแสดงในปุ่ม
                                 'EP CKT' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
