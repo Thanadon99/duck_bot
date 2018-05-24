@@ -337,11 +337,11 @@ if(!is_null($events)){
                         );
                         break;
 					case "รายงานบิน":
-						$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
+						$myfile = fopen("abc.txt", "w+") or die("Unable to open file!");
 						$strText1 = "";
 						fwrite($myfile, $strText1);
 						fclose($myfile);
-						$myfile = fopen("x.txt", "w") or die("Unable to open file!");
+						$myfile = fopen("x.txt", "w+") or die("Unable to open file!");
 						$strText2 = "1";
 						fwrite($myfile, strText2);
 						fclose($myfile);
@@ -363,7 +363,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select9', // กำหนดรายละเอียด
+                                    'Please select10', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -566,7 +566,7 @@ if ($response->isSucceeded()) {
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 Function calculate($paramPostback)
 {
-	$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
+		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
 		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
