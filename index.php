@@ -136,14 +136,14 @@ if(!is_null($events)){
 		$x=(fgets($myfile));
 		fclose($myfile);
 		if ($userMessage != "รายงานบิน"){
-		if ($x > '0'){
+			if ($userMessage != "รายงานซ่อม"){
+			if ($x > '1'){
 			$get_result = calculate($userMessage);
 			//$is_message = $get_result[0];
 			//$typeMessage = $get_result[1];
-			sleep(2);
 			$userMessage = $get_result[2];
-			sleep(2);
-		}
+			}
+			}
 		}
 	
     if(!is_null($is_message)){
