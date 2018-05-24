@@ -114,7 +114,7 @@ if(!is_null($events)){
 			$textReplyMessage.=" \r\nParams = ".$dataPostback;
 			$textReplyMessage.=" \r\nParams1 = ";
 			$textReplyMessage.= json_encode($paramPostback);
-			$textReplyMessage.=" \r\nParams2 = ".substr($paramPostback,2,20;
+			$textReplyMessage.=" \r\nParams2 = ".substr($paramPostback,2,20);
 			$textReplyMessage.=" \r\nParams3 = ".$paramPostback1;
 			$textReplyMessage.=" \r\nParams4 = ".$paramPostback2;
         }
