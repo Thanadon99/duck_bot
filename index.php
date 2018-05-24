@@ -134,7 +134,7 @@ if(!is_null($events)){
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
-		if ($x > '3'){
+		if ($x > '1'){
 			$get_result = calculate($userMessage);
 			//$is_message = $get_result[0];
 			//$typeMessage = $get_result[1];
@@ -383,7 +383,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select28', // กำหนดรายละเอียด
+                                    'Please select29', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
