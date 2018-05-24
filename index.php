@@ -465,13 +465,13 @@ if(!is_null($events)){
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        '',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
                                         $actionBuilder1
                                     ),
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        '',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
                                         $actionBuilder2
                                     ),    
                                 )
