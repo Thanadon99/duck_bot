@@ -129,7 +129,7 @@ if(!is_null($events)){
     }
 	
 		//$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-		/fwrite($myfile, $userMessage);
+		//fwrite($myfile, $userMessage);
 		//fclose($myfile);
 	
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
