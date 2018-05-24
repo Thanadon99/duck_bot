@@ -374,7 +374,7 @@ if(!is_null($events)){
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'เลือกวันที่ปฏิบัติภารกิจ', // กำหนดหัวเรื่อง
-                                    'Please select17', // กำหนดรายละเอียด
+                                    'Please select18', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
@@ -384,57 +384,45 @@ if(!is_null($events)){
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
                             new MessageTemplateActionBuilder(
-                                'Message Template',// ข้อความแสดงในปุ่ม
-                                'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'CKT',// ข้อความแสดงในปุ่ม
+                                'CKT' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),
-                            new UriTemplateActionBuilder(
-                                'Uri Template', // ข้อความแสดงในปุ่ม
-                                'https://www.ninenik.com'
+                            new MessageTemplateActionBuilder(
+                                'EP CKT',// ข้อความแสดงในปุ่ม
+                                'EP CKT' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),
-                            new PostbackTemplateActionBuilder(
-                                'Postback', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-                                    'action'=>'buy',
-                                    'item'=>100
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),							
+                            new MessageTemplateActionBuilder(
+                                'ISR',// ข้อความแสดงในปุ่ม
+                                'ISR' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),						
                         );
 						$actionBuilder1 = array(
                             new MessageTemplateActionBuilder(
-                                'Message Template1',// ข้อความแสดงในปุ่ม
-                                'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'ISR&DT&TST',// ข้อความแสดงในปุ่ม
+                                'ISR&DT&TST' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),
-                            new UriTemplateActionBuilder(
-                                'Uri Template', // ข้อความแสดงในปุ่ม
-                                'https://www.ninenik.com'
+                            new MessageTemplateActionBuilder(
+                                'IL',// ข้อความแสดงในปุ่ม
+                                'IL' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),
-                            new PostbackTemplateActionBuilder(
-                                'Postback', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-                                    'action'=>'buy',
-                                    'item'=>100
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            new MessageTemplateActionBuilder(
+                                'CB',// ข้อความแสดงในปุ่ม
+                                'CB' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),							
                         );
 						$actionBuilder2 = array(
                             new MessageTemplateActionBuilder(
-                                'Message Template2',// ข้อความแสดงในปุ่ม
-                                'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'CG',// ข้อความแสดงในปุ่ม
+                                'CG' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),
-                            new UriTemplateActionBuilder(
-                                'Uri Template', // ข้อความแสดงในปุ่ม
-                                'https://www.ninenik.com'
+                            new MessageTemplateActionBuilder(
+                                'CB',// ข้อความแสดงในปุ่ม
+                                'CB' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),
-                            new PostbackTemplateActionBuilder(
-                                'Postback', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-                                    'action'=>'buy',
-                                    'item'=>100
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),							
+                            new MessageTemplateActionBuilder(
+                                'SR',// ข้อความแสดงในปุ่ม
+                                'SR' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),						
                         );
                         $replyData = new TemplateMessageBuilder('Carousel',
                             new CarouselTemplateBuilder(
@@ -499,23 +487,7 @@ if(!is_null($events)){
                         $failMessage = json_encode($response->getHTTPStatus() . ' ' . $response->getRawBody());
                         $replyData = new TextMessageBuilder($failMessage);
                         break; 
-						
-						
-                    default:
-                        //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
-						
-						
-						/*$myfile = fopen("abc.txt", "r+") or die("Unable to open file!");
-						$xr=(fgets($myfile));
-						for($i=0;$i<count($xr);$i++){
-							$textReplyMessage = $xr[0];
-							$textReplyMessage.= $xr[1];
-							$textReplyMessage.= $xr[2];
-							$textReplyMessage.= $xr[3];
-						}
-						fclose($myfile);
-						*/
-						
+					case "รายงานค่า":
 						$data=file('abc.txt');
 						for($i=0;$i<count($data);$i++){
 							$textReplyMessage = $data[0];
@@ -541,12 +513,14 @@ if(!is_null($events)){
 							$textReplyMessage.= $data[20];
 							$textReplyMessage.= $data[21];
 						}
-						/*$myfile = fopen("abc.txt", "w") or die("Unable to open file!");
-						$strText1 = "I Love ThaiCreate.Com Line1\r\n";
-						fwrite($myfile, $strText1);
-						fclose($myfile);
-						*/
-						$objFopen = fopen('abc.txt', 'a+');
+						$replyData = new TextMessageBuilder($textReplyMessage);
+						break;
+                    default:
+                        //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
+						
+						
+						
+						/*$objFopen = fopen('abc.txt', 'a+');
 						$strText1 = "\r\nI Love ThaiCreate.Com Line4\r\n";
 						fwrite($objFopen, $strText1);
 						$strText2 = "I Love ThaiCreate.Com Line5\r\n";
@@ -556,7 +530,8 @@ if(!is_null($events)){
 						fclose($objFopen);
 						
 						$replyData = new TextMessageBuilder($textReplyMessage);
-                        //$replyData = new TextMessageBuilder($textReplyMessage);         
+                        //$replyData = new TextMessageBuilder($textReplyMessage);   
+*/						
                         break;                                      
                 }
                 break;
