@@ -126,12 +126,12 @@ if(!is_null($events)){
 	$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 	$x=(fgets($myfile));
 	fclose($myfile);
-	if ($userMessage = 'CKT'){
-		$get_result = calculate($userMessage);
+	//if ($userMessage = 'CKT'){
+		//$get_result = calculate($userMessage);
 		//$is_message = $get_result[0];
 		//$typeMessage = $get_result[1];
 		//$userMessage = $get_result[2];
-	}
+	//}
 		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 		fwrite($myfile, $userMessage);
 		fclose($myfile);
