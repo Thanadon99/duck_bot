@@ -403,8 +403,10 @@ if(!is_null($events)){
                             new PostbackTemplateActionBuilder(
                                 'Postback', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-                                    'action'=>'buy',
-                                    'item'=>100
+                                    //'action'=>'buy',
+                                    //'item'=>100
+									'CKT',
+									'CKT2'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
