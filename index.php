@@ -110,17 +110,6 @@ if(!is_null($events)){
         }*/
         if(!is_null($paramPostback)){
 			
-		$get_result = calculate($paramPostback);
-		$is_message = $get_result[0];
-		$typeMessage = $get_result[1];
-		$userMessage = $get_result[2];
-		
-            $textReplyMessage.= " \r\nParams = ".$paramPostback;
-			$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
-			$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$typeMessage;
-			$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$userMessage;
-			
-        }
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
@@ -130,6 +119,19 @@ if(!is_null($events)){
 			$typeMessage = $get_result[1];
 			$userMessage = $get_result[2];
 		}
+		else {
+		$get_result = calculate($paramPostback);
+		$is_message = $get_result[0];
+		$typeMessage = $get_result[1];
+		$userMessage = $get_result[2];
+		}
+           // $textReplyMessage.= " \r\nParams = ".$paramPostback;
+			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
+			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$typeMessage;
+			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$userMessage;
+			
+        }
+
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
 		//$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
