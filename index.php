@@ -403,7 +403,7 @@ if(!is_null($events)){
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
                             new PostbackTemplateActionBuilder(
-                                'Postback', // ข้อความแสดงในปุ่ม
+                                'CKT', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
                                     //'action'=>'buy',
                                     //'item'=>100
@@ -412,18 +412,19 @@ if(!is_null($events)){
                                 'CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'Postback', // ข้อความแสดงในปุ่ม
+                                'EP CKT', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-                                    //'action'=>'buy',
-                                    //'item'=>100
-									'EP CKT'
+									'EP_CKT'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'EP CKT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
-                            new MessageTemplateActionBuilder(
-                                'ISR',// ข้อความแสดงในปุ่ม
-                                'ISR' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),						
+                            new PostbackTemplateActionBuilder(
+                                'ISR', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'ISR'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                'ISR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
                         );
 						$actionBuilder1 = array(
                             new MessageTemplateActionBuilder(
@@ -459,7 +460,7 @@ if(!is_null($events)){
                                     new CarouselColumnTemplateBuilder(
                                         'Mission',
                                         'Please select',
-                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission.jpg',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/mission1.jpg',
                                         $actionBuilder
                                     ),
                                     new CarouselColumnTemplateBuilder(
