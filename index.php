@@ -462,7 +462,7 @@ if(!is_null($events)){
                             )
                         );
                         break;
-					case "CKT" || "ISR" || "IL":
+					case "CKT":
 						$pushdata = "\r\nMission = ".$userMessage;
 						$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
 						fwrite($myfile, $pushdata);
