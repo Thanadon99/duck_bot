@@ -965,17 +965,16 @@ if(!is_null($events)){
                         $textReplyMessage = "8) Fuel Remain = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
-					case "time_start":
-                        // กำหนด action 4 ปุ่ม 4 ประเภท
+					/*case "time_start":
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
-                                'Time', // ข้อความแสดงในปุ่ม
+								'Datetime Picker', // ข้อความแสดงในปุ่ม
 								http_build_query(array(
 									'action'=>'reservation',
 									'person'=>5
 								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-								'time', // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
-							),
+								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),  
                         );
                         $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
                         $replyData = new TemplateMessageBuilder('Button Template',
@@ -986,7 +985,7 @@ if(!is_null($events)){
                                     $actionBuilder  // กำหนด action object
                             )
                         );									
-                        break;
+                        break;*/
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
