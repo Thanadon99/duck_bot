@@ -864,8 +864,8 @@ if(!is_null($events)){
                                 'LDH324', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
 									'LDH324'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'LDH324'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                               // 'LDH324'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
                                 'LDH326', // ข้อความแสดงในปุ่ม
