@@ -1028,6 +1028,69 @@ if(!is_null($events)){
                             )
                         );									
                         break;
+					case "time_total":
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+								'Datetime Picker', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),  
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '12) Total', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
+                        break;
+					case "time_uav":
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+								'Datetime Picker', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),  
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '13) UAV hr.', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
+                        break;
+					case "time_engine":
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+								'Datetime Picker', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),  
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '14) Engine hr.', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
+                        break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
@@ -1220,18 +1283,39 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
+				$userMessage = "time_total";
 				$pushdata = "\r\nShutdown =".$postdata;
+			}
+			elseif ($x<"12")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "time_uav";
+				$pushdata = "\r\nTotal =".$postdata;
+			}
+			elseif ($x<"13")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "time_engine";
+				$pushdata = "\r\nUAV hr. =".$postdata;
+			}
+			elseif ($x<"14")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "Fuel_Cart_17";
+				$pushdata = "\r\nEngine hr. =".$postdata;
 			}
 			
 		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
-			if ("$x"<"9")
+			if ("$x"<"22")
 			{
 				fwrite($myfile, $x+1);
 			}
 			else
 			{
-				fwrite($myfile, $x-9);
+				fwrite($myfile, $x-22);
 			}
 		fclose($myfile);
 		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
