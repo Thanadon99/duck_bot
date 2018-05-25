@@ -143,12 +143,12 @@ if(!is_null($events)){
 		fclose($myfile);
 		if ($userMessage != "รายงานบิน"){
 			if ($userMessage != "รายงานซ่อม"){
-			if ($x > '20'){
-			$get_result = calculate($userMessage);
-			//$is_message = $get_result[0];
-			//$typeMessage = $get_result[1];
-			$userMessage = $get_result[2];
-			}
+				if ($x == '50'){
+				$get_result = calculate($userMessage);
+				//$is_message = $get_result[0];
+				//$typeMessage = $get_result[1];
+				$userMessage = $get_result[2];
+				}
 			}
 		}
 	
@@ -233,10 +233,6 @@ if(!is_null($events)){
                                         new MessageTemplateActionBuilder(
                                             'Yes',
                                             'Text Yes'
-                                        ),
-										new MessageTemplateActionBuilder(
-                                            'OK',
-                                            'Text OK'
                                         ),
                                         new MessageTemplateActionBuilder(
                                             'No',
@@ -958,7 +954,11 @@ if(!is_null($events)){
                                 )
                             )
                         );
-                        break;	
+                        break;
+					case "Fuel_Qty":
+                        $textReplyMessage = "Fuel Qty = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
 					
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
@@ -1112,7 +1112,7 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
+				$userMessage = "Fuel_Qty";
 				$pushdata = "\r\nPayload = ".substr($postdata,2,20);
 			}
 			elseif ($x<"7")
