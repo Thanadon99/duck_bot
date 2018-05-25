@@ -143,10 +143,8 @@ if(!is_null($events)){
 		fclose($myfile);
 		if ($userMessage != "รายงานบิน"){
 			if ($userMessage != "รายงานซ่อม"){
-				if ($x == '50'){
+				if ($userMessage != 'fuel_qty' && $x == '6'){
 				$get_result = calculate($userMessage);
-				//$is_message = $get_result[0];
-				//$typeMessage = $get_result[1];
 				$userMessage = $get_result[2];
 				}
 			}
