@@ -965,7 +965,7 @@ if(!is_null($events)){
                         $textReplyMessage = "8) Fuel Remain = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
-					/*case "time_start":
+					case "time_start":
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
 								'Datetime Picker', // ข้อความแสดงในปุ่ม
@@ -985,7 +985,7 @@ if(!is_null($events)){
                                     $actionBuilder  // กำหนด action object
                             )
                         );									
-                        break;*/
+                        break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
