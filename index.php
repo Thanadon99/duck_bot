@@ -1101,7 +1101,7 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
+				$userMessage = "payload";
 				$pushdata = "\r\nGCS No. = ".substr($postdata,2,20);
 			}
 			elseif ($x<"6")
@@ -1109,7 +1109,7 @@ Function calculate($postdata)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nPayload = ".$postdata;
+				$pushdata = "\r\nPayload = ".substr($postdata,2,20);
 			}
 			elseif ($x<"7")
 			{
