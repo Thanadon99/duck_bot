@@ -147,6 +147,10 @@ if(!is_null($events)){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
+				if ($userMessage != 'fuel_remain' && $x == '7'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
 			}
 		}
 	
@@ -957,7 +961,10 @@ if(!is_null($events)){
                         $textReplyMessage = "Fuel Qty = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
-					
+					case "fuel_remain":
+                        $textReplyMessage = "Fuel Remain = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
@@ -1102,42 +1109,42 @@ Function calculate($postdata)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "gcsno";
-				$pushdata = "\r\nEngine No. = ".substr($postdata,2,20);
+				$pushdata = "\r\nEngine No. =".substr($postdata,2,20);
 			}
 			elseif ($x<"5")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "payload";
-				$pushdata = "\r\nGCS No. = ".substr($postdata,2,20);
+				$pushdata = "\r\nGCS No. =".substr($postdata,2,20);
 			}
 			elseif ($x<"6")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "fuel_qty";
-				$pushdata = "\r\nPayload = ".substr($postdata,2,20);
+				$pushdata = "\r\nPayload =".substr($postdata,2,20);
 			}
 			elseif ($x<"7")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nFuel Qty = ".$postdata;
+				$userMessage = "fuel_remain";
+				$pushdata = "\r\nFuel Qty =".$postdata;
 			}
 			elseif ($x<"8")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nFuel Remain = ".$postdata;
+				$pushdata = "\r\nFuel Remain =".$postdata;
 			}
 			elseif ($x<"9")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nStart = ".$postdata;
+				$pushdata = "\r\nStart =".$postdata;
 			}
 			
 		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
