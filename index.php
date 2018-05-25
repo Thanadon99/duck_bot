@@ -234,6 +234,10 @@ if(!is_null($events)){
                                             'Yes',
                                             'Text Yes'
                                         ),
+										new MessageTemplateActionBuilder(
+                                            'OK',
+                                            'Text OK'
+                                        ),
                                         new MessageTemplateActionBuilder(
                                             'No',
                                             'Text NO'
