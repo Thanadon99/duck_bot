@@ -955,7 +955,7 @@ if(!is_null($events)){
                             )
                         );
                         break;
-					case "Fuel_Qty":
+					case "fuel_qty":
                         $textReplyMessage = "Fuel Qty = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
@@ -1112,7 +1112,7 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "Fuel_Qty";
+				$userMessage = "fuel_qty";
 				$pushdata = "\r\nPayload = ".substr($postdata,2,20);
 			}
 			elseif ($x<"7")
