@@ -986,6 +986,48 @@ if(!is_null($events)){
                             )
                         );									
                         break;
+					case "time_to":
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+								'Datetime Picker', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),  
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '10) Take Off', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
+                        break;
+					case "time_shutdown":
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+								'Datetime Picker', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),  
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '11) Shutdown', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
+                        break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
@@ -1164,8 +1206,22 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
+				$userMessage = "time_to";
 				$pushdata = "\r\nStart =".$postdata;
+			}
+			elseif ($x<"10")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "time_shutdown";
+				$pushdata = "\r\nTake Off =".$postdata;
+			}
+			elseif ($x<"11")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "\r\nShutdown =".$postdata;
 			}
 			
 		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
