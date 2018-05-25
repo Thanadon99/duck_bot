@@ -1076,21 +1076,26 @@ Function calculate($postdata)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "mission";
-				$pushdata = "Date = ".$postdata;
+				$M_date = .substr($postdata,8,2);
+				$M_moonth =.substr($postdata,5,2);
+				$M_year = .substr($postdata,0,4);
+				$pushdata = "Date =".$M_date;
+				$pushdata.= "/".$M_moonth;
+				$pushdata.= "/".$M_year;
 			}
 			elseif ($x<"2")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "uavno";
-				$pushdata = "\r\nMission = ".substr($postdata,2,20);
+				$pushdata = "\r\nMission =".substr($postdata,2,20);
 			}
 			elseif ($x<"3") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "engineno";
-				$pushdata = "\r\nUAV No. = ".substr($postdata,2,20);
+				$pushdata = "\r\nUAV No. =".substr($postdata,2,20);
 			}
 			elseif ($x<"4") 
 			{
@@ -1127,14 +1132,22 @@ Function calculate($postdata)
 				$userMessage = "ทดสอบ";
 				$pushdata = "\r\nFuel Remain = ".$postdata;
 			}
+			elseif ($x<"9")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ทดสอบ";
+				$pushdata = "\r\nStart = ".$postdata;
+			}
+			
 		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
-			if ("$x"<"8")
+			if ("$x"<"9")
 			{
 				fwrite($myfile, $x+1);
 			}
 			else
 			{
-				fwrite($myfile, $x-8);
+				fwrite($myfile, $x-9);
 			}
 		fclose($myfile);
 		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
