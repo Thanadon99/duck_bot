@@ -958,12 +958,34 @@ if(!is_null($events)){
                         );
                         break;
 					case "fuel_qty":
-                        $textReplyMessage = "Fuel Qty = ?";
+                        $textReplyMessage = "7) Fuel Qty = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
 					case "fuel_remain":
-                        $textReplyMessage = "Fuel Remain = ?";
+                        $textReplyMessage = "8) Fuel Remain = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "time_start":
+                        // กำหนด action 4 ปุ่ม 4 ประเภท
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+                                'Time', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'time', // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '9) Start', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
                         break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
@@ -1136,7 +1158,7 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
+				$userMessage = "time_start";
 				$pushdata = "\r\nFuel Remain =".$postdata;
 			}
 			elseif ($x<"9")
