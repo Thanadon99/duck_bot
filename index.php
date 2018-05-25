@@ -1076,11 +1076,11 @@ Function calculate($postdata)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "mission";
-				$M_date = .substr($postdata,8,2);
-				$M_moonth =.substr($postdata,5,2);
-				$M_year = .substr($postdata,0,4);
+				$M_date = substr($postdata,8,2);
+				$M_month =substr($postdata,5,2);
+				$M_year = substr($postdata,0,4);
 				$pushdata = "Date =".$M_date;
-				$pushdata.= "/".$M_moonth;
+				$pushdata.= "/".$M_month;
 				$pushdata.= "/".$M_year;
 			}
 			elseif ($x<"2")
