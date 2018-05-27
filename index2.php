@@ -93,6 +93,7 @@ if(!is_null($events)){
         $paramPostback = NULL;
 		//parse_str($events['events'][0]['postback']['data'],$paramPostback);;
 		$paramPostback = $events['events'][0]['postback']['data'];
+		$paramPostback = substr($paramPostback,2,20);
         if(array_key_exists('params',$events['events'][0]['postback'])){
             if(array_key_exists('date',$events['events'][0]['postback']['params'])){
                 $paramPostback = $events['events'][0]['postback']['params']['date'];
@@ -143,12 +144,46 @@ if(!is_null($events)){
 		fclose($myfile);
 		if ($userMessage != "รายงานบิน"){
 			if ($userMessage != "รายงานซ่อม"){
-			if ($x > '20'){
-			$get_result = calculate($userMessage);
-			//$is_message = $get_result[0];
-			//$typeMessage = $get_result[1];
-			$userMessage = $get_result[2];
-			}
+				if ($userMessage != 'fuel_qty' && $x == '6'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'fuel_remain' && $x == '7'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'time_uav' && $x == '12'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'time_engine' && $x == '13'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'fuel_cart_17' && $x == '14'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'fuel_cart_32' && $x == '15'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'flight_trouble1' && $x == '17'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'flight_repairable1' && $x == '18'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'flight_item1' && $x == '19'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'flight_sn' && $x == '20'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
 			}
 		}
 	
@@ -859,6 +894,359 @@ if(!is_null($events)){
                             )
                         );
                         break;
+					case "payload":
+                        // กำหนด action 4 ปุ่ม 4 ประเภท
+                        $actionBuilder = array(
+                            new PostbackTemplateActionBuilder(
+                                'LDH324', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'LDH324'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                               // 'LDH324'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'LDH326', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'LDH326'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'LDH326'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'QUAD', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'QUAD'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'QUAD'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder1 = array(
+                            new PostbackTemplateActionBuilder(
+                                'SAR', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'SAR'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'SAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'COMMINT', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'COMMINT'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'COMMINT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'CCD_PW', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'CCD_PW'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'CCD_PW'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder2 = array(
+                            new PostbackTemplateActionBuilder(
+                                'Flir', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Flir'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'Flir'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+                        $replyData = new TemplateMessageBuilder('Carousel',
+                            new CarouselTemplateBuilder(
+                                array(
+                                    new CarouselColumnTemplateBuilder(
+                                        '6) Payload',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
+                                        $actionBuilder
+                                    ),  
+									new CarouselColumnTemplateBuilder(
+                                        'Payload',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
+                                        $actionBuilder1
+                                    ), 
+									new CarouselColumnTemplateBuilder(
+                                        'Payload',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
+                                        $actionBuilder2
+                                    ), 
+                                )
+                            )
+                        );
+                        break;
+					case "fuel_qty":
+                        $textReplyMessage = "7) Fuel Qty = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "fuel_remain":
+                        $textReplyMessage = "8) Fuel Remain = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "time_start":
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+								'Time Picker', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),
+							new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                               // 'LDH324'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '9) Start', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
+                        break;
+					case "time_to":
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+								'Datetime Picker', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),
+							new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                               // 'LDH324'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '10) Take Off', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
+                        break;
+					case "time_shutdown":
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+								'Datetime Picker', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),
+							new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                               // 'LDH324'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '11) Shutdown', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
+                        break;
+					case "time_total":
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+								'Datetime Picker', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),
+							new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                               // 'LDH324'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '12) Total', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
+                        break;
+					case "time_uav":
+                        $textReplyMessage = "13) UAV hr. = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "time_engine":
+                        $textReplyMessage = "14) Engine hr. = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "fuel_cart_17":
+                        $textReplyMessage = "15) Fuel Cart 17 remain = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "fuel_cart_32":
+                        $textReplyMessage = "16) Fuel Cart 32 remain = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "flight_abort":
+                        // กำหนด action 4 ปุ่ม 4 ประเภท
+                        $actionBuilder = array(
+                            new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'26'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Ground Abort', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Ground Abort'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'27'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Air Abort', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Air Abort'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+                        $replyData = new TemplateMessageBuilder('Carousel',
+                            new CarouselTemplateBuilder(
+                                array(
+                                    new CarouselColumnTemplateBuilder(
+                                        '17) Flight Abort',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
+                                        $actionBuilder
+                                    ),                             
+                                )
+                            )
+                        );
+                        break;
+					case "flight_trouble1":
+                        $textReplyMessage = "18) Trouble (1) = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "flight_repairable1":
+                        $textReplyMessage = "19) Repairable (1) = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "flight_item1":
+                        $textReplyMessage = "20) Item (1) = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "flight_sn1":
+                        $textReplyMessage = "21) S/N (1) = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "ct":
+                        // กำหนด action 4 ปุ่ม 4 ประเภท
+                        $actionBuilder = array(
+                            new PostbackTemplateActionBuilder(
+                                'Boy', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Boy'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'26'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Bin', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Bin'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'27'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Moo', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Moo'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder1 = array(
+                            new PostbackTemplateActionBuilder(
+                                'Kan', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Kan'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'26'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Snack', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Snack'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'27'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'SandStorm', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'SandStorm'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+                        $replyData = new TemplateMessageBuilder('Carousel',
+                            new CarouselTemplateBuilder(
+                                array(
+                                    new CarouselColumnTemplateBuilder(
+                                        '22) Chief Tech',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
+                                        $actionBuilder
+                                    ),
+									new CarouselColumnTemplateBuilder(
+                                        'Chief Tech',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
+                                        $actionBuilder1
+                                    ), 
+                                )
+                            )
+                        );
+                        break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
@@ -977,65 +1365,176 @@ Function calculate($postdata)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "mission";
-				$pushdata = "Date = ".$postdata;
+				$M_date = substr($postdata,8,2);
+				$M_month =substr($postdata,5,2);
+				$M_year = substr($postdata,0,4);
+				$pushdata = "Date =".$M_date;
+				$pushdata.= "/".$M_month;
+				$pushdata.= "/".$M_year;
 			}
 			elseif ($x<"2")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "uavno";
-				$pushdata = "\r\nMission = ".substr($postdata,2,20);
+				//$pushdata = "\r\nMission =".substr($postdata,2,20);
+				$pushdata = "\r\nMission =".$postdata;
 			}
 			elseif ($x<"3") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "engineno";
-				$pushdata = "\r\nUAV No. = ".substr($postdata,2,20);
+				//$pushdata = "\r\nUAV No. =".substr($postdata,2,20);
+				$pushdata = "\r\nUAV No. =".$postdata;
 			}
 			elseif ($x<"4") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "gcsno";
-				$pushdata = "\r\nEngine No. = ".substr($postdata,2,20);
+				//$pushdata = "\r\nEngine No. =".substr($postdata,2,20);
+				$pushdata = "\r\nEngine No. =".$postdata;
 			}
 			elseif ($x<"5")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nGCS No. = ".substr($postdata,2,20);
+				$userMessage = "payload";
+				//$pushdata = "\r\nGCS No. =".substr($postdata,2,20);
+				$pushdata = "\r\nGCS No. =".$postdata;
 			}
 			elseif ($x<"6")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nPayload = ".$postdata;
+				$userMessage = "fuel_qty";
+				//$pushdata = "\r\nPayload =".substr($postdata,2,20);
+				$pushdata = "\r\nPayload =".$postdata;
 			}
 			elseif ($x<"7")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nFuel Qty = ".$postdata;
+				$userMessage = "fuel_remain";
+				$pushdata = "\r\nFuel Qty =".$postdata;
 			}
 			elseif ($x<"8")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "ทดสอบ";
-				$pushdata = "\r\nFuel Remain = ".$postdata;
+				$userMessage = "time_start";
+				$pushdata = "\r\nFuel Remain =".$postdata;
 			}
+			elseif ($x<"9")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "time_to";
+				$pushdata = "\r\nStart =".$postdata;
+			}
+			elseif ($x<"10")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "time_shutdown";
+				$pushdata = "\r\nTake Off =".$postdata;
+			}
+			elseif ($x<"11")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "time_total";
+				$pushdata = "\r\nShutdown =".$postdata;
+			}
+			elseif ($x<"12")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "time_uav";
+				$pushdata = "\r\nTotal =".$postdata;
+			}
+			elseif ($x<"13")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "time_engine";
+				$pushdata = "\r\nUAV hr. =".$postdata;
+			}
+			elseif ($x<"14")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "fuel_cart_17";
+				$pushdata = "\r\nEngine hr. =".$postdata;
+			}
+			elseif ($x<"15")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "fuel_cart_32";
+				$pushdata = "\r\nFuel Cart 17 remain =".$postdata;
+			}
+			elseif ($x<"16")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "flight_abort";
+				$pushdata = "\r\nFuel Cart 32 remain =".$postdata;
+			}
+			elseif ($x<"17")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "flight_trouble1";
+				//$pushdata = "\r\nAbort =".substr($postdata,2,20);
+				$pushdata = "\r\nAbort =".$postdata;
+			}
+			elseif ($x<"18")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "flight_repairable1";
+				$pushdata = "\r\nTrouble (1) =".$postdata;
+			}
+			elseif ($x<"19")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "flight_item1";
+				$pushdata = "\r\nRepairable (1) =".$postdata;
+			}
+			elseif ($x<"20")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "flight_sn1";
+				$pushdata = "\r\nItem (1) =".$postdata;
+			}
+			elseif ($x<"21")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ct";
+				$pushdata = "\r\nS/N (1) =".$postdata;
+			}
+			elseif ($x<"22")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "รายงานค่า";
+				//$pushdata = "\r\nCT =".substr($postdata,2,20);
+				$pushdata = "\r\nCT =".$postdata;
+			}
+			
 		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
-			if ("$x"<"8")
+			if ("$x"<"22")
 			{
 				fwrite($myfile, $x+1);
 			}
 			else
 			{
-				fwrite($myfile, $x-8);
+				fwrite($myfile, $x-22);
 			}
 		fclose($myfile);
 		$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
