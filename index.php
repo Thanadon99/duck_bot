@@ -167,6 +167,22 @@ if(!is_null($events)){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
+				if ($userMessage != 'flight_trouble1' && $x == '17'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'flight_repairable1' && $x == '18'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'flight_item1' && $x == '19'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'flight_sn' && $x == '20'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
 			}
 		}
 	
@@ -1110,11 +1126,94 @@ if(!is_null($events)){
                             new CarouselTemplateBuilder(
                                 array(
                                     new CarouselColumnTemplateBuilder(
-                                        '5) GCS No.',
+                                        '17) Flight Abort',
                                         'Please select',
                                         'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
                                         $actionBuilder
                                     ),                             
+                                )
+                            )
+                        );
+                        break;
+					case "flight_trouble1":
+                        $textReplyMessage = "18) Trouble (1) = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "flight_repairable1":
+                        $textReplyMessage = "19) Repairable (1) = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "flight_item1":
+                        $textReplyMessage = "20) Item (1) = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "flight_sn1":
+                        $textReplyMessage = "21) S/N (1) = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "ct":
+                        // กำหนด action 4 ปุ่ม 4 ประเภท
+                        $actionBuilder = array(
+                            new PostbackTemplateActionBuilder(
+                                'Boy', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Boy'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'26'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Bin', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Bin'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'27'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Moo', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Moo'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder1 = array(
+                            new PostbackTemplateActionBuilder(
+                                'Kan', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Kan'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'26'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Snack', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Snack'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'27'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'SandStorm', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'SandStorm'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+                        $replyData = new TemplateMessageBuilder('Carousel',
+                            new CarouselTemplateBuilder(
+                                array(
+                                    new CarouselColumnTemplateBuilder(
+                                        '22) Chief Tech',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
+                                        $actionBuilder
+                                    ),
+									new CarouselColumnTemplateBuilder(
+                                        'Chief Tech',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
+                                        $actionBuilder1
+                                    ), 
                                 )
                             )
                         );
@@ -1353,8 +1452,43 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "flight_trouble";
+				$userMessage = "flight_trouble1";
 				$pushdata = "\r\nAbort =".substr($postdata,2,20);
+			}
+			elseif ($x<"18")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "flight_repairable1";
+				$pushdata = "\r\nTrouble (1) =".$postdata;
+			}
+			elseif ($x<"19")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "flight_item1";
+				$pushdata = "\r\nRepairable (1) =".$postdata;
+			}
+			elseif ($x<"20")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "flight_sn1";
+				$pushdata = "\r\nItem (1) =".$postdata;
+			}
+			elseif ($x<"20")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ct";
+				$pushdata = "\r\nS/N (1) =".$postdata;
+			}
+			elseif ($x<"21")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "รายงานค่า";
+				$pushdata = "\r\nCT =".substr($postdata,2,20);
 			}
 			
 		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
