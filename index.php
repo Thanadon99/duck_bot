@@ -1476,14 +1476,14 @@ Function calculate($postdata)
 				$userMessage = "flight_sn1";
 				$pushdata = "\r\nItem (1) =".$postdata;
 			}
-			elseif ($x<"20")
+			elseif ($x<"21")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "ct";
 				$pushdata = "\r\nS/N (1) =".$postdata;
 			}
-			elseif ($x<"21")
+			elseif ($x<"22")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
