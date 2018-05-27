@@ -151,11 +151,11 @@ if(!is_null($events)){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
-				if ($userMessage != 'time_uav' && $x == '11'){
+				if ($userMessage != 'time_uav' && $x == '12'){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
-				if ($userMessage != 'time_engine' && $x == '12'){
+				if ($userMessage != 'time_engine' && $x == '13'){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
