@@ -1356,35 +1356,40 @@ Function calculate($postdata)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "uavno";
-				$pushdata = "\r\nMission =".substr($postdata,2,20);
+				//$pushdata = "\r\nMission =".substr($postdata,2,20);
+				$pushdata = "\r\nMission =".$postdata;
 			}
 			elseif ($x<"3") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "engineno";
-				$pushdata = "\r\nUAV No. =".substr($postdata,2,20);
+				//$pushdata = "\r\nUAV No. =".substr($postdata,2,20);
+				$pushdata = "\r\nUAV No. =".$postdata;
 			}
 			elseif ($x<"4") 
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "gcsno";
-				$pushdata = "\r\nEngine No. =".substr($postdata,2,20);
+				//$pushdata = "\r\nEngine No. =".substr($postdata,2,20);
+				$pushdata = "\r\nEngine No. =".$postdata;
 			}
 			elseif ($x<"5")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "payload";
-				$pushdata = "\r\nGCS No. =".substr($postdata,2,20);
+				//$pushdata = "\r\nGCS No. =".substr($postdata,2,20);
+				$pushdata = "\r\nGCS No. =".$postdata;
 			}
 			elseif ($x<"6")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "fuel_qty";
-				$pushdata = "\r\nPayload =".substr($postdata,2,20);
+				//$pushdata = "\r\nPayload =".substr($postdata,2,20);
+				$pushdata = "\r\nPayload =".$postdata;
 			}
 			elseif ($x<"7")
 			{
@@ -1461,7 +1466,8 @@ Function calculate($postdata)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "flight_trouble1";
-				$pushdata = "\r\nAbort =".substr($postdata,2,20);
+				//$pushdata = "\r\nAbort =".substr($postdata,2,20);
+				$pushdata = "\r\nAbort =".$postdata;
 			}
 			elseif ($x<"18")
 			{
@@ -1496,7 +1502,8 @@ Function calculate($postdata)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "รายงานค่า";
-				$pushdata = "\r\nCT =".substr($postdata,2,20);
+				//$pushdata = "\r\nCT =".substr($postdata,2,20);
+				$pushdata = "\r\nCT =".$postdata;
 			}
 			
 		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
