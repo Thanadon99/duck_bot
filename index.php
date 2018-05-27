@@ -151,6 +151,14 @@ if(!is_null($events)){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
+				if ($userMessage != 'time_uav' && $x == '11'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'time_engine' && $x == '12'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
 			}
 		}
 	
@@ -1050,46 +1058,12 @@ if(!is_null($events)){
                         );									
                         break;
 					case "time_uav":
-                        $actionBuilder = array(
-                            new DatetimePickerTemplateActionBuilder(
-								'Datetime Picker', // ข้อความแสดงในปุ่ม
-								http_build_query(array(
-									'action'=>'reservation',
-									'person'=>5
-								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
-							),  
-                        );
-                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
-                        $replyData = new TemplateMessageBuilder('Button Template',
-                            new ButtonTemplateBuilder(
-                                    '13) UAV hr.', // กำหนดหัวเรื่อง
-                                    'Please select', // กำหนดรายละเอียด
-                                    $imageUrl, // กำหนด url รุปภาพ
-                                    $actionBuilder  // กำหนด action object
-                            )
-                        );									
+                        $textReplyMessage = "13) UAV hr. = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
 					case "time_engine":
-                        $actionBuilder = array(
-                            new DatetimePickerTemplateActionBuilder(
-								'Datetime Picker', // ข้อความแสดงในปุ่ม
-								http_build_query(array(
-									'action'=>'reservation',
-									'person'=>5
-								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
-							),  
-                        );
-                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
-                        $replyData = new TemplateMessageBuilder('Button Template',
-                            new ButtonTemplateBuilder(
-                                    '14) Engine hr.', // กำหนดหัวเรื่อง
-                                    'Please select', // กำหนดรายละเอียด
-                                    $imageUrl, // กำหนด url รุปภาพ
-                                    $actionBuilder  // กำหนด action object
-                            )
-                        );									
+                        $textReplyMessage = "14) Engine hr. = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
