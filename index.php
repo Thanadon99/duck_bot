@@ -1006,7 +1006,14 @@ if(!is_null($events)){
 									'person'=>5
 								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
 								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
-							),  
+							),
+							new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                               // 'LDH324'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
                         );
                         $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
                         $replyData = new TemplateMessageBuilder('Button Template',
