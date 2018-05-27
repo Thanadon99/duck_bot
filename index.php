@@ -1081,6 +1081,44 @@ if(!is_null($events)){
                         $textReplyMessage = "16) Fuel Cart 32 remain = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
+					case "flight_abort":
+                        // กำหนด action 4 ปุ่ม 4 ประเภท
+                        $actionBuilder = array(
+                            new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'26'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Ground Abort', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Ground Abort'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'27'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Air Abort', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Air Abort'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+                        $replyData = new TemplateMessageBuilder('Carousel',
+                            new CarouselTemplateBuilder(
+                                array(
+                                    new CarouselColumnTemplateBuilder(
+                                        '5) GCS No.',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
+                                        $actionBuilder
+                                    ),                             
+                                )
+                            )
+                        );
+                        break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
@@ -1302,7 +1340,7 @@ Function calculate($postdata)
 				$is_message = 1;
 				$typeMessage = 'text';
 				$userMessage = "fuel_cart_32";
-				$pushdata = "\r\Fuel Cart 17 remain =".$postdata;
+				$pushdata = "\r\nFuel Cart 17 remain =".$postdata;
 			}
 			elseif ($x<"16")
 			{
@@ -1310,6 +1348,13 @@ Function calculate($postdata)
 				$typeMessage = 'text';
 				$userMessage = "flight_abort";
 				$pushdata = "\r\nFuel Cart 32 remain =".$postdata;
+			}
+			elseif ($x<"17")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "flight_trouble";
+				$pushdata = "\r\nAbort =".substr($postdata,2,20);
 			}
 			
 		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
