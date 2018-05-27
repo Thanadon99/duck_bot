@@ -159,6 +159,14 @@ if(!is_null($events)){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
+				if ($userMessage != 'fuel_cart_17' && $x == '14'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'fuel_cart_32' && $x == '15'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
 			}
 		}
 	
@@ -883,15 +891,15 @@ if(!is_null($events)){
                                 'LDH326', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
 									'LDH326'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'LDH326'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'LDH326'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
                                 'QUAD', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
 									'QUAD'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'QUAD'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'QUAD'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 					
                         );
 						$actionBuilder1 = array(
@@ -899,22 +907,22 @@ if(!is_null($events)){
                                 'SAR', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
 									'SAR'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'SAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'SAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
                                 'COMMINT', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
 									'COMMINT'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'COMMINT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'COMMINT'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
                                 'CCD_PW', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
 									'CCD_PW'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'CCD_PW'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'CCD_PW'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 					
                         );
 						$actionBuilder2 = array(
@@ -922,22 +930,22 @@ if(!is_null($events)){
                                 'Flir', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
 									'Flir'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'Flir'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'Flir'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
                                 '-', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
 									'-'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                '-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
                                 '-', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
 									'-'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                '-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 					
                         );
                         $replyData = new TemplateMessageBuilder('Carousel',
@@ -1063,6 +1071,14 @@ if(!is_null($events)){
                         break;
 					case "time_engine":
                         $textReplyMessage = "14) Engine hr. = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "fuel_cart_17":
+                        $textReplyMessage = "15) Fuel Cart 17 remain = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "fuel_cart_32":
+                        $textReplyMessage = "16) Fuel Cart 32 remain = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
 					// ส่วนการเรียกชื่อบอท	
@@ -1278,8 +1294,22 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "Fuel_Cart_17";
+				$userMessage = "fuel_cart_17";
 				$pushdata = "\r\nEngine hr. =".$postdata;
+			}
+			elseif ($x<"15")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "fuel_cart_32";
+				$pushdata = "\r\Fuel Cart 17 remain =".$postdata;
+			}
+			elseif ($x<"16")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "flight_abort";
+				$pushdata = "\r\nFuel Cart 32 remain =".$postdata;
 			}
 			
 		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
