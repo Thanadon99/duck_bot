@@ -1167,7 +1167,7 @@ if(!is_null($events)){
 					case "if_trouble":
                         $replyData = new TemplateMessageBuilder('Confirm Template',
                             new ConfirmTemplateBuilder(
-                                    'Is there trouble?',
+                                    '18) Is there trouble?',
                                     array(
                                         new MessageTemplateActionBuilder(
                                             'Yes',
@@ -1175,15 +1175,25 @@ if(!is_null($events)){
                                         ),
                                         new MessageTemplateActionBuilder(
                                             'No',
-                                            'no_trouble1'
+                                            'no_trouble'
                                         )
                                     )
                             )
                         );
                         break;	
-					case "no_trouble1":
-                        $textReplyMessage = "18) no trouble";
+					case "no_trouble":
+                        $textReplyMessage = "no trouble";
                         $replyData = new TextMessageBuilder($textReplyMessage);
+						$myfile = fopen("abc.txt", "w+") or die("Unable to open file!");
+						$strText1 = "\r\nTrouble (1) =-";
+						$strText1.= "\r\nRepairable (1) =-";
+						$strText1.= "\r\nItem (1) =-";
+						$strText1.= "\r\nS/N (1) =-";
+						fwrite($myfile, $strText1);
+						fclose($myfile);
+						$myfile = fopen("x.txt", "w+") or die("Unable to open file!");
+						fwrite($myfile, 21);
+						fclose($myfile);
                         break;
 					case "flight_trouble1":
                         $textReplyMessage = "18) Trouble (1) = ?";
@@ -1293,9 +1303,10 @@ if(!is_null($events)){
                             // $userData['pictureUrl']
                             // $userData['statusMessage']
                             $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];
-							$textReplyMessage.= " พิมพ์คำสั่งบอทได้ตามนี้ครับ";
-   							$textReplyMessage.= "\r\nรายงานบิน";
-							$textReplyMessage.= "\r\nรายงานซ่อม";
+							$textReplyMessage.= "\r\nสามารถ กด Mission หรือ Maintenace เพื่อพิมพ์รายงานตามลำดับขั้นตอนได้เลยครับ";
+   							//$textReplyMessage.= "\r\nรายงานบิน";
+							//$textReplyMessage.= "\r\nรายงานซ่อม";
+							
                             $replyData = new TextMessageBuilder($textReplyMessage);         
                             break;              
                         }
@@ -1328,6 +1339,7 @@ if(!is_null($events)){
 							$textReplyMessage.= $data[19];
 							$textReplyMessage.= $data[20];
 							$textReplyMessage.= $data[21];
+							$textReplyMessage.= $data[22];
 						}
 						$replyData = new TextMessageBuilder($textReplyMessage);
 						break;

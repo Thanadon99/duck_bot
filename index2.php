@@ -168,7 +168,7 @@ if(!is_null($events)){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
-				if ($userMessage != 'flight_trouble1' && $x == '17'){
+				if ($userMessage != 'flight_trouble1' && $x == '17' && $userMessage != 'if_trouble'){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
@@ -1164,6 +1164,27 @@ if(!is_null($events)){
                             )
                         );
                         break;
+					case "if_trouble":
+                        $replyData = new TemplateMessageBuilder('Confirm Template',
+                            new ConfirmTemplateBuilder(
+                                    '18) Is there trouble?',
+                                    array(
+                                        new MessageTemplateActionBuilder(
+                                            'Yes',
+                                            'flight_trouble1'
+                                        ),
+                                        new MessageTemplateActionBuilder(
+                                            'No',
+                                            'no_trouble1'
+                                        )
+                                    )
+                            )
+                        );
+                        break;	
+					case "no_trouble1":
+                        $textReplyMessage = "18) no trouble";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
 					case "flight_trouble1":
                         $textReplyMessage = "18) Trouble (1) = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
@@ -1486,7 +1507,7 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "flight_trouble1";
+				$userMessage = "if_trouble";
 				//$pushdata = "\r\nAbort =".substr($postdata,2,20);
 				$pushdata = "\r\nAbort =".$postdata;
 			}
