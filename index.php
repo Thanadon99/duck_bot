@@ -50,29 +50,6 @@ $events = json_decode($content, true);
 // เชื่อมต่อกับ LINE Messaging API
 $httpClient = new CurlHTTPClient($channel_token);
 $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-//สร้างตัวแปร
-$DateUAV = NULL;
-$MissionUAV = NULL;
-$UAV = NULL;
-$Engine = NULL;
-$GCS = NULL;
-$Payload = NULL;
-$Fuel_Qty = NULL;
-$Fuel_Remain = NULL;
-$Start = NULL;
-$Takeoff = NULL;
-$Shutdown = NULL;
-$Total = NULL;
-$UAV_hr = NULL;
-$Engine_hr = NULL;
-$Fuel_Cart17 = NULL;
-$Fuel_Cart32 = NULL;
-$Abort = NULL;
-$Trouble = NULL;
-$Repairable = NULL;
-$Item = NULL;
-$Serial = NULL;
-$CT = NULL;
 if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -117,28 +94,18 @@ if(!is_null($events)){
 
         }*/
         if(!is_null($paramPostback)){
-			
-
+			$get_result = calculate($paramPostback);
+			$is_message = $get_result[0];
+			$typeMessage = $get_result[1];
+			$userMessage = $get_result[2];
 		
-		$get_result = calculate($paramPostback);
-		$is_message = $get_result[0];
-		$typeMessage = $get_result[1];
-		$userMessage = $get_result[2];
-		
-           //$textReplyMessage.= " \r\nParams = ".$paramPostback;
+            //$textReplyMessage.= " \r\nParams = ".$paramPostback;
 			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
-			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$typeMessage;
-			//$textReplyMessage.= "\r\nข้อความยาวๆๆๆxตัวบน ".$userMessage;
-			
+			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$typeMessage;
+			//$textReplyMessage.= "\r\nขBot ตอบกลับคุณเป็นข้อความ".$userMessage;
         }
-
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
-	
-		//$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
-		//fwrite($myfile, $userMessage);
-		//fclose($myfile);
-	
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
@@ -186,222 +153,11 @@ if(!is_null($events)){
 				}
 			}
 		}
-	
     if(!is_null($is_message)){
         switch ($typeMessage){
             case 'text':
                 $userMessage = strtolower($userMessage); // แปลงเป็นตัวเล็ก สำหรับทดสอบ
                 switch ($userMessage) {
-                    case "t":
-                        $textReplyMessage = "Bot ตอบกลับคุณเป็นข้อความ".$DateUAV;
-						$textReplyMessage.= "\r\nข้อความยาวๆๆๆ".$MissionUAV;
-                        $replyData = new TextMessageBuilder($textReplyMessage);
-                        break;
-                    case "i":
-                        $picFullSize = 'https://www.mywebsite.com/imgsrc/photos/f/simpleflower';
-                        $picThumbnail = 'https://www.mywebsite.com/imgsrc/photos/f/simpleflower/240';
-                        $replyData = new ImageMessageBuilder($picFullSize,$picThumbnail);
-                        break;
-                    case "v":
-                        $picThumbnail = 'https://www.mywebsite.com/imgsrc/photos/f/sampleimage/240';
-                        $videoUrl = "https://www.ninenik.com/line/simplevideo.mp4";             
-                        $replyData = new VideoMessageBuilder($videoUrl,$picThumbnail);
-                        break;
-                    case "a":
-                        $audioUrl = "https://www.ninenik.com/line/S_6988827932080.wav";
-                        $replyData = new AudioMessageBuilder($audioUrl,20000);
-                        break;
-                    case "l":
-                        $placeName = "ที่ตั้งร้าน";
-                        $placeAddress = "แขวง พลับพลา เขต วังทองหลาง กรุงเทพมหานคร ประเทศไทย";
-                        $latitude = 13.780401863217657;
-                        $longitude = 100.61141967773438;
-                        $replyData = new LocationMessageBuilder($placeName, $placeAddress, $latitude ,$longitude);              
-                        break;
-                    case "m":
-                        $textReplyMessage = "Bot ตอบกลับคุณเป็นข้อความ";
-                        $textMessage = new TextMessageBuilder($textReplyMessage);
-                                         
-                        $picFullSize = 'https://www.mywebsite.com/imgsrc/photos/f/simpleflower';
-                        $picThumbnail = 'https://www.mywebsite.com/imgsrc/photos/f/simpleflower/240';
-                        $imageMessage = new ImageMessageBuilder($picFullSize,$picThumbnail);
-                                         
-                        $placeName = "ที่ตั้งร้าน";
-                        $placeAddress = "แขวง พลับพลา เขต วังทองหลาง กรุงเทพมหานคร ประเทศไทย";
-                        $latitude = 13.780401863217657;
-                        $longitude = 100.61141967773438;
-                        $locationMessage = new LocationMessageBuilder($placeName, $placeAddress, $latitude ,$longitude);        
-     
-                        $multiMessage =     new MultiMessageBuilder;
-                        $multiMessage->add($textMessage);
-                        $multiMessage->add($imageMessage);
-                        $multiMessage->add($locationMessage);
-                        $replyData = $multiMessage;                                     
-                        break;                  
-                    case "s":
-                        $stickerID = 22;
-                        $packageID = 2;
-                        $replyData = new StickerMessageBuilder($packageID,$stickerID);
-                        break;      
-                    case "im":
-                        $imageMapUrl = 'https://www.mywebsite.com/imgsrc/photos/w/sampleimagemap';
-                        $replyData = new ImagemapMessageBuilder(
-                            $imageMapUrl,
-                            'This is Title',
-                            new BaseSizeBuilder(699,1040),
-                            array(
-                                new ImagemapMessageActionBuilder(
-                                    'test image map',
-                                    new AreaBuilder(0,0,520,699)
-                                    ),
-                                new ImagemapUriActionBuilder(
-                                    'http://www.ninenik.com',
-                                    new AreaBuilder(520,0,520,699)
-                                    )
-                            )); 
-                        break;          
-                    case "tm":
-                        $replyData = new TemplateMessageBuilder('Confirm Template',
-                            new ConfirmTemplateBuilder(
-                                    'Confirm template builder',
-                                    array(
-                                        new MessageTemplateActionBuilder(
-                                            'Yes',
-                                            'Text Yes'
-                                        ),
-                                        new MessageTemplateActionBuilder(
-                                            'No',
-                                            'Text NO'
-                                        )
-                                    )
-                            )
-                        );
-                        break;          
-                    case "ทดสอบ":
-                        // กำหนด action 4 ปุ่ม 4 ประเภท
-                        $actionBuilder = array(
-                            new MessageTemplateActionBuilder(
-                                'Message Template',// ข้อความแสดงในปุ่ม
-                                'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),
-                            new UriTemplateActionBuilder(
-                                'Uri Template', // ข้อความแสดงในปุ่ม
-                                'https://www.ninenik.com'
-                            ),
-                            new DatetimePickerTemplateActionBuilder(
-                                'Datetime Picker', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-                                    'action'=>'reservation',
-                                    'person'=>5
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'datetime', // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
-                                substr_replace(date("Y-m-d H:i"),'T',10,1), // วันที่ เวลา ค่าเริ่มต้นที่ถูกเลือก
-                                substr_replace(date("Y-m-d H:i",strtotime("+5 day")),'T',10,1), //วันที่ เวลา มากสุดที่เลือกได้
-                                substr_replace(date("Y-m-d H:i"),'T',10,1) //วันที่ เวลา น้อยสุดที่เลือกได้
-                            ),      
-                            new PostbackTemplateActionBuilder(
-                                'Postback', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-                                    'action'=>'buy',
-                                    'item'=>100
-                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-         //                     'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),      
-                        );
-                        $imageUrl = 'https://www.mywebsite.com/imgsrc/photos/w/simpleflower';
-                        $replyData = new TemplateMessageBuilder('Button Template',
-                            new ButtonTemplateBuilder(
-                                    'button template builder', // กำหนดหัวเรื่อง
-                                    'Please select', // กำหนดรายละเอียด
-                                    $imageUrl, // กำหนด url รุปภาพ
-                                    $actionBuilder  // กำหนด action object
-                            )
-                        );              
-                        break;      
-                    case "t_f":
-                        $replyData = new TemplateMessageBuilder('Confirm Template',
-                            new ConfirmTemplateBuilder(
-                                    'Confirm template builder', // ข้อความแนะนหรือบอกวิธีการ หรือคำอธิบาย
-                                    array(
-                                        new MessageTemplateActionBuilder(
-                                            'Yes', // ข้อความสำหรับปุ่มแรก
-                                            'YES'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                        ),
-                                        new MessageTemplateActionBuilder(
-                                            'No', // ข้อความสำหรับปุ่มแรก
-                                            'NO' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                        )
-                                    )
-                            )
-                        );
-                        break;      
-                    case "t_c":
-                        // กำหนด action 4 ปุ่ม 4 ประเภท
-                        $actionBuilder = array(
-                            new MessageTemplateActionBuilder(
-                                'Message Template',// ข้อความแสดงในปุ่ม
-                                'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),
-                            new UriTemplateActionBuilder(
-                                'Uri Template', // ข้อความแสดงในปุ่ม
-                                'https://www.ninenik.com'
-                            ),
-                            new PostbackTemplateActionBuilder(
-                                'Postback', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-                                    'action'=>'buy',
-                                    'item'=>100
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),      
-                        );
-                        $replyData = new TemplateMessageBuilder('Carousel',
-                            new CarouselTemplateBuilder(
-                                array(
-                                    new CarouselColumnTemplateBuilder(
-                                        'Title Carousel',
-                                        'Description Carousel',
-                                        'https://www.mywebsite.com/imgsrc/photos/f/sampleimage/700',
-                                        $actionBuilder
-                                    ),
-                                    new CarouselColumnTemplateBuilder(
-                                        'Title Carousel',
-                                        'Description Carousel',
-                                        'https://www.mywebsite.com/imgsrc/photos/f/sampleimage/700',
-                                        $actionBuilder
-                                    ),
-                                    new CarouselColumnTemplateBuilder(
-                                        'Title Carousel',
-                                        'Description Carousel',
-                                        'https://www.mywebsite.com/imgsrc/photos/f/sampleimage/700',
-                                        $actionBuilder
-                                    ),                                          
-                                )
-                            )
-                        );
-                        break;      
-                    case "t_ic":
-                        $replyData = new TemplateMessageBuilder('Image Carousel',
-                            new ImageCarouselTemplateBuilder(
-                                array(
-                                    new ImageCarouselColumnTemplateBuilder(
-                                        'https://www.mywebsite.com/imgsrc/photos/f/sampleimage/700',
-                                        new UriTemplateActionBuilder(
-                                            'Uri Template', // ข้อความแสดงในปุ่ม
-                                            'https://www.ninenik.com'
-                                        )
-                                    ),
-                                    new ImageCarouselColumnTemplateBuilder(
-                                        'https://www.mywebsite.com/imgsrc/photos/f/sampleimage/700',
-                                        new UriTemplateActionBuilder(
-                                            'Uri Template', // ข้อความแสดงในปุ่ม
-                                            'https://www.ninenik.com'
-                                        )
-                                    )                                       
-                                )
-                            )
-                        );
-                        break;
 					case "รายงานบิน":
 						$myfile = fopen("abc.txt", "w+") or die("Unable to open file!");
 						$strText1 = "";
@@ -1363,21 +1119,7 @@ if(!is_null($events)){
 					
                     default:
                         //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
-						
-						
-						
-						/*$objFopen = fopen('abc.txt', 'a+');
-						$strText1 = "\r\nI Love ThaiCreate.Com Line4\r\n";
-						fwrite($objFopen, $strText1);
-						$strText2 = "I Love ThaiCreate.Com Line5\r\n";
-						fwrite($objFopen, $strText2);
-						$strText3 = "I Love ThaiCreate.Com Line6\r\n";
-						fwrite($objFopen, $strText3);
-						fclose($objFopen);
-						
-						$replyData = new TextMessageBuilder($textReplyMessage);
-                        //$replyData = new TextMessageBuilder($textReplyMessage);   
-*/						
+                        //$replyData = new TextMessageBuilder($textReplyMessage);   						
                         break;                                      
                 }
                 break;
