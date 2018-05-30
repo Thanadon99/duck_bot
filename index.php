@@ -168,7 +168,7 @@ if(!is_null($events)){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
-				if ($userMessage != 'flight_trouble1' && $x == '17' && $userMessage != 'if_trouble'){
+				if ($userMessage != 'flight_trouble1' && $x == '17' && $userMessage != 'if_trouble' && $userMessage != 'no_trouble'){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
@@ -1029,7 +1029,7 @@ if(!is_null($events)){
 					case "time_to":
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
-								'Datetime Picker', // ข้อความแสดงในปุ่ม
+								'Time Picker', // ข้อความแสดงในปุ่ม
 								http_build_query(array(
 									'action'=>'reservation',
 									'person'=>5
@@ -1057,7 +1057,7 @@ if(!is_null($events)){
 					case "time_shutdown":
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
-								'Datetime Picker', // ข้อความแสดงในปุ่ม
+								'Time Picker', // ข้อความแสดงในปุ่ม
 								http_build_query(array(
 									'action'=>'reservation',
 									'person'=>5
@@ -1085,7 +1085,7 @@ if(!is_null($events)){
 					case "time_total":
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
-								'Datetime Picker', // ข้อความแสดงในปุ่ม
+								'Time Picker', // ข้อความแสดงในปุ่ม
 								http_build_query(array(
 									'action'=>'reservation',
 									'person'=>5
