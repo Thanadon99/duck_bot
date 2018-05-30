@@ -168,7 +168,7 @@ if(!is_null($events)){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
-				if ($userMessage != 'flight_trouble1' && $x == '17' && $userMessage != 'if_trouble' && $userMessage != 'no_trouble'){
+				if ($userMessage != 'flight_trouble1' && $x == '17' && $userMessage != 'if_trouble' && $userMessage != 'ct'){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
 				}
@@ -1175,25 +1175,15 @@ if(!is_null($events)){
                                         ),
                                         new MessageTemplateActionBuilder(
                                             'No',
-                                            'no_trouble'
+                                            'ct'
                                         )
                                     )
                             )
                         );
                         break;	
 					case "no_trouble":
-                        $textReplyMessage = "no trouble";
+						$textReplyMessage = "no trouble";
                         $replyData = new TextMessageBuilder($textReplyMessage);
-						$myfile = fopen("abc.txt", "w+") or die("Unable to open file!");
-						$strText1 = "\r\nTrouble (1) =-";
-						$strText1.= "\r\nRepairable (1) =-";
-						$strText1.= "\r\nItem (1) =-";
-						$strText1.= "\r\nS/N (1) =-";
-						fwrite($myfile, $strText1);
-						fclose($myfile);
-						$myfile = fopen("x.txt", "w+") or die("Unable to open file!");
-						fwrite($myfile, 21);
-						fclose($myfile);
                         break;
 					case "flight_trouble1":
                         $textReplyMessage = "18) Trouble (1) = ?";
@@ -1277,6 +1267,24 @@ if(!is_null($events)){
                                 )
                             )
                         );
+						$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
+						$x=(fgets($myfile));
+						fclose($myfile);
+						
+						if ("$x" == "17")
+							{
+							$myfile = fopen("x.txt", "w") or die("Unable to open file!");
+							fwrite($myfile, 21);
+							fclose($myfile);
+							
+							$myfile = fopen("abc.txt", "a+") or die("Unable to open file!");
+							$strText1 = "\r\nTrouble (1) =-";
+							$strText1.= "\r\nRepairable (1) =-";
+							$strText1.= "\r\nItem (1) =-";
+							$strText1.= "\r\nS/N (1) =-";
+							fwrite($myfile, $strText1);
+							fclose($myfile);
+							}
                         break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
