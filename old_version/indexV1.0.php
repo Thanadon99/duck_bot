@@ -7,10 +7,9 @@ V.1.0
 	3. การรายงานได้แบบฟอร์มเดียวกัน
 	4. หากไม่มี trouble สามารถกดข้ามได้ เพื่อประหยัดเวลา
 	ข้อจำกัด
-	1. บาง event ต้องพิมพ์ข้อความซ้ำ รอแก้ไข
-	2. ยังไม่เพิ่มเติมในส่วนของหลาย trouble
-	3. หากข้อมูลใน excel มีความถูกต้องสมบูรณ์แล้ว จะพัฒนาในส่วนของ time total, UAV hr., Engine hr. ให้สามารถคำนวณโดบอัตโนมัติ
-	4. รอพัฒนาในส่วนของ maintenance
+	1. ยังไม่เพิ่มเติมในส่วนของหลาย trouble
+	2. หากข้อมูลใน excel มีความถูกต้องสมบูรณ์แล้ว จะพัฒนาในส่วนของ time total, UAV hr., Engine hr. ให้สามารถคำนวณโดบอัตโนมัติ
+	3. รอพัฒนาในส่วนของ maintenance
 */
 // include composer autoload
 require_once './vendor/autoload.php';
@@ -949,10 +948,6 @@ if(!is_null($events)){
                             )
                         );
                         break;	
-					case "no_trouble":
-						$textReplyMessage = "no trouble";
-                        $replyData = new TextMessageBuilder($textReplyMessage);
-                        break;
 					case "flight_trouble1":
                         $textReplyMessage = "18) Trouble (1) = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);

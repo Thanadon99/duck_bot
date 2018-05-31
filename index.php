@@ -213,11 +213,11 @@ if(!is_null($events)){
                                 'ISR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'ISR_Laser', // ข้อความแสดงในปุ่ม
+                                'IL', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'ISR_Laser'
+									'IL'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'ISR_Laser'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'IL'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 					
                         );
 						$actionBuilder1 = array(
@@ -238,29 +238,22 @@ if(!is_null($events)){
                                 'SR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'CB', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-									'CB'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'CB'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 					
-                        );
-						$actionBuilder2 = array(
-                            new PostbackTemplateActionBuilder(
-                                'HOC', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-                                    //'action'=>'buy',
-                                    //'item'=>100
-									'HOC'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'HOC'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 
-                            new PostbackTemplateActionBuilder(
                                 'CAS', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
 									'CAS'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'CAS'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder2 = array(
+                            new PostbackTemplateActionBuilder(
+                                'Air_Transfer', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    //'action'=>'buy',
+                                    //'item'=>100
+									'Air_Transfer'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                'Air_Transfer'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
                                 'ABGD', // ข้อความแสดงในปุ่ม
@@ -268,39 +261,28 @@ if(!is_null($events)){
 									'ABGD'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'ABGD'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'SDF', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'SDF'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                'SDF'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 					
                         );
 						$actionBuilder3 = array(
                             new PostbackTemplateActionBuilder(
-                                'Laser', // ข้อความแสดงในปุ่ม
+                                'ATF', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
                                     //'action'=>'buy',
                                     //'item'=>100
-									'Laser'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'Laser'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 
-                            new PostbackTemplateActionBuilder(
-                                'CDF', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-									'CDF'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'CDF'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 
-                            new PostbackTemplateActionBuilder(
-                                'ATF', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
 									'ATF'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'ATF'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ), 					
-                        );
-						$actionBuilder4 = array(
+                            ), 
                             new PostbackTemplateActionBuilder(
                                 'CAS_DT_CSAR', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-                                    //'action'=>'buy',
-                                    //'item'=>100
 									'CAS_DT_CSAR'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'CAS_DT_CSAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
@@ -311,6 +293,24 @@ if(!is_null($events)){
 									'CAS_CSAR'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 'CAS_CSAR'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder4 = array(
+                            new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    //'action'=>'buy',
+                                    //'item'=>100
+									'-'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                '-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 	
 							new PostbackTemplateActionBuilder(
                                 '-', // ข้อความแสดงในปุ่ม
@@ -940,10 +940,6 @@ if(!is_null($events)){
                             )
                         );
                         break;	
-					case "no_trouble":
-						$textReplyMessage = "no trouble";
-                        $replyData = new TextMessageBuilder($textReplyMessage);
-                        break;
 					case "flight_trouble1":
                         $textReplyMessage = "18) Trouble (1) = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
