@@ -133,6 +133,14 @@ if(!is_null($events)){
 				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
+				if ($userMessage != 'fuel_qty' && $x1 == 7'){
+				$get_result = calculate1($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'fuel_remain' && $x1 == '8'){
+				$get_result = calculate1($userMessage);
+				$userMessage = $get_result[2];
+				}
 				}
 				}
 			}
@@ -1481,6 +1489,42 @@ if(!is_null($events)){
                             )
                         );
                         break;
+					case "fuel_qty_1":
+                        $textReplyMessage = "7) Fuel Qty = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "fuel_remain_1":
+                        $textReplyMessage = "8) Fuel Remain = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "time_start_1":
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+								'Time Picker', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),
+							new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                               // 'LDH324'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '9) Start', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
+                        break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
@@ -1837,9 +1881,30 @@ Function calculate1($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "แสดงผลรายงาน";
+				$userMessage = "fuel_qty_1";
 				//$pushdata = "\r\nPayload =".substr($postdata,2,20);
 				$pushdata = "\r\nPayload =".$postdata;
+			}
+			elseif ($x1<"8")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "fuel_remain_1";
+				$pushdata = "\r\nFuel Qty =".$postdata;
+			}
+			elseif ($x1<"9")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "time_start_1";
+				$pushdata = "\r\nFuel Remain =".$postdata;
+			}
+			elseif ($x1<"10")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "แสดงผลรายงาน";
+				$pushdata = "\r\nStart =".$postdata;
 			}
 			
 			
