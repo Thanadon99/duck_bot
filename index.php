@@ -181,6 +181,9 @@ if(!is_null($events)){
 						$myfile = fopen("x.txt", "w+") or die("Unable to open file!");
 						fwrite($myfile, 0);
 						fclose($myfile);
+						$myfile = fopen("x1.txt", "w+") or die("Unable to open file!");
+						fwrite($myfile, 0);
+						fclose($myfile);
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
                             new DatetimePickerTemplateActionBuilder(
@@ -1125,7 +1128,15 @@ if(!is_null($events)){
 					case "x=?":
 						$data=file('x.txt');
 						for($i=0;$i<count($data);$i++){
-							$textReplyMessage = $data[0];
+							$textReplyMessage = "X = ";
+							$textReplyMessage.= $data[0];
+							$textReplyMessage.= $data[1];
+							$textReplyMessage.= $data[2];
+						}
+						$data1=file('x1.txt');
+						for($i=0;$i<count($data1);$i++){
+							$textReplyMessage.= ",X1 = ";
+							$textReplyMessage.= $data[0];
 							$textReplyMessage.= $data[1];
 							$textReplyMessage.= $data[2];
 						}
