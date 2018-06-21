@@ -141,23 +141,23 @@ if(!is_null($events)){
 				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
-				if ($userMessage != 'Maintenance_trouble' && $x1 == '11'){
+				if ($userMessage != 'maintenance_trouble' && $x1 == '11'){
 				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
-				if ($userMessage != 'Maintenance_cause' && $x1 == '12'){
+				if ($userMessage != 'maintenance_cause' && $x1 == '12'){
 				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
-				if ($userMessage != 'Maintenance_repairable' && $x1 == '13'){
+				if ($userMessage != 'maintenance_repairable' && $x1 == '13'){
 				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
-				if ($userMessage != 'Maintenance_item' && $x1 == '14'){
+				if ($userMessage != 'maintenance_item' && $x1 == '14'){
 				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
-				if ($userMessage != 'Maintenance_sn' && $x1 == '15'){
+				if ($userMessage != 'maintenance_sn' && $x1 == '15'){
 				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
@@ -1573,23 +1573,23 @@ if(!is_null($events)){
                             )
                         );									
                         break;
-					case "Maintenance_trouble":
+					case "maintenance_trouble":
                         $textReplyMessage = "11) Trouble = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
-					case "Maintenance_cause":
+					case "maintenance_cause":
                         $textReplyMessage = "12) Cause = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
-					case "Maintenance_repairable":
+					case "maintenance_repairable":
                         $textReplyMessage = "13) Repairable = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
-					case "Maintenance_item":
+					case "maintenance_item":
                         $textReplyMessage = "14) Item = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
-					case "Maintenance_sn":
+					case "maintenance_sn":
                         $textReplyMessage = "15) S/N = ?";
                         $replyData = new TextMessageBuilder($textReplyMessage);
                         break;
@@ -2045,35 +2045,35 @@ Function calculate1($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "Maintenance_trouble";
+				$userMessage = "maintenance_trouble";
 				$pushdata = "\r\nFinish =".$postdata;
 			}
 			elseif ($x1<"12")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "Maintenance_cause";
+				$userMessage = "maintenance_cause";
 				$pushdata = "\r\nTrouble =".$postdata;
 			}
 			elseif ($x1<"13")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "Maintenance_repairable";
+				$userMessage = "maintenance_repairable";
 				$pushdata = "\r\nCause =".$postdata;
 			}
 			elseif ($x1<"14")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "Maintenance_item";
+				$userMessage = "maintenance_item";
 				$pushdata = "\r\nRepairable =".$postdata;
 			}
 			elseif ($x1<"15")
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "Maintenance_sn";
+				$userMessage = "maintenance_sn";
 				$pushdata = "\r\nItem =".$postdata;
 			}
 			elseif ($x1<"16")
