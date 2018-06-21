@@ -142,23 +142,23 @@ if(!is_null($events)){
 				$userMessage = $get_result[2];
 				}
 				if ($userMessage != 'Maintenance_trouble' && $x1 == '11'){
-				$get_result = calculate($userMessage);
+				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
 				if ($userMessage != 'Maintenance_cause' && $x1 == '12'){
-				$get_result = calculate($userMessage);
+				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
 				if ($userMessage != 'Maintenance_repairable' && $x1 == '13'){
-				$get_result = calculate($userMessage);
+				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
 				if ($userMessage != 'Maintenance_item' && $x1 == '14'){
-				$get_result = calculate($userMessage);
+				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
 				if ($userMessage != 'Maintenance_sn' && $x1 == '15'){
-				$get_result = calculate($userMessage);
+				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
 				}
