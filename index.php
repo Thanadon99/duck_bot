@@ -144,6 +144,7 @@ if(!is_null($events)){
 		if ($userMessage != "รายงานบิน"){
 			if ($userMessage != "รายงานซ่อม"){
 				if ($userMessage != "แสดงผลรายงาน"){
+				if ($userMessage != "x=?"){
 				if ($userMessage != 'fuel_qty' && $x == '6'){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
@@ -183,6 +184,7 @@ if(!is_null($events)){
 				if ($userMessage != 'flight_sn' && $x == '20'){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
+				}
 				}
 				}
 			}
