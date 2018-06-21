@@ -133,11 +133,11 @@ if(!is_null($events)){
 				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
-				if ($userMessage != 'fuel_qty' && $x1 == 7'){
+				if ($userMessage != 'fuel_qty_1' && $x1 == '7'){
 				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
-				if ($userMessage != 'fuel_remain' && $x1 == '8'){
+				if ($userMessage != 'fuel_remain_1' && $x1 == '8'){
 				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
