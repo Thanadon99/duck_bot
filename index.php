@@ -141,6 +141,26 @@ if(!is_null($events)){
 				$get_result = calculate1($userMessage);
 				$userMessage = $get_result[2];
 				}
+				if ($userMessage != 'Maintenance_trouble' && $x1 == '11'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'Maintenance_cause' && $x1 == '12'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'Maintenance_repairable' && $x1 == '13'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'Maintenance_item' && $x1 == '14'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
+				if ($userMessage != 'Maintenance_sn' && $x1 == '15'){
+				$get_result = calculate($userMessage);
+				$userMessage = $get_result[2];
+				}
 				}
 				}
 			}
@@ -1518,12 +1538,127 @@ if(!is_null($events)){
                         $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
-                                    '9) Start', // กำหนดหัวเรื่อง
+                                    '9) Start (เริ่มงานซ่อม)', // กำหนดหัวเรื่อง
                                     'Please select', // กำหนดรายละเอียด
                                     $imageUrl, // กำหนด url รุปภาพ
                                     $actionBuilder  // กำหนด action object
                             )
                         );									
+                        break;
+					case "time_shutdown_1":
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+								'Time Picker', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'time' // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+							),
+							new PostbackTemplateActionBuilder(
+                                '-', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'-'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                               // 'LDH324'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/time.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '10) Finish(ซ่อมเสร็จ)', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
+                        break;
+					case "Maintenance_trouble":
+                        $textReplyMessage = "11) Trouble = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "Maintenance_cause":
+                        $textReplyMessage = "12) Cause = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "Maintenance_repairable":
+                        $textReplyMessage = "13) Repairable = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "Maintenance_item":
+                        $textReplyMessage = "14) Item = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "Maintenance_sn":
+                        $textReplyMessage = "15) S/N = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
+					case "ct_1":
+                        // กำหนด action 4 ปุ่ม 4 ประเภท
+                        $actionBuilder = array(
+                            new PostbackTemplateActionBuilder(
+                                'Boy', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Boy'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'26'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Bin', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Bin'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'27'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Moo', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Moo'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+						$actionBuilder1 = array(
+                            new PostbackTemplateActionBuilder(
+                                'Kan', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Kan'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'26'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'Snack', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'Snack'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'27'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 
+                            new PostbackTemplateActionBuilder(
+                                'SandStorm', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+									'SandStorm'
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ), 					
+                        );
+                        $replyData = new TemplateMessageBuilder('Carousel',
+                            new CarouselTemplateBuilder(
+                                array(
+                                    new CarouselColumnTemplateBuilder(
+                                        '16) Chief Tech',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/Mission1.jpg',
+                                        $actionBuilder
+                                    ),
+									new CarouselColumnTemplateBuilder(
+                                        'Chief Tech',
+                                        'Please select',
+                                        'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/BG.jpg',
+                                        $actionBuilder1
+                                    ), 
+                                )
+                            )
+                        );
                         break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
@@ -1903,8 +2038,57 @@ Function calculate1($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "แสดงผลรายงาน";
+				$userMessage = "time_shutdown_1";
 				$pushdata = "\r\nStart =".$postdata;
+			}
+			elseif ($x1<"11")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "Maintenance_trouble";
+				$pushdata = "\r\nFinish =".$postdata;
+			}
+			elseif ($x1<"12")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "Maintenance_cause";
+				$pushdata = "\r\nTrouble =".$postdata;
+			}
+			elseif ($x1<"13")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "Maintenance_repairable";
+				$pushdata = "\r\nCause =".$postdata;
+			}
+			elseif ($x1<"14")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "Maintenance_item";
+				$pushdata = "\r\nRepairable =".$postdata;
+			}
+			elseif ($x1<"15")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "Maintenance_sn";
+				$pushdata = "\r\nItem =".$postdata;
+			}
+			elseif ($x1<"16")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "ct_1";
+				$pushdata = "\r\nS/N =".$postdata;
+			}
+			elseif ($x1<"17")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "แสดงผลรายงาน";
+				$pushdata = "\r\nCT =".$postdata;
 			}
 			
 			
