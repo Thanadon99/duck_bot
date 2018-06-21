@@ -119,6 +119,25 @@ if(!is_null($events)){
         }
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
+	$myfile = fopen("x1.txt", "r+") or die("Unable to open file!");
+	$x1=(fgets($myfile));
+	fclose($myfile);
+		if ($x1>"0")
+		{
+		fclose($myfile);
+		if ($userMessage != "รายงานบิน"){
+			if ($userMessage != "รายงานซ่อม"){
+				if ($userMessage != "แสดงผลรายงาน"){
+				if ($userMessage != 'maintenance' && $x1 == '2'){
+				$get_result = calculate1($userMessage);
+				$userMessage = $get_result[2];
+				}
+				}
+			}
+		}
+		}
+		else
+		{
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
@@ -168,6 +187,8 @@ if(!is_null($events)){
 				}
 			}
 		}
+		}
+		
     if(!is_null($is_message)){
         switch ($typeMessage){
             case 'text':
@@ -1060,6 +1081,10 @@ if(!is_null($events)){
                             )
                         );									
                         break;
+					case "maintenance":
+                        $textReplyMessage = "2) Maintenance = ?";
+                        $replyData = new TextMessageBuilder($textReplyMessage);
+                        break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
@@ -1146,9 +1171,9 @@ if(!is_null($events)){
 						$data1=file('x1.txt');
 						for($i=0;$i<count($data1);$i++){
 							$textReplyMessage.= ",X1 = ";
-							$textReplyMessage.= $data[0];
-							$textReplyMessage.= $data[1];
-							$textReplyMessage.= $data[2];
+							$textReplyMessage.= $data1[0];
+							$textReplyMessage.= $data1[1];
+							$textReplyMessage.= $data1[2];
 						}
 						
 						$replyData = new TextMessageBuilder($textReplyMessage);
@@ -1373,7 +1398,7 @@ Function calculate1($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "แสดงผลรายงาน";
+				$userMessage = "maintenance";
 				$M_date = substr($postdata,8,2);
 				$M_month =substr($postdata,5,2);
 				$M_year = substr($postdata,0,4);
@@ -1381,6 +1406,17 @@ Function calculate1($postdata)
 				$pushdata.= "/".$M_month;
 				$pushdata.= "/".$M_year;
 			}
+			elseif ($x1<"3")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "แสดงผลรายงาน";
+				$pushdata = "\r\nMaintenance =".$postdata;
+			}
+			
+			
+			
+			
 		$myfile = fopen("x1.txt", "w") or die("Unable to open file!");
 			if ("$x1"<"22")
 			{
