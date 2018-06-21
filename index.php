@@ -124,7 +124,7 @@ if(!is_null($events)){
 		fclose($myfile);
 		if ($userMessage != "รายงานบิน"){
 			if ($userMessage != "รายงานซ่อม"){
-				if ($userMessage != "รายงานค่า"){
+				if ($userMessage != "แสดงผลรายงาน"){
 				if ($userMessage != 'fuel_qty' && $x == '6'){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
@@ -1096,8 +1096,18 @@ if(!is_null($events)){
                         $failMessage = json_encode($response->getHTTPStatus() . ' ' . $response->getRawBody());
                         $replyData = new TextMessageBuilder($failMessage);
                         break; 
-					case "รายงานค่า":
-						$data=file('abc.txt');
+					case "แสดงผลรายงาน":
+						$myfile = fopen("x1.txt", "r+") or die("Unable to open file!");
+						$x1=(fgets($myfile));
+						fclose($myfile);
+						if ($x1>"0")
+						{
+							$data=file('abc1.txt');
+						}
+						else
+						{
+							$data=file('abc.txt');
+						}
 						for($i=0;$i<count($data);$i++){
 							$textReplyMessage = $data[0];
 							$textReplyMessage.= $data[1];
@@ -1332,7 +1342,7 @@ Function calculate($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "รายงานค่า";
+				$userMessage = "แสดงผลรายงาน";
 				//$pushdata = "\r\nCT =".substr($postdata,2,20);
 				$pushdata = "\r\nCT =".$postdata;
 			}
@@ -1363,7 +1373,7 @@ Function calculate1($postdata)
 			{
 				$is_message = 1;
 				$typeMessage = 'text';
-				$userMessage = "รายงานค่า";
+				$userMessage = "แสดงผลรายงาน";
 				$M_date = substr($postdata,8,2);
 				$M_month =substr($postdata,5,2);
 				$M_year = substr($postdata,0,4);
