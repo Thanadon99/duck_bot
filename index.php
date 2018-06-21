@@ -97,7 +97,17 @@ if(!is_null($events)){
 
         }*/
         if(!is_null($paramPostback)){
-			$get_result = calculate($paramPostback);
+			$myfile = fopen("x1.txt", "r+") or die("Unable to open file!");
+			$x1=(fgets($myfile));
+			fclose($myfile);
+				if ($x1>"0")
+				{
+					$get_result = calculate1($paramPostback);
+				}
+			else
+				{
+					$get_result = calculate($paramPostback);
+				}
 			$is_message = $get_result[0];
 			$typeMessage = $get_result[1];
 			$userMessage = $get_result[2];
@@ -114,6 +124,7 @@ if(!is_null($events)){
 		fclose($myfile);
 		if ($userMessage != "รายงานบิน"){
 			if ($userMessage != "รายงานซ่อม"){
+				if ($userMessage != "รายงานค่า"){
 				if ($userMessage != 'fuel_qty' && $x == '6'){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
@@ -153,6 +164,7 @@ if(!is_null($events)){
 				if ($userMessage != 'flight_sn' && $x == '20'){
 				$get_result = calculate($userMessage);
 				$userMessage = $get_result[2];
+				}
 				}
 			}
 		}
@@ -1010,6 +1022,41 @@ if(!is_null($events)){
 							fclose($myfile);
 							}
                         break;
+						
+					
+					
+					case "รายงานซ่อม":
+						$myfile = fopen("abc1.txt", "w+") or die("Unable to open file!");
+						$strText1 = "";
+						fwrite($myfile, $strText1);
+						fclose($myfile);
+						$myfile = fopen("x1.txt", "w+") or die("Unable to open file!");
+						fwrite($myfile, 1);
+						fclose($myfile);
+                        // กำหนด action 4 ปุ่ม 4 ประเภท
+                        $actionBuilder = array(
+                            new DatetimePickerTemplateActionBuilder(
+                                'Date', // ข้อความแสดงในปุ่ม
+								http_build_query(array(
+									'action'=>'reservation',
+									'person'=>5
+								)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+								'date', // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
+								date("Y-m-d"), // วันที่ เวลา ค่าเริ่มต้นที่ถูกเลือก
+								date("Y-m-d",strtotime("+1 day")), //วันที่ เวลา มากสุดที่เลือกได้
+								date("Y-m-d",strtotime("-30 day")) //วันที่ เวลา น้อยสุดที่เลือกได้
+							),
+                        );
+                        $imageUrl = 'https://raw.githubusercontent.com/Thanadon99/linebot-code-example/master/pic/report.jpg';
+                        $replyData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    '1) Date', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+                        );									
+                        break;
 					// ส่วนการเรียกชื่อบอท	
 					case "p":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
@@ -1082,6 +1129,7 @@ if(!is_null($events)){
 							$textReplyMessage.= $data[1];
 							$textReplyMessage.= $data[2];
 						}
+						
 						$replyData = new TextMessageBuilder($textReplyMessage);
 						break;
 					
@@ -1294,5 +1342,39 @@ Function calculate($postdata)
 		
 		$result = array($is_message,$typeMessage,$userMessage);
 		return $result;		
+}
+Function calculate1($postdata)
+{
+		$myfile = fopen("x1.txt", "r+") or die("Unable to open file!");
+		$x1=(fgets($myfile));
+		fclose($myfile);
+			if ($x1<"2")
+			{
+				$is_message = 1;
+				$typeMessage = 'text';
+				$userMessage = "รายงานค่า";
+				$M_date = substr($postdata,8,2);
+				$M_month =substr($postdata,5,2);
+				$M_year = substr($postdata,0,4);
+				$pushdata = "Date =".$M_date;
+				$pushdata.= "/".$M_month;
+				$pushdata.= "/".$M_year;
+			}
+		$myfile = fopen("x1.txt", "w") or die("Unable to open file!");
+			if ("$x1"<"22")
+			{
+				fwrite($myfile, $x1+1);
+			}
+			else
+			{
+				fwrite($myfile, $x1-22);
+			}
+		fclose($myfile);
+		$myfile = fopen("abc1.txt", "a+") or die("Unable to open file!");
+		fwrite($myfile, $pushdata);
+		fclose($myfile);
+		
+		$result = array($is_message,$typeMessage,$userMessage);
+		return $result;	
 }
 ?>
