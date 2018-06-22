@@ -1,8 +1,4 @@
 <?php
-/*
-Duck Bot
-V.1.1
-*/
 // include composer autoload
 require_once './vendor/autoload.php';
  
@@ -13,9 +9,6 @@ require_once './vendor/autoload.php';
 use \LINE\LINEBot;
 use \LINE\LINEBot\HTTPClient;
 use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
-//use \LINE\LINEBot\Event;
-//use \LINE\LINEBot\Event\BaseEvent;
-//use \LINE\LINEBot\Event\MessageEvent;
 use \LINE\LINEBot\MessageBuilder;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 use \LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
@@ -46,7 +39,6 @@ use \LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuil
  
 $channel_token = 'lZ+WXE4At+V8NlwkInMHC5wJAvpeeKnCt197Y7l1CVfzSG6uhdee6tVMhG/Esk2GEmFAjl7gvElqWawH4o7AUJxGnKbhpogowCJqIA1cQ57oIF/4qF8CrOx7f0K4RCUjqUy3urKNf4xFaPhCl+faGAdB04t89/1O/w1cDnyilFU=';
 $channel_secret = '85a055cff00c5ca119e5ded3225bfdf3';
- 
  
 $content = file_get_contents('php://input');
 $events = json_decode($content, true);
@@ -87,43 +79,26 @@ if(!is_null($events)){
         }
     }   
     if(!is_null($is_postback)){
-        /*$textReplyMessage = "ข้อความจาก Postback Event Data = ";
-        if(is_array($dataPostback)){
-            $textReplyMessage.= json_encode($dataPostback);
-			$textReplyMessage.=" \r\nParams = ".$dataPostback;
-			$textReplyMessage.=" \r\nParams1 = ";
-			$textReplyMessage.= json_encode($paramPostback);
-			$textReplyMessage.=" \r\nParams2 = ".substr($paramPostback,2,20);
-
-        }*/
         if(!is_null($paramPostback)){
 			$myfile = fopen("x1.txt", "r+") or die("Unable to open file!");
 			$x1=(fgets($myfile));
 			fclose($myfile);
-				if ($x1>"0")
-				{
+				if ($x1>"0"){
 					$get_result = calculate1($paramPostback);
 				}
-			else
-				{
+			else{
 					$get_result = calculate($paramPostback);
 				}
 			$is_message = $get_result[0];
 			$typeMessage = $get_result[1];
 			$userMessage = $get_result[2];
-		
-            //$textReplyMessage.= " \r\nParams = ".$paramPostback;
-			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$is_message;
-			//$textReplyMessage.= "\r\nBot ตอบกลับคุณเป็นข้อความ".$typeMessage;
-			//$textReplyMessage.= "\r\nขBot ตอบกลับคุณเป็นข้อความ".$userMessage;
         }
         $replyData = new TextMessageBuilder($textReplyMessage); 		
     }
 	$myfile = fopen("x1.txt", "r+") or die("Unable to open file!");
 	$x1=(fgets($myfile));
 	fclose($myfile);
-		if ($x1>"0")
-		{
+		if ($x1>"0"){
 		fclose($myfile);
 		if ($userMessage != "รายงานบิน"){
 			if ($userMessage != "รายงานซ่อม"){
@@ -166,8 +141,7 @@ if(!is_null($events)){
 			}
 		}
 		}
-		else
-		{
+		else{
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
@@ -220,7 +194,6 @@ if(!is_null($events)){
 			}
 		}
 		}
-		
     if(!is_null($is_message)){
         switch ($typeMessage){
             case 'text':
@@ -1772,7 +1745,6 @@ if ($response->isSucceeded()) {
     echo 'Succeeded!';
     return;
 }
- 
 // Failed
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 Function calculate($postdata)
@@ -1780,10 +1752,7 @@ Function calculate($postdata)
 		$myfile = fopen("x.txt", "r+") or die("Unable to open file!");
 		$x=(fgets($myfile));
 		fclose($myfile);
-			if ($x<"1")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			if ($x<"1"){
 				$userMessage = "mission";
 				$M_date = substr($postdata,8,2);
 				$M_month =substr($postdata,5,2);
@@ -1792,161 +1761,92 @@ Function calculate($postdata)
 				$pushdata.= "/".$M_month;
 				$pushdata.= "/".$M_year;
 			}
-			elseif ($x<"2")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"2"){
 				$userMessage = "uavno";
-				//$pushdata = "\r\nMission =".substr($postdata,2,20);
 				$pushdata = "\r\nMission =".$postdata;
 			}
-			elseif ($x<"3") 
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"3") {
 				$userMessage = "engineno";
-				//$pushdata = "\r\nUAV No. =".substr($postdata,2,20);
 				$pushdata = "\r\nUAV No. =".$postdata;
 			}
-			elseif ($x<"4") 
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"4") {
 				$userMessage = "gcsno";
-				//$pushdata = "\r\nEngine No. =".substr($postdata,2,20);
 				$pushdata = "\r\nEngine No. =".$postdata;
 			}
-			elseif ($x<"5")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"5"){
 				$userMessage = "payload";
-				//$pushdata = "\r\nGCS No. =".substr($postdata,2,20);
 				$pushdata = "\r\nGCS No. =".$postdata;
 			}
-			elseif ($x<"6")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"6"){
 				$userMessage = "fuel_qty";
-				//$pushdata = "\r\nPayload =".substr($postdata,2,20);
 				$pushdata = "\r\nPayload =".$postdata;
 			}
-			elseif ($x<"7")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"7"){
 				$userMessage = "fuel_remain";
 				$pushdata = "\r\nFuel Qty =".$postdata;
 			}
-			elseif ($x<"8")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"8"){
 				$userMessage = "time_start";
 				$pushdata = "\r\nFuel Remain =".$postdata;
 			}
-			elseif ($x<"9")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"9"){
 				$userMessage = "time_to";
 				$pushdata = "\r\nStart =".$postdata;
 			}
-			elseif ($x<"10")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"10"){
 				$userMessage = "time_shutdown";
 				$pushdata = "\r\nTake Off =".$postdata;
 			}
-			elseif ($x<"11")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"11"){
 				$userMessage = "time_total";
 				$pushdata = "\r\nShutdown =".$postdata;
 			}
-			elseif ($x<"12")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"12"){
 				$userMessage = "time_uav";
 				$pushdata = "\r\nTotal =".$postdata;
 			}
-			elseif ($x<"13")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"13"){
 				$userMessage = "time_engine";
 				$pushdata = "\r\nUAV hr. =".$postdata;
 			}
-			elseif ($x<"14")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"14"){
 				$userMessage = "fuel_cart_17";
 				$pushdata = "\r\nEngine hr. =".$postdata;
 			}
-			elseif ($x<"15")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"15"){
 				$userMessage = "fuel_cart_32";
 				$pushdata = "\r\nFuel Cart 17 remain =".$postdata;
 			}
-			elseif ($x<"16")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"16"){
 				$userMessage = "flight_abort";
 				$pushdata = "\r\nFuel Cart 32 remain =".$postdata;
 			}
-			elseif ($x<"17")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"17"){
 				$userMessage = "if_trouble";
-				//$pushdata = "\r\nAbort =".substr($postdata,2,20);
 				$pushdata = "\r\nAbort =".$postdata;
 			}
-			elseif ($x<"18")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"18"){
 				$userMessage = "flight_repairable1";
 				$pushdata = "\r\nTrouble (1) =".$postdata;
 			}
-			elseif ($x<"19")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"19"){
 				$userMessage = "flight_item1";
 				$pushdata = "\r\nRepairable (1) =".$postdata;
 			}
-			elseif ($x<"20")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"20"){
 				$userMessage = "flight_sn1";
 				$pushdata = "\r\nItem (1) =".$postdata;
 			}
-			elseif ($x<"21")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"21"){
 				$userMessage = "ct";
 				$pushdata = "\r\nS/N (1) =".$postdata;
 			}
-			elseif ($x<"22")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x<"22"){
 				$userMessage = "แสดงผลรายงาน";
-				//$pushdata = "\r\nCT =".substr($postdata,2,20);
 				$pushdata = "\r\nCT =".$postdata;
 			}
-			
+		$is_message = 1;
+		$typeMessage = 'text';	
 		$myfile = fopen("x.txt", "w") or die("Unable to open file!");
 			if ("$x"<"22")
 			{
@@ -1969,10 +1869,7 @@ Function calculate1($postdata)
 		$myfile = fopen("x1.txt", "r+") or die("Unable to open file!");
 		$x1=(fgets($myfile));
 		fclose($myfile);
-			if ($x1<"2")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			if ($x1<"2"){
 				$userMessage = "maintenance";
 				$M_date = substr($postdata,8,2);
 				$M_month =substr($postdata,5,2);
@@ -1981,119 +1878,68 @@ Function calculate1($postdata)
 				$pushdata.= "/".$M_month;
 				$pushdata.= "/".$M_year;
 			}
-			elseif ($x1<"3")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"3"){
 				$userMessage = "uavno_1";
 				$pushdata = "\r\nMaintenance =".$postdata;
 			}
-			elseif ($x1<"4") 
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"4") {
 				$userMessage = "engineno_1";
-				//$pushdata = "\r\nUAV No. =".substr($postdata,2,20);
 				$pushdata = "\r\nUAV No. =".$postdata;
 			}
-			elseif ($x1<"5") 
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"5") {
 				$userMessage = "gcsno_1";
-				//$pushdata = "\r\nEngine No. =".substr($postdata,2,20);
 				$pushdata = "\r\nEngine No. =".$postdata;
 			}
-			elseif ($x1<"6")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"6"){
 				$userMessage = "payload_1";
-				//$pushdata = "\r\nGCS No. =".substr($postdata,2,20);
 				$pushdata = "\r\nGCS No. =".$postdata;
 			}
-			elseif ($x1<"7")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"7"){
 				$userMessage = "fuel_qty_1";
-				//$pushdata = "\r\nPayload =".substr($postdata,2,20);
 				$pushdata = "\r\nPayload =".$postdata;
 			}
-			elseif ($x1<"8")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"8"){
 				$userMessage = "fuel_remain_1";
 				$pushdata = "\r\nFuel Qty =".$postdata;
 			}
-			elseif ($x1<"9")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"9"){
 				$userMessage = "time_start_1";
 				$pushdata = "\r\nFuel Remain =".$postdata;
 			}
-			elseif ($x1<"10")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"10"){
 				$userMessage = "time_shutdown_1";
 				$pushdata = "\r\nStart =".$postdata;
 			}
-			elseif ($x1<"11")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"11"){
 				$userMessage = "maintenance_trouble";
 				$pushdata = "\r\nFinish =".$postdata;
 			}
-			elseif ($x1<"12")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"12"){
 				$userMessage = "maintenance_cause";
 				$pushdata = "\r\nTrouble =".$postdata;
 			}
-			elseif ($x1<"13")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"13"){
 				$userMessage = "maintenance_repairable";
 				$pushdata = "\r\nCause =".$postdata;
 			}
-			elseif ($x1<"14")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"14"){
 				$userMessage = "maintenance_item";
 				$pushdata = "\r\nRepairable =".$postdata;
 			}
-			elseif ($x1<"15")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"15"){
 				$userMessage = "maintenance_sn";
 				$pushdata = "\r\nItem =".$postdata;
 			}
-			elseif ($x1<"16")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"16"){
 				$userMessage = "ct_1";
 				$pushdata = "\r\nS/N =".$postdata;
 			}
-			elseif ($x1<"17")
-			{
-				$is_message = 1;
-				$typeMessage = 'text';
+			elseif ($x1<"17"){
 				$userMessage = "แสดงผลรายงาน";
 				$pushdata = "\r\nCT =".$postdata;
 			}
-			
-			
-			
-			
+		$is_message = 1;
+		$typeMessage = 'text';	
 		$myfile = fopen("x1.txt", "w") or die("Unable to open file!");
 			if ("$x1"<"22")
 			{
