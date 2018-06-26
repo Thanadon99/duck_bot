@@ -1268,7 +1268,7 @@ if(!is_null($events)){
                             new PostbackTemplateActionBuilder(
                                 '13-480', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'13480'
+									'13-480'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 '13-480'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
