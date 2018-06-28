@@ -907,16 +907,16 @@ if(!is_null($events)){
                                 //'26'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'Ground Abort', // ข้อความแสดงในปุ่ม
+                                'Ground_Abort', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'Ground Abort'
+									'Ground_Abort'
                                 )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 //'27'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 
                             new PostbackTemplateActionBuilder(
-                                'Air Abort', // ข้อความแสดงในปุ่ม
+                                'Air_Abort', // ข้อความแสดงในปุ่ม
                                 http_build_query(array(
-									'Air Abort'
+									'Air_Abort'
                                 )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
                                 //'-'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ), 					
